@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Project_ABP.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
@@ -12,9 +13,11 @@ using Volo.Abp.EntityFrameworkCore;
 namespace Project_ABP.Migrations
 {
     [DbContext(typeof(Project_ABPDbContext))]
-    partial class Project_ABPDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241220091356_ver-01")]
+    partial class ver01
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,21 +37,39 @@ namespace Project_ABP.Migrations
 
                     b.Property<string>("Cap")
                         .IsRequired()
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("longtext");
 
-                    b.Property<ulong>("IsDeleted")
-                        .HasColumnType("bit");
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid?>("DeleterId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid?>("LastModifierId")
+                        .HasColumnType("char(36)");
 
                     b.Property<int>("MaTinh")
                         .HasColumnType("int");
 
                     b.Property<string>("TenHuyen")
                         .IsRequired()
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("longtext");
 
                     b.HasKey("MaHuyen");
 
-                    b.ToTable("AppHuyen", (string)null);
+                    b.ToTable("Huyens");
                 });
 
             modelBuilder.Entity("Project_ABP.Entities.Tinh", b =>
@@ -61,18 +82,36 @@ namespace Project_ABP.Migrations
 
                     b.Property<string>("Cap")
                         .IsRequired()
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("longtext");
 
-                    b.Property<ulong>("IsDeleted")
-                        .HasColumnType("bit");
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid?>("DeleterId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid?>("LastModifierId")
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("TenTinh")
                         .IsRequired()
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("longtext");
 
                     b.HasKey("MaTinh");
 
-                    b.ToTable("AppTinh", (string)null);
+                    b.ToTable("Tinhs");
                 });
 
             modelBuilder.Entity("Project_ABP.Entities.Xa", b =>
@@ -85,10 +124,28 @@ namespace Project_ABP.Migrations
 
                     b.Property<string>("Cap")
                         .IsRequired()
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("longtext");
 
-                    b.Property<ulong>("IsDeleted")
-                        .HasColumnType("bit");
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid?>("CreatorId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid?>("DeleterId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid?>("LastModifierId")
+                        .HasColumnType("char(36)");
 
                     b.Property<int>("MaHuyen")
                         .HasColumnType("int");
@@ -98,11 +155,11 @@ namespace Project_ABP.Migrations
 
                     b.Property<string>("TenXa")
                         .IsRequired()
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("longtext");
 
                     b.HasKey("MaXa");
 
-                    b.ToTable("AppXa", (string)null);
+                    b.ToTable("Xas");
                 });
 
             modelBuilder.Entity("Volo.Abp.AuditLogging.AuditLog", b =>

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Project_ABP.Entities;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
 using Volo.Abp.Data;
@@ -50,7 +51,10 @@ public class Project_ABPDbContext :
     // Tenant Management
     public DbSet<Tenant> Tenants { get; set; }
     public DbSet<TenantConnectionString> TenantConnectionStrings { get; set; }
-
+    // Quản lý tỉnh huyện xã
+    public DbSet<Tinh> Tinhs { get; set; }
+    public DbSet<Huyen> Huyens { get; set; }
+    public DbSet<Xa> Xas { get; set; }
     #endregion
 
     public Project_ABPDbContext(DbContextOptions<Project_ABPDbContext> options)
@@ -76,11 +80,28 @@ public class Project_ABPDbContext :
 
         /* Configure your own tables/entities inside here */
 
-        //builder.Entity<YourEntity>(b =>
-        //{
-        //    b.ToTable(Project_ABPConsts.DbTablePrefix + "YourEntities", Project_ABPConsts.DbSchema);
-        //    b.ConfigureByConvention(); //auto configure for the base class props
-        //    //...
-        //});
+        builder.Entity<Tinh>(b =>
+        {
+            b.ToTable(Project_ABPConsts.DbTablePrefix + "Tinh", Project_ABPConsts.DbSchema);
+            b.Property(t => t.TenTinh).HasColumnType("nvarchar(100)");
+            b.Property(t => t.Cap).HasColumnType("nvarchar(50)");
+            b.Property(t => t.IsDeleted).HasColumnType("bit");
+        });
+
+        builder.Entity<Huyen>(b =>
+        {
+            b.ToTable(Project_ABPConsts.DbTablePrefix + "Huyen", Project_ABPConsts.DbSchema);
+            b.Property(t => t.TenHuyen).HasColumnType("nvarchar(100)");
+            b.Property(t => t.Cap).HasColumnType("nvarchar(50)");
+            b.Property(t => t.IsDeleted).HasColumnType("bit");
+        });
+
+        builder.Entity<Xa>(b =>
+        {
+            b.ToTable(Project_ABPConsts.DbTablePrefix + "Xa", Project_ABPConsts.DbSchema);
+            b.Property(t => t.TenXa).HasColumnType("nvarchar(100)");
+            b.Property(t => t.Cap).HasColumnType("nvarchar(50)");
+            b.Property(t => t.IsDeleted).HasColumnType("bit");
+        });
     }
 }

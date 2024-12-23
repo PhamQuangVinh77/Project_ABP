@@ -51,10 +51,13 @@ public class Project_ABPDbContext :
     // Tenant Management
     public DbSet<Tenant> Tenants { get; set; }
     public DbSet<TenantConnectionString> TenantConnectionStrings { get; set; }
-    // Quản lý tỉnh huyện xã
+    // Management Tinh, Huyen, Xa
     public DbSet<Tinh> Tinhs { get; set; }
     public DbSet<Huyen> Huyens { get; set; }
     public DbSet<Xa> Xas { get; set; }
+    // Management hospital
+    public DbSet<Hospital> Hospitals { get; set; }
+    public DbSet<UserHospital> UserHospitals { get; set; }
     #endregion
 
     public Project_ABPDbContext(DbContextOptions<Project_ABPDbContext> options)

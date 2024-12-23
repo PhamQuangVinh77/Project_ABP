@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Project_ABP.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
@@ -12,9 +13,11 @@ using Volo.Abp.EntityFrameworkCore;
 namespace Project_ABP.Migrations
 {
     [DbContext(typeof(Project_ABPDbContext))]
-    partial class Project_ABPDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241223105214_ver-11")]
+    partial class ver11
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -191,20 +194,6 @@ namespace Project_ABP.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("AppTinh", (string)null);
-                });
-
-            modelBuilder.Entity("Project_ABP.Entities.UserHospital", b =>
-                {
-                    b.Property<Guid>("UserId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
-
-                    b.Property<int>("HospitalId")
-                        .HasColumnType("int");
-
-                    b.HasKey("UserId");
-
-                    b.ToTable("UserHospitals");
                 });
 
             modelBuilder.Entity("Project_ABP.Entities.Xa", b =>

@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Project_ABP.Dto;
+using Project_ABP.Entities;
 
 namespace Project_ABP;
 
@@ -6,8 +8,16 @@ public class Project_ABPApplicationAutoMapperProfile : Profile
 {
     public Project_ABPApplicationAutoMapperProfile()
     {
-        /* You can configure your AutoMapper mapping configuration here.
-         * Alternatively, you can split your mapping configurations
-         * into multiple profile classes for a better organization. */
+        // AutoMapper for Tinh
+        CreateMap<Tinh, TinhDto>();
+        CreateMap<CreateOrUpdateTinhDto, Tinh>();
+
+        // AutoMapper for Huyen
+        CreateMap<Huyen, HuyenDto>();
+        CreateMap<CreateOrUpdateHuyenDto, Huyen>();
+
+        // AutoMapper for Xa
+        CreateMap<Xa, XaDto>();
+        CreateMap<CreateOrUpdateXaDto, Xa>();
     }
 }

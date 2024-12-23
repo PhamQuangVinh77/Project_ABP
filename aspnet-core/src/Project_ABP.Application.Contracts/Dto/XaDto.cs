@@ -1,9 +1,9 @@
 ﻿using System;
-using Volo.Abp.Domain.Entities.Auditing;
+using Volo.Abp.Application.Dtos;
 
-namespace Project_ABP.Entities
+namespace Project_ABP.Dto
 {
-    public class Xa : FullAuditedEntity<Guid>
+    public class XaDto : FullAuditedEntityDto<Guid>
     {
         public int MaXa { get; set; }
         public string TenXa { get; set; }

@@ -1,8 +1,9 @@
-﻿using System;
-using Microsoft.Extensions.DependencyInjection;
-using Volo.Abp.Uow;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
+using Volo.Abp.Dapper;
+using Volo.Abp.Data;
+using Volo.Abp.Domain;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore.MySQL;
 using Volo.Abp.FeatureManagement.EntityFrameworkCore;
@@ -25,7 +26,8 @@ namespace Project_ABP.EntityFrameworkCore;
     typeof(AbpBackgroundJobsEntityFrameworkCoreModule),
     typeof(AbpAuditLoggingEntityFrameworkCoreModule),
     typeof(AbpTenantManagementEntityFrameworkCoreModule),
-    typeof(AbpFeatureManagementEntityFrameworkCoreModule)
+    typeof(AbpFeatureManagementEntityFrameworkCoreModule),
+    typeof(AbpDapperModule)
     )]
 public class Project_ABPEntityFrameworkCoreModule : AbpModule
 {
@@ -38,15 +40,15 @@ public class Project_ABPEntityFrameworkCoreModule : AbpModule
     {
         context.Services.AddAbpDbContext<Project_ABPDbContext>(options =>
         {
-                /* Remove "includeAllEntities: true" to create
-                 * default repositories only for aggregate roots */
+            /* Remove "includeAllEntities: true" to create
+             * default repositories only for aggregate roots */
             options.AddDefaultRepositories(includeAllEntities: true);
         });
 
         Configure<AbpDbContextOptions>(options =>
         {
-                /* The main point to change your DBMS.
-                 * See also Project_ABPMigrationsDbContextFactory for EF Core tooling. */
+            /* The main point to change your DBMS.
+             * See also Project_ABPMigrationsDbContextFactory for EF Core tooling. */
             options.UseMySQL();
         });
 

@@ -3,6 +3,8 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Project_ABP.MultiTenancy;
 using Volo.Abp.AuditLogging;
 using Volo.Abp.BackgroundJobs;
+using Volo.Abp.Data;
+using Volo.Abp.Domain;
 using Volo.Abp.Emailing;
 using Volo.Abp.FeatureManagement;
 using Volo.Abp.Identity;
@@ -28,7 +30,9 @@ namespace Project_ABP;
     typeof(AbpPermissionManagementDomainIdentityModule),
     typeof(AbpSettingManagementDomainModule),
     typeof(AbpTenantManagementDomainModule),
-    typeof(AbpEmailingModule)
+    typeof(AbpEmailingModule),
+    typeof(AbpDataModule),
+    typeof(AbpDddDomainModule)
 )]
 public class Project_ABPDomainModule : AbpModule
 {

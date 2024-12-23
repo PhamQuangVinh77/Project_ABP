@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Project_ABP.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore;
@@ -12,9 +13,11 @@ using Volo.Abp.EntityFrameworkCore;
 namespace Project_ABP.Migrations
 {
     [DbContext(typeof(Project_ABPDbContext))]
-    partial class Project_ABPDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241223064542_ver-08")]
+    partial class ver08
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,45 +29,36 @@ namespace Project_ABP.Migrations
 
             modelBuilder.Entity("Project_ABP.Entities.Huyen", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .HasColumnType("char(36)");
+                    b.Property<int>("MaHuyen")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("MaHuyen"));
 
                     b.Property<string>("Cap")
                         .IsRequired()
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<DateTime>("CreationTime")
-                        .HasColumnType("datetime(6)")
-                        .HasColumnName("CreationTime");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<Guid?>("CreatorId")
-                        .HasColumnType("char(36)")
-                        .HasColumnName("CreatorId");
+                        .HasColumnType("char(36)");
 
                     b.Property<Guid?>("DeleterId")
-                        .HasColumnType("char(36)")
-                        .HasColumnName("DeleterId");
+                        .HasColumnType("char(36)");
 
                     b.Property<DateTime?>("DeletionTime")
-                        .HasColumnType("datetime(6)")
-                        .HasColumnName("DeletionTime");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<ulong>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(0ul)
-                        .HasColumnName("IsDeleted");
+                        .HasColumnType("bit");
 
                     b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("datetime(6)")
-                        .HasColumnName("LastModificationTime");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<Guid?>("LastModifierId")
-                        .HasColumnType("char(36)")
-                        .HasColumnName("LastModifierId");
-
-                    b.Property<int>("MaHuyen")
-                        .HasColumnType("int");
+                        .HasColumnType("char(36)");
 
                     b.Property<int>("MaTinh")
                         .HasColumnType("int");
@@ -73,7 +67,7 @@ namespace Project_ABP.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(100)");
 
-                    b.HasKey("Id");
+                    b.HasKey("MaHuyen");
 
                     b.ToTable("AppHuyen", (string)null);
                 });
@@ -131,42 +125,36 @@ namespace Project_ABP.Migrations
 
             modelBuilder.Entity("Project_ABP.Entities.Xa", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .HasColumnType("char(36)");
+                    b.Property<int>("MaXa")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("MaXa"));
 
                     b.Property<string>("Cap")
                         .IsRequired()
                         .HasColumnType("nvarchar(50)");
 
                     b.Property<DateTime>("CreationTime")
-                        .HasColumnType("datetime(6)")
-                        .HasColumnName("CreationTime");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<Guid?>("CreatorId")
-                        .HasColumnType("char(36)")
-                        .HasColumnName("CreatorId");
+                        .HasColumnType("char(36)");
 
                     b.Property<Guid?>("DeleterId")
-                        .HasColumnType("char(36)")
-                        .HasColumnName("DeleterId");
+                        .HasColumnType("char(36)");
 
                     b.Property<DateTime?>("DeletionTime")
-                        .HasColumnType("datetime(6)")
-                        .HasColumnName("DeletionTime");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<ulong>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(0ul)
-                        .HasColumnName("IsDeleted");
+                        .HasColumnType("bit");
 
                     b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnType("datetime(6)")
-                        .HasColumnName("LastModificationTime");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<Guid?>("LastModifierId")
-                        .HasColumnType("char(36)")
-                        .HasColumnName("LastModifierId");
+                        .HasColumnType("char(36)");
 
                     b.Property<int>("MaHuyen")
                         .HasColumnType("int");
@@ -174,14 +162,11 @@ namespace Project_ABP.Migrations
                     b.Property<int>("MaTinh")
                         .HasColumnType("int");
 
-                    b.Property<int>("MaXa")
-                        .HasColumnType("int");
-
                     b.Property<string>("TenXa")
                         .IsRequired()
                         .HasColumnType("nvarchar(100)");
 
-                    b.HasKey("Id");
+                    b.HasKey("MaXa");
 
                     b.ToTable("AppXa", (string)null);
                 });

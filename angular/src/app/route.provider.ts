@@ -15,6 +15,19 @@ function configureRoutes(routesService: RoutesService) {
         order: 1,
         layout: eLayoutType.application,
       },
+      {
+        path: '/management',
+        name: '::Menu:Management',
+        iconClass: 'fa fa-pencil-square',
+        order: 2,
+        layout: eLayoutType.application,
+      },
+      {
+        path: '/manage-tinh',
+        name: '::Menu:Tinh',
+        parentName: '::Menu:Management',
+        layout: eLayoutType.application,
+      },
     ]);
   };
 }

@@ -11,7 +11,7 @@ import { provideIdentityConfig } from '@abp/ng.identity/config';
 import { provideSettingManagementConfig } from '@abp/ng.setting-management/config';
 import { provideTenantManagementConfig } from '@abp/ng.tenant-management/config';
 import { provideAccountConfig } from '@abp/ng.account/config';
-import { NgModule } from '@angular/core';
+import { NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from '../environments/environment';
@@ -21,6 +21,15 @@ import { APP_ROUTE_PROVIDER } from './route.provider';
 import { ThemeLeptonXModule } from '@abp/ng.theme.lepton-x';
 import { SideMenuLayoutModule } from '@abp/ng.theme.lepton-x/layouts';
 import { AccountLayoutModule } from '@abp/ng.theme.lepton-x/account';
+import { NZ_I18N } from 'ng-zorro-antd/i18n';
+import { en_US } from 'ng-zorro-antd/i18n';
+import { registerLocaleData } from '@angular/common';
+import en from '@angular/common/locales/en';
+import { FormsModule } from '@angular/forms';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { provideHttpClient } from '@angular/common/http';
+
+registerLocaleData(en);
 
 @NgModule({
   imports: [
@@ -31,11 +40,11 @@ import { AccountLayoutModule } from '@abp/ng.theme.lepton-x/account';
     ThemeSharedModule,
     
     
-    
     InternetConnectionStatusComponent,
                    ThemeLeptonXModule.forRoot(),
                    SideMenuLayoutModule.forRoot(),
                    AccountLayoutModule.forRoot(),
+                   FormsModule,
   ],
   declarations: [AppComponent],
   providers: [
@@ -53,6 +62,9 @@ import { AccountLayoutModule } from '@abp/ng.theme.lepton-x/account';
     provideIdentityConfig(),
     provideTenantManagementConfig(),
     provideFeatureManagementConfig(),
+    { provide: NZ_I18N, useValue: en_US },
+    provideAnimationsAsync(),
+    provideHttpClient(),
   ],
   bootstrap: [AppComponent],
 })

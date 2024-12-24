@@ -25,6 +25,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('@abp/ng.setting-management').then(m => m.SettingManagementModule.forLazy()),
   },
+  { path: 'manage-tinh', loadChildren: () => import('./tinh/tinh.module').then(m => m.TinhModule) },
 ];
 
 @NgModule({

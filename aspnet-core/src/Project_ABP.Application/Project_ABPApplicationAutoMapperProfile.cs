@@ -19,5 +19,13 @@ public class Project_ABPApplicationAutoMapperProfile : Profile
         // AutoMapper for Xa
         CreateMap<Xa, XaDto>();
         CreateMap<CreateOrUpdateXaDto, Xa>();
+
+        //AutoMapper for Hospital
+        CreateMap<Hospital, HospitalDto>();
+        CreateMap<CreateOrUpdateHospitalDto, Hospital>();
+
+        //AutoMapper for BenhNhan
+        CreateMap<BenhNhan, BenhNhanDto>();
+        CreateMap<CreateOrUpdateBenhNhanDto, BenhNhan>();
     }
 }

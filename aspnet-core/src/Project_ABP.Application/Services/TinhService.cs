@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 using Project_ABP.Dto;
 using Project_ABP.Entities;
 using Project_ABP.IRepositories;
@@ -14,15 +15,25 @@ namespace Project_ABP.Services
     public class TinhService : CrudAppService<Tinh, TinhDto, Guid, PagedAndSortedResultRequestDto, CreateOrUpdateTinhDto, CreateOrUpdateTinhDto>, ITinhService
     {
         private readonly ITinhRepository _tinhRepository;
-        public TinhService(IRepository<Tinh, Guid> repository, ITinhRepository tinhRepository) : base(repository)
+        private ILogger<TinhService> _logger;
+        public TinhService(IRepository<Tinh, Guid> repository, ITinhRepository tinhRepository, ILogger<TinhService> logger) : base(repository)
         {
             _tinhRepository = tinhRepository;
+            _logger = logger;
         }        
         
         public async Task<List<TinhDto>> GetAllTinhs()
         {
-            var responses = await _tinhRepository.GetAllTinhs();
-            return ObjectMapper.Map<List<Tinh>, List<TinhDto>>(responses);
+            try
+            {
+                var responses = await _tinhRepository.GetAllTinhs();
+                return ObjectMapper.Map<List<Tinh>, List<TinhDto>>(responses);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw;
+            }
         }
     }
 }

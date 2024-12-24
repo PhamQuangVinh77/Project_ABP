@@ -58,6 +58,7 @@ public class Project_ABPDbContext :
     // Management hospital
     public DbSet<Hospital> Hospitals { get; set; }
     public DbSet<UserHospital> UserHospitals { get; set; }
+    public DbSet<BenhNhan> BenhNhans { get; set; }
     #endregion
 
     public Project_ABPDbContext(DbContextOptions<Project_ABPDbContext> options)

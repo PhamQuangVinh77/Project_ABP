@@ -1,0 +1,15 @@
+nz-table {
+  margin-top: 20px;
+}
+nz-table tbody {
+  text-align: center;
+}
+
+nz-pagination {
+  margin-top: 20px;
+  text-align: center;
+}
+
+nz-select {
+  width: 80%;
+}/*# sourceMappingURL=huyen.component.css.map */

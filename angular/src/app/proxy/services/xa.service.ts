@@ -1,7 +1,7 @@
 import { RestService, Rest } from '@abp/ng.core';
-import type { PagedAndSortedResultRequestDto, PagedResultDto } from '@abp/ng.core';
+import type { PagedResultDto } from '@abp/ng.core';
 import { Injectable } from '@angular/core';
-import type { CreateOrUpdateXaDto, XaDto } from '../dto/models';
+import type { CreateOrUpdateXaDto, XaDto, XaPagedAndSortedResultRequestDto } from '../dto/xa-dtos/models';
 
 @Injectable({
   providedIn: 'root',
@@ -44,11 +44,11 @@ export class XaService {
     { apiName: this.apiName,...config });
   
 
-  getList = (input: PagedAndSortedResultRequestDto, config?: Partial<Rest.Config>) =>
+  getList = (request: XaPagedAndSortedResultRequestDto, config?: Partial<Rest.Config>) =>
     this.restService.request<any, PagedResultDto<XaDto>>({
       method: 'GET',
       url: '/api/app/xa',
-      params: { sorting: input.sorting, skipCount: input.skipCount, maxResultCount: input.maxResultCount },
+      params: { maTinh: request.maTinh, maHuyen: request.maHuyen, filter: request.filter, sorting: request.sorting, skipCount: request.skipCount, maxResultCount: request.maxResultCount },
     },
     { apiName: this.apiName,...config });
   

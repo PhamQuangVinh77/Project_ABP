@@ -1,6 +1,6 @@
-import { NgModule} from '@angular/core';
-import { TinhRoutingModule } from './tinh-routing.module';
-import { TinhComponent } from './tinh.component';
+import { NgModule } from '@angular/core';
+import { HuyenRoutingModule } from './huyen-routing.module';
+import { HuyenComponent } from './huyen.component';
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { NzButtonModule } from 'ng-zorro-antd/button';
@@ -10,13 +10,15 @@ import { NzTableModule } from 'ng-zorro-antd/table';
 import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+
 
 @NgModule({
   declarations: [
-    TinhComponent
+    HuyenComponent
   ],
   imports: [
-    TinhRoutingModule,
+    HuyenRoutingModule,
     SharedModule,
     FormsModule,
     NzButtonModule,
@@ -25,7 +27,8 @@ import { NzDividerModule } from 'ng-zorro-antd/divider';
     NzTableModule,
     NzPaginationModule,
     NzGridModule,
-    NzDividerModule
-  ],
+    NzDividerModule,
+    NzSelectModule
+  ]
 })
-export class TinhModule { }
+export class HuyenModule { }

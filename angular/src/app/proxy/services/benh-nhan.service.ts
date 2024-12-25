@@ -1,7 +1,7 @@
 import { RestService, Rest } from '@abp/ng.core';
-import type { PagedAndSortedResultRequestDto, PagedResultDto } from '@abp/ng.core';
+import type { PagedResultDto } from '@abp/ng.core';
 import { Injectable } from '@angular/core';
-import type { BenhNhanDto, CreateOrUpdateBenhNhanDto } from '../dto/models';
+import type { BenhNhanDto, BenhNhanPagedAndSortedResultRequestDto, CreateOrUpdateBenhNhanDto } from '../dto/benh-nhan-dtos/models';
 
 @Injectable({
   providedIn: 'root',
@@ -35,19 +35,19 @@ export class BenhNhanService {
     { apiName: this.apiName,...config });
   
 
-  getAllBenhNhanByHospitalId = (hospitalId: number, config?: Partial<Rest.Config>) =>
+  getAllBenhNhansByHospitalId = (hospitalId: number, config?: Partial<Rest.Config>) =>
     this.restService.request<any, BenhNhanDto[]>({
       method: 'GET',
-      url: `/api/app/benh-nhan/benh-nhan/${hospitalId}`,
+      url: `/api/app/benh-nhan/benh-nhans/${hospitalId}`,
     },
     { apiName: this.apiName,...config });
   
 
-  getList = (input: PagedAndSortedResultRequestDto, config?: Partial<Rest.Config>) =>
+  getList = (request: BenhNhanPagedAndSortedResultRequestDto, config?: Partial<Rest.Config>) =>
     this.restService.request<any, PagedResultDto<BenhNhanDto>>({
       method: 'GET',
       url: '/api/app/benh-nhan',
-      params: { sorting: input.sorting, skipCount: input.skipCount, maxResultCount: input.maxResultCount },
+      params: { hospitalId: request.hospitalId, filter: request.filter, sorting: request.sorting, skipCount: request.skipCount, maxResultCount: request.maxResultCount },
     },
     { apiName: this.apiName,...config });
   

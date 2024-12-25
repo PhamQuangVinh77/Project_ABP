@@ -28,6 +28,12 @@ function configureRoutes(routesService: RoutesService) {
         parentName: '::Menu:Management',
         layout: eLayoutType.application,
       },
+      {
+        path: '/manage-huyen',
+        name: '::Menu:Huyen',
+        parentName: '::Menu:Management',
+        layout: eLayoutType.application,
+      },
     ]);
   };
 }

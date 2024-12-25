@@ -1,7 +1,7 @@
 import { RestService, Rest } from '@abp/ng.core';
-import type { PagedAndSortedResultRequestDto, PagedResultDto } from '@abp/ng.core';
+import type { PagedResultDto } from '@abp/ng.core';
 import { Injectable } from '@angular/core';
-import type { CreateOrUpdateHospitalDto, HospitalDto } from '../dto/models';
+import type { CreateOrUpdateHospitalDto, HospitalDto, HospitalPagedAndSortedResultRequestDto } from '../dto/hospital-dtos/models';
 
 @Injectable({
   providedIn: 'root',
@@ -44,11 +44,11 @@ export class HospitalService {
     { apiName: this.apiName,...config });
   
 
-  getList = (input: PagedAndSortedResultRequestDto, config?: Partial<Rest.Config>) =>
+  getList = (request: HospitalPagedAndSortedResultRequestDto, config?: Partial<Rest.Config>) =>
     this.restService.request<any, PagedResultDto<HospitalDto>>({
       method: 'GET',
       url: '/api/app/hospital',
-      params: { sorting: input.sorting, skipCount: input.skipCount, maxResultCount: input.maxResultCount },
+      params: { maTinh: request.maTinh, maHuyen: request.maHuyen, maXa: request.maXa, filter: request.filter, sorting: request.sorting, skipCount: request.skipCount, maxResultCount: request.maxResultCount },
     },
     { apiName: this.apiName,...config });
   

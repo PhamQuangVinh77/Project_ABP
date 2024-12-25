@@ -7,7 +7,17 @@
         "LongWelcomeMessage": "Welcome to the application. This is a startup project based on the ABP framework. For more information, visit abp.io.",
         "Menu:Management": "Management",
         "Menu:Tinh": "Tỉnh",
+        "Menu:QuanLyTinh": "QUẢN LÝ TỈNH",
+        "Menu:MaTinh": "Mã tỉnh",
+        "Menu:TenTinh": "Tên tỉnh",
+        "Menu:Cap": "Cấp",
         "Menu:Huyen": "Huyện",
-        "Menu:Xa": "Xã"
+        "Menu:QuanLyHuyen": "QUẢN LÝ HUYỆN",
+        "Menu:MaHuyen": "Mã huyện",
+        "Menu:TenHuyen": "Tên huyện",
+        "Menu:Xa": "Xã",
+        "Menu:QuanLyXa": "QUẢN LÝ XÃ",
+        "Menu:MaXa": "Mã xã",
+        "Menu:TenXa": "Tên xã"
     }
 }

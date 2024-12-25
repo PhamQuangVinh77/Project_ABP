@@ -886,7 +886,7 @@
               "name": "IBenhNhanService",
               "methods": [
                 {
-                  "name": "GetAllBenhNhan",
+                  "name": "GetAllBenhNhans",
                   "parametersOnMethod": [
                     {
                       "name": "hospitalId",
@@ -898,8 +898,8 @@
                     }
                   ],
                   "returnValue": {
-                    "type": "System.Collections.Generic.List<Project_ABP.Dto.BenhNhanDto>",
-                    "typeSimple": "[Project_ABP.Dto.BenhNhanDto]"
+                    "type": "System.Collections.Generic.List<Project_ABP.Dto.BenhNhanDtos.BenhNhanDto>",
+                    "typeSimple": "[Project_ABP.Dto.BenhNhanDtos.BenhNhanDto]"
                   }
                 },
                 {
@@ -915,8 +915,8 @@
                     }
                   ],
                   "returnValue": {
-                    "type": "Project_ABP.Dto.BenhNhanDto",
-                    "typeSimple": "Project_ABP.Dto.BenhNhanDto"
+                    "type": "Project_ABP.Dto.BenhNhanDtos.BenhNhanDto",
+                    "typeSimple": "Project_ABP.Dto.BenhNhanDtos.BenhNhanDto"
                   }
                 },
                 {
@@ -924,16 +924,16 @@
                   "parametersOnMethod": [
                     {
                       "name": "input",
-                      "typeAsString": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto, Volo.Abp.Ddd.Application.Contracts",
-                      "type": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto",
-                      "typeSimple": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto",
+                      "typeAsString": "Project_ABP.Dto.BenhNhanDtos.BenhNhanPagedAndSortedResultRequestDto, Project_ABP.Application.Contracts",
+                      "type": "Project_ABP.Dto.BenhNhanDtos.BenhNhanPagedAndSortedResultRequestDto",
+                      "typeSimple": "Project_ABP.Dto.BenhNhanDtos.BenhNhanPagedAndSortedResultRequestDto",
                       "isOptional": false,
                       "defaultValue": null
                     }
                   ],
                   "returnValue": {
-                    "type": "Volo.Abp.Application.Dtos.PagedResultDto<Project_ABP.Dto.BenhNhanDto>",
-                    "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<Project_ABP.Dto.BenhNhanDto>"
+                    "type": "Volo.Abp.Application.Dtos.PagedResultDto<Project_ABP.Dto.BenhNhanDtos.BenhNhanDto>",
+                    "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<Project_ABP.Dto.BenhNhanDtos.BenhNhanDto>"
                   }
                 },
                 {
@@ -941,16 +941,16 @@
                   "parametersOnMethod": [
                     {
                       "name": "input",
-                      "typeAsString": "Project_ABP.Dto.CreateOrUpdateBenhNhanDto, Project_ABP.Application.Contracts",
-                      "type": "Project_ABP.Dto.CreateOrUpdateBenhNhanDto",
-                      "typeSimple": "Project_ABP.Dto.CreateOrUpdateBenhNhanDto",
+                      "typeAsString": "Project_ABP.Dto.BenhNhanDtos.CreateOrUpdateBenhNhanDto, Project_ABP.Application.Contracts",
+                      "type": "Project_ABP.Dto.BenhNhanDtos.CreateOrUpdateBenhNhanDto",
+                      "typeSimple": "Project_ABP.Dto.BenhNhanDtos.CreateOrUpdateBenhNhanDto",
                       "isOptional": false,
                       "defaultValue": null
                     }
                   ],
                   "returnValue": {
-                    "type": "Project_ABP.Dto.BenhNhanDto",
-                    "typeSimple": "Project_ABP.Dto.BenhNhanDto"
+                    "type": "Project_ABP.Dto.BenhNhanDtos.BenhNhanDto",
+                    "typeSimple": "Project_ABP.Dto.BenhNhanDtos.BenhNhanDto"
                   }
                 },
                 {
@@ -966,16 +966,16 @@
                     },
                     {
                       "name": "input",
-                      "typeAsString": "Project_ABP.Dto.CreateOrUpdateBenhNhanDto, Project_ABP.Application.Contracts",
-                      "type": "Project_ABP.Dto.CreateOrUpdateBenhNhanDto",
-                      "typeSimple": "Project_ABP.Dto.CreateOrUpdateBenhNhanDto",
+                      "typeAsString": "Project_ABP.Dto.BenhNhanDtos.CreateOrUpdateBenhNhanDto, Project_ABP.Application.Contracts",
+                      "type": "Project_ABP.Dto.BenhNhanDtos.CreateOrUpdateBenhNhanDto",
+                      "typeSimple": "Project_ABP.Dto.BenhNhanDtos.CreateOrUpdateBenhNhanDto",
                       "isOptional": false,
                       "defaultValue": null
                     }
                   ],
                   "returnValue": {
-                    "type": "Project_ABP.Dto.BenhNhanDto",
-                    "typeSimple": "Project_ABP.Dto.BenhNhanDto"
+                    "type": "Project_ABP.Dto.BenhNhanDtos.BenhNhanDto",
+                    "typeSimple": "Project_ABP.Dto.BenhNhanDtos.BenhNhanDto"
                   }
                 },
                 {
@@ -999,11 +999,11 @@
             }
           ],
           "actions": {
-            "GetAllBenhNhanByHospitalId": {
-              "uniqueName": "GetAllBenhNhanByHospitalId",
-              "name": "GetAllBenhNhan",
+            "GetAllBenhNhansByHospitalId": {
+              "uniqueName": "GetAllBenhNhansByHospitalId",
+              "name": "GetAllBenhNhans",
               "httpMethod": "GET",
-              "url": "api/app/benh-nhan/benh-nhan/{hospitalId}",
+              "url": "api/app/benh-nhan/benh-nhans/{hospitalId}",
               "supportedVersions": [],
               "parametersOnMethod": [
                 {
@@ -1030,11 +1030,96 @@
                 }
               ],
               "returnValue": {
-                "type": "System.Collections.Generic.List<Project_ABP.Dto.BenhNhanDto>",
-                "typeSimple": "[Project_ABP.Dto.BenhNhanDto]"
+                "type": "System.Collections.Generic.List<Project_ABP.Dto.BenhNhanDtos.BenhNhanDto>",
+                "typeSimple": "[Project_ABP.Dto.BenhNhanDtos.BenhNhanDto]"
               },
               "allowAnonymous": null,
               "implementFrom": "Project_ABP.IServices.IBenhNhanService"
+            },
+            "GetListAsyncByRequest": {
+              "uniqueName": "GetListAsyncByRequest",
+              "name": "GetListAsync",
+              "httpMethod": "GET",
+              "url": "api/app/benh-nhan",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "request",
+                  "typeAsString": "Project_ABP.Dto.BenhNhanDtos.BenhNhanPagedAndSortedResultRequestDto, Project_ABP.Application.Contracts",
+                  "type": "Project_ABP.Dto.BenhNhanDtos.BenhNhanPagedAndSortedResultRequestDto",
+                  "typeSimple": "Project_ABP.Dto.BenhNhanDtos.BenhNhanPagedAndSortedResultRequestDto",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "request",
+                  "name": "HospitalId",
+                  "jsonName": null,
+                  "type": "System.Int32?",
+                  "typeSimple": "number?",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "request"
+                },
+                {
+                  "nameOnMethod": "request",
+                  "name": "Filter",
+                  "jsonName": null,
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "request"
+                },
+                {
+                  "nameOnMethod": "request",
+                  "name": "Sorting",
+                  "jsonName": null,
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "request"
+                },
+                {
+                  "nameOnMethod": "request",
+                  "name": "SkipCount",
+                  "jsonName": null,
+                  "type": "System.Int32",
+                  "typeSimple": "number",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "request"
+                },
+                {
+                  "nameOnMethod": "request",
+                  "name": "MaxResultCount",
+                  "jsonName": null,
+                  "type": "System.Int32",
+                  "typeSimple": "number",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "request"
+                }
+              ],
+              "returnValue": {
+                "type": "Volo.Abp.Application.Dtos.PagedResultDto<Project_ABP.Dto.BenhNhanDtos.BenhNhanDto>",
+                "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<Project_ABP.Dto.BenhNhanDtos.BenhNhanDto>"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<Project_ABP.Dto.BenhNhanDtos.BenhNhanDto,Project_ABP.Dto.BenhNhanDtos.BenhNhanDto,System.Int32,Project_ABP.Dto.BenhNhanDtos.BenhNhanPagedAndSortedResultRequestDto>"
             },
             "CreateAsyncByInput": {
               "uniqueName": "CreateAsyncByInput",
@@ -1045,9 +1130,9 @@
               "parametersOnMethod": [
                 {
                   "name": "input",
-                  "typeAsString": "Project_ABP.Dto.CreateOrUpdateBenhNhanDto, Project_ABP.Application.Contracts",
-                  "type": "Project_ABP.Dto.CreateOrUpdateBenhNhanDto",
-                  "typeSimple": "Project_ABP.Dto.CreateOrUpdateBenhNhanDto",
+                  "typeAsString": "Project_ABP.Dto.BenhNhanDtos.CreateOrUpdateBenhNhanDto, Project_ABP.Application.Contracts",
+                  "type": "Project_ABP.Dto.BenhNhanDtos.CreateOrUpdateBenhNhanDto",
+                  "typeSimple": "Project_ABP.Dto.BenhNhanDtos.CreateOrUpdateBenhNhanDto",
                   "isOptional": false,
                   "defaultValue": null
                 }
@@ -1057,8 +1142,8 @@
                   "nameOnMethod": "input",
                   "name": "input",
                   "jsonName": null,
-                  "type": "Project_ABP.Dto.CreateOrUpdateBenhNhanDto",
-                  "typeSimple": "Project_ABP.Dto.CreateOrUpdateBenhNhanDto",
+                  "type": "Project_ABP.Dto.BenhNhanDtos.CreateOrUpdateBenhNhanDto",
+                  "typeSimple": "Project_ABP.Dto.BenhNhanDtos.CreateOrUpdateBenhNhanDto",
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
@@ -1067,11 +1152,11 @@
                 }
               ],
               "returnValue": {
-                "type": "Project_ABP.Dto.BenhNhanDto",
-                "typeSimple": "Project_ABP.Dto.BenhNhanDto"
+                "type": "Project_ABP.Dto.BenhNhanDtos.BenhNhanDto",
+                "typeSimple": "Project_ABP.Dto.BenhNhanDtos.BenhNhanDto"
               },
               "allowAnonymous": null,
-              "implementFrom": "Volo.Abp.Application.Services.ICreateAppService<Project_ABP.Dto.BenhNhanDto,Project_ABP.Dto.CreateOrUpdateBenhNhanDto>"
+              "implementFrom": "Volo.Abp.Application.Services.ICreateAppService<Project_ABP.Dto.BenhNhanDtos.BenhNhanDto,Project_ABP.Dto.BenhNhanDtos.CreateOrUpdateBenhNhanDto>"
             },
             "UpdateAsyncByIdAndInput": {
               "uniqueName": "UpdateAsyncByIdAndInput",
@@ -1090,9 +1175,9 @@
                 },
                 {
                   "name": "input",
-                  "typeAsString": "Project_ABP.Dto.CreateOrUpdateBenhNhanDto, Project_ABP.Application.Contracts",
-                  "type": "Project_ABP.Dto.CreateOrUpdateBenhNhanDto",
-                  "typeSimple": "Project_ABP.Dto.CreateOrUpdateBenhNhanDto",
+                  "typeAsString": "Project_ABP.Dto.BenhNhanDtos.CreateOrUpdateBenhNhanDto, Project_ABP.Application.Contracts",
+                  "type": "Project_ABP.Dto.BenhNhanDtos.CreateOrUpdateBenhNhanDto",
+                  "typeSimple": "Project_ABP.Dto.BenhNhanDtos.CreateOrUpdateBenhNhanDto",
                   "isOptional": false,
                   "defaultValue": null
                 }
@@ -1114,8 +1199,8 @@
                   "nameOnMethod": "input",
                   "name": "input",
                   "jsonName": null,
-                  "type": "Project_ABP.Dto.CreateOrUpdateBenhNhanDto",
-                  "typeSimple": "Project_ABP.Dto.CreateOrUpdateBenhNhanDto",
+                  "type": "Project_ABP.Dto.BenhNhanDtos.CreateOrUpdateBenhNhanDto",
+                  "typeSimple": "Project_ABP.Dto.BenhNhanDtos.CreateOrUpdateBenhNhanDto",
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
@@ -1124,11 +1209,11 @@
                 }
               ],
               "returnValue": {
-                "type": "Project_ABP.Dto.BenhNhanDto",
-                "typeSimple": "Project_ABP.Dto.BenhNhanDto"
+                "type": "Project_ABP.Dto.BenhNhanDtos.BenhNhanDto",
+                "typeSimple": "Project_ABP.Dto.BenhNhanDtos.BenhNhanDto"
               },
               "allowAnonymous": null,
-              "implementFrom": "Volo.Abp.Application.Services.IUpdateAppService<Project_ABP.Dto.BenhNhanDto,System.Int32,Project_ABP.Dto.CreateOrUpdateBenhNhanDto>"
+              "implementFrom": "Volo.Abp.Application.Services.IUpdateAppService<Project_ABP.Dto.BenhNhanDtos.BenhNhanDto,System.Int32,Project_ABP.Dto.BenhNhanDtos.CreateOrUpdateBenhNhanDto>"
             },
             "DeleteAsyncById": {
               "uniqueName": "DeleteAsyncById",
@@ -1198,72 +1283,11 @@
                 }
               ],
               "returnValue": {
-                "type": "Project_ABP.Dto.BenhNhanDto",
-                "typeSimple": "Project_ABP.Dto.BenhNhanDto"
+                "type": "Project_ABP.Dto.BenhNhanDtos.BenhNhanDto",
+                "typeSimple": "Project_ABP.Dto.BenhNhanDtos.BenhNhanDto"
               },
               "allowAnonymous": null,
-              "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<Project_ABP.Dto.BenhNhanDto,Project_ABP.Dto.BenhNhanDto,System.Int32,Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto>"
-            },
-            "GetListAsyncByInput": {
-              "uniqueName": "GetListAsyncByInput",
-              "name": "GetListAsync",
-              "httpMethod": "GET",
-              "url": "api/app/benh-nhan",
-              "supportedVersions": [],
-              "parametersOnMethod": [
-                {
-                  "name": "input",
-                  "typeAsString": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto, Volo.Abp.Ddd.Application.Contracts",
-                  "type": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto",
-                  "typeSimple": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto",
-                  "isOptional": false,
-                  "defaultValue": null
-                }
-              ],
-              "parameters": [
-                {
-                  "nameOnMethod": "input",
-                  "name": "Sorting",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "ModelBinding",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "SkipCount",
-                  "jsonName": null,
-                  "type": "System.Int32",
-                  "typeSimple": "number",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "ModelBinding",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "MaxResultCount",
-                  "jsonName": null,
-                  "type": "System.Int32",
-                  "typeSimple": "number",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "ModelBinding",
-                  "descriptorName": "input"
-                }
-              ],
-              "returnValue": {
-                "type": "Volo.Abp.Application.Dtos.PagedResultDto<Project_ABP.Dto.BenhNhanDto>",
-                "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<Project_ABP.Dto.BenhNhanDto>"
-              },
-              "allowAnonymous": null,
-              "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<Project_ABP.Dto.BenhNhanDto,Project_ABP.Dto.BenhNhanDto,System.Int32,Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto>"
+              "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<Project_ABP.Dto.BenhNhanDtos.BenhNhanDto,Project_ABP.Dto.BenhNhanDtos.BenhNhanDto,System.Int32,Project_ABP.Dto.BenhNhanDtos.BenhNhanPagedAndSortedResultRequestDto>"
             }
           }
         },
@@ -1308,8 +1332,8 @@
                     }
                   ],
                   "returnValue": {
-                    "type": "System.Collections.Generic.List<Project_ABP.Dto.HospitalDto>",
-                    "typeSimple": "[Project_ABP.Dto.HospitalDto]"
+                    "type": "System.Collections.Generic.List<Project_ABP.Dto.HospitalDtos.HospitalDto>",
+                    "typeSimple": "[Project_ABP.Dto.HospitalDtos.HospitalDto]"
                   }
                 },
                 {
@@ -1325,8 +1349,8 @@
                     }
                   ],
                   "returnValue": {
-                    "type": "Project_ABP.Dto.HospitalDto",
-                    "typeSimple": "Project_ABP.Dto.HospitalDto"
+                    "type": "Project_ABP.Dto.HospitalDtos.HospitalDto",
+                    "typeSimple": "Project_ABP.Dto.HospitalDtos.HospitalDto"
                   }
                 },
                 {
@@ -1334,16 +1358,16 @@
                   "parametersOnMethod": [
                     {
                       "name": "input",
-                      "typeAsString": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto, Volo.Abp.Ddd.Application.Contracts",
-                      "type": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto",
-                      "typeSimple": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto",
+                      "typeAsString": "Project_ABP.Dto.HospitalDtos.HospitalPagedAndSortedResultRequestDto, Project_ABP.Application.Contracts",
+                      "type": "Project_ABP.Dto.HospitalDtos.HospitalPagedAndSortedResultRequestDto",
+                      "typeSimple": "Project_ABP.Dto.HospitalDtos.HospitalPagedAndSortedResultRequestDto",
                       "isOptional": false,
                       "defaultValue": null
                     }
                   ],
                   "returnValue": {
-                    "type": "Volo.Abp.Application.Dtos.PagedResultDto<Project_ABP.Dto.HospitalDto>",
-                    "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<Project_ABP.Dto.HospitalDto>"
+                    "type": "Volo.Abp.Application.Dtos.PagedResultDto<Project_ABP.Dto.HospitalDtos.HospitalDto>",
+                    "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<Project_ABP.Dto.HospitalDtos.HospitalDto>"
                   }
                 },
                 {
@@ -1351,16 +1375,16 @@
                   "parametersOnMethod": [
                     {
                       "name": "input",
-                      "typeAsString": "Project_ABP.Dto.CreateOrUpdateHospitalDto, Project_ABP.Application.Contracts",
-                      "type": "Project_ABP.Dto.CreateOrUpdateHospitalDto",
-                      "typeSimple": "Project_ABP.Dto.CreateOrUpdateHospitalDto",
+                      "typeAsString": "Project_ABP.Dto.HospitalDtos.CreateOrUpdateHospitalDto, Project_ABP.Application.Contracts",
+                      "type": "Project_ABP.Dto.HospitalDtos.CreateOrUpdateHospitalDto",
+                      "typeSimple": "Project_ABP.Dto.HospitalDtos.CreateOrUpdateHospitalDto",
                       "isOptional": false,
                       "defaultValue": null
                     }
                   ],
                   "returnValue": {
-                    "type": "Project_ABP.Dto.HospitalDto",
-                    "typeSimple": "Project_ABP.Dto.HospitalDto"
+                    "type": "Project_ABP.Dto.HospitalDtos.HospitalDto",
+                    "typeSimple": "Project_ABP.Dto.HospitalDtos.HospitalDto"
                   }
                 },
                 {
@@ -1376,16 +1400,16 @@
                     },
                     {
                       "name": "input",
-                      "typeAsString": "Project_ABP.Dto.CreateOrUpdateHospitalDto, Project_ABP.Application.Contracts",
-                      "type": "Project_ABP.Dto.CreateOrUpdateHospitalDto",
-                      "typeSimple": "Project_ABP.Dto.CreateOrUpdateHospitalDto",
+                      "typeAsString": "Project_ABP.Dto.HospitalDtos.CreateOrUpdateHospitalDto, Project_ABP.Application.Contracts",
+                      "type": "Project_ABP.Dto.HospitalDtos.CreateOrUpdateHospitalDto",
+                      "typeSimple": "Project_ABP.Dto.HospitalDtos.CreateOrUpdateHospitalDto",
                       "isOptional": false,
                       "defaultValue": null
                     }
                   ],
                   "returnValue": {
-                    "type": "Project_ABP.Dto.HospitalDto",
-                    "typeSimple": "Project_ABP.Dto.HospitalDto"
+                    "type": "Project_ABP.Dto.HospitalDtos.HospitalDto",
+                    "typeSimple": "Project_ABP.Dto.HospitalDtos.HospitalDto"
                   }
                 },
                 {
@@ -1480,11 +1504,120 @@
                 }
               ],
               "returnValue": {
-                "type": "System.Collections.Generic.List<Project_ABP.Dto.HospitalDto>",
-                "typeSimple": "[Project_ABP.Dto.HospitalDto]"
+                "type": "System.Collections.Generic.List<Project_ABP.Dto.HospitalDtos.HospitalDto>",
+                "typeSimple": "[Project_ABP.Dto.HospitalDtos.HospitalDto]"
               },
               "allowAnonymous": null,
               "implementFrom": "Project_ABP.IServices.IHospitalService"
+            },
+            "GetListAsyncByRequest": {
+              "uniqueName": "GetListAsyncByRequest",
+              "name": "GetListAsync",
+              "httpMethod": "GET",
+              "url": "api/app/hospital",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "request",
+                  "typeAsString": "Project_ABP.Dto.HospitalDtos.HospitalPagedAndSortedResultRequestDto, Project_ABP.Application.Contracts",
+                  "type": "Project_ABP.Dto.HospitalDtos.HospitalPagedAndSortedResultRequestDto",
+                  "typeSimple": "Project_ABP.Dto.HospitalDtos.HospitalPagedAndSortedResultRequestDto",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "request",
+                  "name": "MaTinh",
+                  "jsonName": null,
+                  "type": "System.Int32?",
+                  "typeSimple": "number?",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "request"
+                },
+                {
+                  "nameOnMethod": "request",
+                  "name": "MaHuyen",
+                  "jsonName": null,
+                  "type": "System.Int32?",
+                  "typeSimple": "number?",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "request"
+                },
+                {
+                  "nameOnMethod": "request",
+                  "name": "MaXa",
+                  "jsonName": null,
+                  "type": "System.Int32?",
+                  "typeSimple": "number?",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "request"
+                },
+                {
+                  "nameOnMethod": "request",
+                  "name": "Filter",
+                  "jsonName": null,
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "request"
+                },
+                {
+                  "nameOnMethod": "request",
+                  "name": "Sorting",
+                  "jsonName": null,
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "request"
+                },
+                {
+                  "nameOnMethod": "request",
+                  "name": "SkipCount",
+                  "jsonName": null,
+                  "type": "System.Int32",
+                  "typeSimple": "number",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "request"
+                },
+                {
+                  "nameOnMethod": "request",
+                  "name": "MaxResultCount",
+                  "jsonName": null,
+                  "type": "System.Int32",
+                  "typeSimple": "number",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "request"
+                }
+              ],
+              "returnValue": {
+                "type": "Volo.Abp.Application.Dtos.PagedResultDto<Project_ABP.Dto.HospitalDtos.HospitalDto>",
+                "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<Project_ABP.Dto.HospitalDtos.HospitalDto>"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<Project_ABP.Dto.HospitalDtos.HospitalDto,Project_ABP.Dto.HospitalDtos.HospitalDto,System.Int32,Project_ABP.Dto.HospitalDtos.HospitalPagedAndSortedResultRequestDto>"
             },
             "CreateAsyncByInput": {
               "uniqueName": "CreateAsyncByInput",
@@ -1495,9 +1628,9 @@
               "parametersOnMethod": [
                 {
                   "name": "input",
-                  "typeAsString": "Project_ABP.Dto.CreateOrUpdateHospitalDto, Project_ABP.Application.Contracts",
-                  "type": "Project_ABP.Dto.CreateOrUpdateHospitalDto",
-                  "typeSimple": "Project_ABP.Dto.CreateOrUpdateHospitalDto",
+                  "typeAsString": "Project_ABP.Dto.HospitalDtos.CreateOrUpdateHospitalDto, Project_ABP.Application.Contracts",
+                  "type": "Project_ABP.Dto.HospitalDtos.CreateOrUpdateHospitalDto",
+                  "typeSimple": "Project_ABP.Dto.HospitalDtos.CreateOrUpdateHospitalDto",
                   "isOptional": false,
                   "defaultValue": null
                 }
@@ -1507,8 +1640,8 @@
                   "nameOnMethod": "input",
                   "name": "input",
                   "jsonName": null,
-                  "type": "Project_ABP.Dto.CreateOrUpdateHospitalDto",
-                  "typeSimple": "Project_ABP.Dto.CreateOrUpdateHospitalDto",
+                  "type": "Project_ABP.Dto.HospitalDtos.CreateOrUpdateHospitalDto",
+                  "typeSimple": "Project_ABP.Dto.HospitalDtos.CreateOrUpdateHospitalDto",
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
@@ -1517,11 +1650,11 @@
                 }
               ],
               "returnValue": {
-                "type": "Project_ABP.Dto.HospitalDto",
-                "typeSimple": "Project_ABP.Dto.HospitalDto"
+                "type": "Project_ABP.Dto.HospitalDtos.HospitalDto",
+                "typeSimple": "Project_ABP.Dto.HospitalDtos.HospitalDto"
               },
               "allowAnonymous": null,
-              "implementFrom": "Volo.Abp.Application.Services.ICreateAppService<Project_ABP.Dto.HospitalDto,Project_ABP.Dto.CreateOrUpdateHospitalDto>"
+              "implementFrom": "Volo.Abp.Application.Services.ICreateAppService<Project_ABP.Dto.HospitalDtos.HospitalDto,Project_ABP.Dto.HospitalDtos.CreateOrUpdateHospitalDto>"
             },
             "UpdateAsyncByIdAndInput": {
               "uniqueName": "UpdateAsyncByIdAndInput",
@@ -1540,9 +1673,9 @@
                 },
                 {
                   "name": "input",
-                  "typeAsString": "Project_ABP.Dto.CreateOrUpdateHospitalDto, Project_ABP.Application.Contracts",
-                  "type": "Project_ABP.Dto.CreateOrUpdateHospitalDto",
-                  "typeSimple": "Project_ABP.Dto.CreateOrUpdateHospitalDto",
+                  "typeAsString": "Project_ABP.Dto.HospitalDtos.CreateOrUpdateHospitalDto, Project_ABP.Application.Contracts",
+                  "type": "Project_ABP.Dto.HospitalDtos.CreateOrUpdateHospitalDto",
+                  "typeSimple": "Project_ABP.Dto.HospitalDtos.CreateOrUpdateHospitalDto",
                   "isOptional": false,
                   "defaultValue": null
                 }
@@ -1564,8 +1697,8 @@
                   "nameOnMethod": "input",
                   "name": "input",
                   "jsonName": null,
-                  "type": "Project_ABP.Dto.CreateOrUpdateHospitalDto",
-                  "typeSimple": "Project_ABP.Dto.CreateOrUpdateHospitalDto",
+                  "type": "Project_ABP.Dto.HospitalDtos.CreateOrUpdateHospitalDto",
+                  "typeSimple": "Project_ABP.Dto.HospitalDtos.CreateOrUpdateHospitalDto",
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
@@ -1574,11 +1707,11 @@
                 }
               ],
               "returnValue": {
-                "type": "Project_ABP.Dto.HospitalDto",
-                "typeSimple": "Project_ABP.Dto.HospitalDto"
+                "type": "Project_ABP.Dto.HospitalDtos.HospitalDto",
+                "typeSimple": "Project_ABP.Dto.HospitalDtos.HospitalDto"
               },
               "allowAnonymous": null,
-              "implementFrom": "Volo.Abp.Application.Services.IUpdateAppService<Project_ABP.Dto.HospitalDto,System.Int32,Project_ABP.Dto.CreateOrUpdateHospitalDto>"
+              "implementFrom": "Volo.Abp.Application.Services.IUpdateAppService<Project_ABP.Dto.HospitalDtos.HospitalDto,System.Int32,Project_ABP.Dto.HospitalDtos.CreateOrUpdateHospitalDto>"
             },
             "DeleteAsyncById": {
               "uniqueName": "DeleteAsyncById",
@@ -1648,72 +1781,11 @@
                 }
               ],
               "returnValue": {
-                "type": "Project_ABP.Dto.HospitalDto",
-                "typeSimple": "Project_ABP.Dto.HospitalDto"
+                "type": "Project_ABP.Dto.HospitalDtos.HospitalDto",
+                "typeSimple": "Project_ABP.Dto.HospitalDtos.HospitalDto"
               },
               "allowAnonymous": null,
-              "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<Project_ABP.Dto.HospitalDto,Project_ABP.Dto.HospitalDto,System.Int32,Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto>"
-            },
-            "GetListAsyncByInput": {
-              "uniqueName": "GetListAsyncByInput",
-              "name": "GetListAsync",
-              "httpMethod": "GET",
-              "url": "api/app/hospital",
-              "supportedVersions": [],
-              "parametersOnMethod": [
-                {
-                  "name": "input",
-                  "typeAsString": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto, Volo.Abp.Ddd.Application.Contracts",
-                  "type": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto",
-                  "typeSimple": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto",
-                  "isOptional": false,
-                  "defaultValue": null
-                }
-              ],
-              "parameters": [
-                {
-                  "nameOnMethod": "input",
-                  "name": "Sorting",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "ModelBinding",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "SkipCount",
-                  "jsonName": null,
-                  "type": "System.Int32",
-                  "typeSimple": "number",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "ModelBinding",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "MaxResultCount",
-                  "jsonName": null,
-                  "type": "System.Int32",
-                  "typeSimple": "number",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "ModelBinding",
-                  "descriptorName": "input"
-                }
-              ],
-              "returnValue": {
-                "type": "Volo.Abp.Application.Dtos.PagedResultDto<Project_ABP.Dto.HospitalDto>",
-                "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<Project_ABP.Dto.HospitalDto>"
-              },
-              "allowAnonymous": null,
-              "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<Project_ABP.Dto.HospitalDto,Project_ABP.Dto.HospitalDto,System.Int32,Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto>"
+              "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<Project_ABP.Dto.HospitalDtos.HospitalDto,Project_ABP.Dto.HospitalDtos.HospitalDto,System.Int32,Project_ABP.Dto.HospitalDtos.HospitalPagedAndSortedResultRequestDto>"
             }
           }
         },
@@ -1742,8 +1814,8 @@
                     }
                   ],
                   "returnValue": {
-                    "type": "System.Collections.Generic.List<Project_ABP.Dto.HuyenDto>",
-                    "typeSimple": "[Project_ABP.Dto.HuyenDto]"
+                    "type": "System.Collections.Generic.List<Project_ABP.Dto.HuyenDtos.HuyenDto>",
+                    "typeSimple": "[Project_ABP.Dto.HuyenDtos.HuyenDto]"
                   }
                 },
                 {
@@ -1759,8 +1831,8 @@
                     }
                   ],
                   "returnValue": {
-                    "type": "Project_ABP.Dto.HuyenDto",
-                    "typeSimple": "Project_ABP.Dto.HuyenDto"
+                    "type": "Project_ABP.Dto.HuyenDtos.HuyenDto",
+                    "typeSimple": "Project_ABP.Dto.HuyenDtos.HuyenDto"
                   }
                 },
                 {
@@ -1768,16 +1840,16 @@
                   "parametersOnMethod": [
                     {
                       "name": "input",
-                      "typeAsString": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto, Volo.Abp.Ddd.Application.Contracts",
-                      "type": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto",
-                      "typeSimple": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto",
+                      "typeAsString": "Project_ABP.Dto.HuyenDtos.HuyenPagedAndSortedResultRequestDto, Project_ABP.Application.Contracts",
+                      "type": "Project_ABP.Dto.HuyenDtos.HuyenPagedAndSortedResultRequestDto",
+                      "typeSimple": "Project_ABP.Dto.HuyenDtos.HuyenPagedAndSortedResultRequestDto",
                       "isOptional": false,
                       "defaultValue": null
                     }
                   ],
                   "returnValue": {
-                    "type": "Volo.Abp.Application.Dtos.PagedResultDto<Project_ABP.Dto.HuyenDto>",
-                    "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<Project_ABP.Dto.HuyenDto>"
+                    "type": "Volo.Abp.Application.Dtos.PagedResultDto<Project_ABP.Dto.HuyenDtos.HuyenDto>",
+                    "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<Project_ABP.Dto.HuyenDtos.HuyenDto>"
                   }
                 },
                 {
@@ -1785,16 +1857,16 @@
                   "parametersOnMethod": [
                     {
                       "name": "input",
-                      "typeAsString": "Project_ABP.Dto.CreateOrUpdateHuyenDto, Project_ABP.Application.Contracts",
-                      "type": "Project_ABP.Dto.CreateOrUpdateHuyenDto",
-                      "typeSimple": "Project_ABP.Dto.CreateOrUpdateHuyenDto",
+                      "typeAsString": "Project_ABP.Dto.HuyenDtos.CreateOrUpdateHuyenDto, Project_ABP.Application.Contracts",
+                      "type": "Project_ABP.Dto.HuyenDtos.CreateOrUpdateHuyenDto",
+                      "typeSimple": "Project_ABP.Dto.HuyenDtos.CreateOrUpdateHuyenDto",
                       "isOptional": false,
                       "defaultValue": null
                     }
                   ],
                   "returnValue": {
-                    "type": "Project_ABP.Dto.HuyenDto",
-                    "typeSimple": "Project_ABP.Dto.HuyenDto"
+                    "type": "Project_ABP.Dto.HuyenDtos.HuyenDto",
+                    "typeSimple": "Project_ABP.Dto.HuyenDtos.HuyenDto"
                   }
                 },
                 {
@@ -1810,16 +1882,16 @@
                     },
                     {
                       "name": "input",
-                      "typeAsString": "Project_ABP.Dto.CreateOrUpdateHuyenDto, Project_ABP.Application.Contracts",
-                      "type": "Project_ABP.Dto.CreateOrUpdateHuyenDto",
-                      "typeSimple": "Project_ABP.Dto.CreateOrUpdateHuyenDto",
+                      "typeAsString": "Project_ABP.Dto.HuyenDtos.CreateOrUpdateHuyenDto, Project_ABP.Application.Contracts",
+                      "type": "Project_ABP.Dto.HuyenDtos.CreateOrUpdateHuyenDto",
+                      "typeSimple": "Project_ABP.Dto.HuyenDtos.CreateOrUpdateHuyenDto",
                       "isOptional": false,
                       "defaultValue": null
                     }
                   ],
                   "returnValue": {
-                    "type": "Project_ABP.Dto.HuyenDto",
-                    "typeSimple": "Project_ABP.Dto.HuyenDto"
+                    "type": "Project_ABP.Dto.HuyenDtos.HuyenDto",
+                    "typeSimple": "Project_ABP.Dto.HuyenDtos.HuyenDto"
                   }
                 },
                 {
@@ -1874,11 +1946,96 @@
                 }
               ],
               "returnValue": {
-                "type": "System.Collections.Generic.List<Project_ABP.Dto.HuyenDto>",
-                "typeSimple": "[Project_ABP.Dto.HuyenDto]"
+                "type": "System.Collections.Generic.List<Project_ABP.Dto.HuyenDtos.HuyenDto>",
+                "typeSimple": "[Project_ABP.Dto.HuyenDtos.HuyenDto]"
               },
               "allowAnonymous": null,
               "implementFrom": "Project_ABP.IServices.IHuyenService"
+            },
+            "GetListAsyncByRequest": {
+              "uniqueName": "GetListAsyncByRequest",
+              "name": "GetListAsync",
+              "httpMethod": "GET",
+              "url": "api/app/huyen",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "request",
+                  "typeAsString": "Project_ABP.Dto.HuyenDtos.HuyenPagedAndSortedResultRequestDto, Project_ABP.Application.Contracts",
+                  "type": "Project_ABP.Dto.HuyenDtos.HuyenPagedAndSortedResultRequestDto",
+                  "typeSimple": "Project_ABP.Dto.HuyenDtos.HuyenPagedAndSortedResultRequestDto",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "request",
+                  "name": "MaTinh",
+                  "jsonName": null,
+                  "type": "System.Int32?",
+                  "typeSimple": "number?",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "request"
+                },
+                {
+                  "nameOnMethod": "request",
+                  "name": "Filter",
+                  "jsonName": null,
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "request"
+                },
+                {
+                  "nameOnMethod": "request",
+                  "name": "Sorting",
+                  "jsonName": null,
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "request"
+                },
+                {
+                  "nameOnMethod": "request",
+                  "name": "SkipCount",
+                  "jsonName": null,
+                  "type": "System.Int32",
+                  "typeSimple": "number",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "request"
+                },
+                {
+                  "nameOnMethod": "request",
+                  "name": "MaxResultCount",
+                  "jsonName": null,
+                  "type": "System.Int32",
+                  "typeSimple": "number",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "request"
+                }
+              ],
+              "returnValue": {
+                "type": "Volo.Abp.Application.Dtos.PagedResultDto<Project_ABP.Dto.HuyenDtos.HuyenDto>",
+                "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<Project_ABP.Dto.HuyenDtos.HuyenDto>"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<Project_ABP.Dto.HuyenDtos.HuyenDto,Project_ABP.Dto.HuyenDtos.HuyenDto,System.Guid,Project_ABP.Dto.HuyenDtos.HuyenPagedAndSortedResultRequestDto>"
             },
             "CreateAsyncByInput": {
               "uniqueName": "CreateAsyncByInput",
@@ -1889,9 +2046,9 @@
               "parametersOnMethod": [
                 {
                   "name": "input",
-                  "typeAsString": "Project_ABP.Dto.CreateOrUpdateHuyenDto, Project_ABP.Application.Contracts",
-                  "type": "Project_ABP.Dto.CreateOrUpdateHuyenDto",
-                  "typeSimple": "Project_ABP.Dto.CreateOrUpdateHuyenDto",
+                  "typeAsString": "Project_ABP.Dto.HuyenDtos.CreateOrUpdateHuyenDto, Project_ABP.Application.Contracts",
+                  "type": "Project_ABP.Dto.HuyenDtos.CreateOrUpdateHuyenDto",
+                  "typeSimple": "Project_ABP.Dto.HuyenDtos.CreateOrUpdateHuyenDto",
                   "isOptional": false,
                   "defaultValue": null
                 }
@@ -1901,8 +2058,8 @@
                   "nameOnMethod": "input",
                   "name": "input",
                   "jsonName": null,
-                  "type": "Project_ABP.Dto.CreateOrUpdateHuyenDto",
-                  "typeSimple": "Project_ABP.Dto.CreateOrUpdateHuyenDto",
+                  "type": "Project_ABP.Dto.HuyenDtos.CreateOrUpdateHuyenDto",
+                  "typeSimple": "Project_ABP.Dto.HuyenDtos.CreateOrUpdateHuyenDto",
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
@@ -1911,11 +2068,11 @@
                 }
               ],
               "returnValue": {
-                "type": "Project_ABP.Dto.HuyenDto",
-                "typeSimple": "Project_ABP.Dto.HuyenDto"
+                "type": "Project_ABP.Dto.HuyenDtos.HuyenDto",
+                "typeSimple": "Project_ABP.Dto.HuyenDtos.HuyenDto"
               },
               "allowAnonymous": null,
-              "implementFrom": "Volo.Abp.Application.Services.ICreateAppService<Project_ABP.Dto.HuyenDto,Project_ABP.Dto.CreateOrUpdateHuyenDto>"
+              "implementFrom": "Volo.Abp.Application.Services.ICreateAppService<Project_ABP.Dto.HuyenDtos.HuyenDto,Project_ABP.Dto.HuyenDtos.CreateOrUpdateHuyenDto>"
             },
             "UpdateAsyncByIdAndInput": {
               "uniqueName": "UpdateAsyncByIdAndInput",
@@ -1934,9 +2091,9 @@
                 },
                 {
                   "name": "input",
-                  "typeAsString": "Project_ABP.Dto.CreateOrUpdateHuyenDto, Project_ABP.Application.Contracts",
-                  "type": "Project_ABP.Dto.CreateOrUpdateHuyenDto",
-                  "typeSimple": "Project_ABP.Dto.CreateOrUpdateHuyenDto",
+                  "typeAsString": "Project_ABP.Dto.HuyenDtos.CreateOrUpdateHuyenDto, Project_ABP.Application.Contracts",
+                  "type": "Project_ABP.Dto.HuyenDtos.CreateOrUpdateHuyenDto",
+                  "typeSimple": "Project_ABP.Dto.HuyenDtos.CreateOrUpdateHuyenDto",
                   "isOptional": false,
                   "defaultValue": null
                 }
@@ -1958,8 +2115,8 @@
                   "nameOnMethod": "input",
                   "name": "input",
                   "jsonName": null,
-                  "type": "Project_ABP.Dto.CreateOrUpdateHuyenDto",
-                  "typeSimple": "Project_ABP.Dto.CreateOrUpdateHuyenDto",
+                  "type": "Project_ABP.Dto.HuyenDtos.CreateOrUpdateHuyenDto",
+                  "typeSimple": "Project_ABP.Dto.HuyenDtos.CreateOrUpdateHuyenDto",
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
@@ -1968,11 +2125,11 @@
                 }
               ],
               "returnValue": {
-                "type": "Project_ABP.Dto.HuyenDto",
-                "typeSimple": "Project_ABP.Dto.HuyenDto"
+                "type": "Project_ABP.Dto.HuyenDtos.HuyenDto",
+                "typeSimple": "Project_ABP.Dto.HuyenDtos.HuyenDto"
               },
               "allowAnonymous": null,
-              "implementFrom": "Volo.Abp.Application.Services.IUpdateAppService<Project_ABP.Dto.HuyenDto,System.Guid,Project_ABP.Dto.CreateOrUpdateHuyenDto>"
+              "implementFrom": "Volo.Abp.Application.Services.IUpdateAppService<Project_ABP.Dto.HuyenDtos.HuyenDto,System.Guid,Project_ABP.Dto.HuyenDtos.CreateOrUpdateHuyenDto>"
             },
             "DeleteAsyncById": {
               "uniqueName": "DeleteAsyncById",
@@ -2042,72 +2199,11 @@
                 }
               ],
               "returnValue": {
-                "type": "Project_ABP.Dto.HuyenDto",
-                "typeSimple": "Project_ABP.Dto.HuyenDto"
+                "type": "Project_ABP.Dto.HuyenDtos.HuyenDto",
+                "typeSimple": "Project_ABP.Dto.HuyenDtos.HuyenDto"
               },
               "allowAnonymous": null,
-              "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<Project_ABP.Dto.HuyenDto,Project_ABP.Dto.HuyenDto,System.Guid,Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto>"
-            },
-            "GetListAsyncByInput": {
-              "uniqueName": "GetListAsyncByInput",
-              "name": "GetListAsync",
-              "httpMethod": "GET",
-              "url": "api/app/huyen",
-              "supportedVersions": [],
-              "parametersOnMethod": [
-                {
-                  "name": "input",
-                  "typeAsString": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto, Volo.Abp.Ddd.Application.Contracts",
-                  "type": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto",
-                  "typeSimple": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto",
-                  "isOptional": false,
-                  "defaultValue": null
-                }
-              ],
-              "parameters": [
-                {
-                  "nameOnMethod": "input",
-                  "name": "Sorting",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "ModelBinding",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "SkipCount",
-                  "jsonName": null,
-                  "type": "System.Int32",
-                  "typeSimple": "number",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "ModelBinding",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "MaxResultCount",
-                  "jsonName": null,
-                  "type": "System.Int32",
-                  "typeSimple": "number",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "ModelBinding",
-                  "descriptorName": "input"
-                }
-              ],
-              "returnValue": {
-                "type": "Volo.Abp.Application.Dtos.PagedResultDto<Project_ABP.Dto.HuyenDto>",
-                "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<Project_ABP.Dto.HuyenDto>"
-              },
-              "allowAnonymous": null,
-              "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<Project_ABP.Dto.HuyenDto,Project_ABP.Dto.HuyenDto,System.Guid,Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto>"
+              "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<Project_ABP.Dto.HuyenDtos.HuyenDto,Project_ABP.Dto.HuyenDtos.HuyenDto,System.Guid,Project_ABP.Dto.HuyenDtos.HuyenPagedAndSortedResultRequestDto>"
             }
           }
         },
@@ -2127,8 +2223,8 @@
                   "name": "GetAllTinhs",
                   "parametersOnMethod": [],
                   "returnValue": {
-                    "type": "System.Collections.Generic.List<Project_ABP.Dto.TinhDto>",
-                    "typeSimple": "[Project_ABP.Dto.TinhDto]"
+                    "type": "System.Collections.Generic.List<Project_ABP.Dto.TinhDto.TinhDto>",
+                    "typeSimple": "[Project_ABP.Dto.TinhDto.TinhDto]"
                   }
                 },
                 {
@@ -2144,8 +2240,8 @@
                     }
                   ],
                   "returnValue": {
-                    "type": "Project_ABP.Dto.TinhDto",
-                    "typeSimple": "Project_ABP.Dto.TinhDto"
+                    "type": "Project_ABP.Dto.TinhDto.TinhDto",
+                    "typeSimple": "Project_ABP.Dto.TinhDto.TinhDto"
                   }
                 },
                 {
@@ -2153,16 +2249,16 @@
                   "parametersOnMethod": [
                     {
                       "name": "input",
-                      "typeAsString": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto, Volo.Abp.Ddd.Application.Contracts",
-                      "type": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto",
-                      "typeSimple": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto",
+                      "typeAsString": "Project_ABP.Dto.TinhDto.TinhPagedAndSortedResultRequestDto, Project_ABP.Application.Contracts",
+                      "type": "Project_ABP.Dto.TinhDto.TinhPagedAndSortedResultRequestDto",
+                      "typeSimple": "Project_ABP.Dto.TinhDto.TinhPagedAndSortedResultRequestDto",
                       "isOptional": false,
                       "defaultValue": null
                     }
                   ],
                   "returnValue": {
-                    "type": "Volo.Abp.Application.Dtos.PagedResultDto<Project_ABP.Dto.TinhDto>",
-                    "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<Project_ABP.Dto.TinhDto>"
+                    "type": "Volo.Abp.Application.Dtos.PagedResultDto<Project_ABP.Dto.TinhDto.TinhDto>",
+                    "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<Project_ABP.Dto.TinhDto.TinhDto>"
                   }
                 },
                 {
@@ -2170,16 +2266,16 @@
                   "parametersOnMethod": [
                     {
                       "name": "input",
-                      "typeAsString": "Project_ABP.Dto.CreateOrUpdateTinhDto, Project_ABP.Application.Contracts",
-                      "type": "Project_ABP.Dto.CreateOrUpdateTinhDto",
-                      "typeSimple": "Project_ABP.Dto.CreateOrUpdateTinhDto",
+                      "typeAsString": "Project_ABP.Dto.TinhDto.CreateOrUpdateTinhDto, Project_ABP.Application.Contracts",
+                      "type": "Project_ABP.Dto.TinhDto.CreateOrUpdateTinhDto",
+                      "typeSimple": "Project_ABP.Dto.TinhDto.CreateOrUpdateTinhDto",
                       "isOptional": false,
                       "defaultValue": null
                     }
                   ],
                   "returnValue": {
-                    "type": "Project_ABP.Dto.TinhDto",
-                    "typeSimple": "Project_ABP.Dto.TinhDto"
+                    "type": "Project_ABP.Dto.TinhDto.TinhDto",
+                    "typeSimple": "Project_ABP.Dto.TinhDto.TinhDto"
                   }
                 },
                 {
@@ -2195,16 +2291,16 @@
                     },
                     {
                       "name": "input",
-                      "typeAsString": "Project_ABP.Dto.CreateOrUpdateTinhDto, Project_ABP.Application.Contracts",
-                      "type": "Project_ABP.Dto.CreateOrUpdateTinhDto",
-                      "typeSimple": "Project_ABP.Dto.CreateOrUpdateTinhDto",
+                      "typeAsString": "Project_ABP.Dto.TinhDto.CreateOrUpdateTinhDto, Project_ABP.Application.Contracts",
+                      "type": "Project_ABP.Dto.TinhDto.CreateOrUpdateTinhDto",
+                      "typeSimple": "Project_ABP.Dto.TinhDto.CreateOrUpdateTinhDto",
                       "isOptional": false,
                       "defaultValue": null
                     }
                   ],
                   "returnValue": {
-                    "type": "Project_ABP.Dto.TinhDto",
-                    "typeSimple": "Project_ABP.Dto.TinhDto"
+                    "type": "Project_ABP.Dto.TinhDto.TinhDto",
+                    "typeSimple": "Project_ABP.Dto.TinhDto.TinhDto"
                   }
                 },
                 {
@@ -2237,11 +2333,84 @@
               "parametersOnMethod": [],
               "parameters": [],
               "returnValue": {
-                "type": "System.Collections.Generic.List<Project_ABP.Dto.TinhDto>",
-                "typeSimple": "[Project_ABP.Dto.TinhDto]"
+                "type": "System.Collections.Generic.List<Project_ABP.Dto.TinhDto.TinhDto>",
+                "typeSimple": "[Project_ABP.Dto.TinhDto.TinhDto]"
               },
               "allowAnonymous": null,
               "implementFrom": "Project_ABP.IServices.ITinhService"
+            },
+            "GetListAsyncByRequest": {
+              "uniqueName": "GetListAsyncByRequest",
+              "name": "GetListAsync",
+              "httpMethod": "GET",
+              "url": "api/app/tinh",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "request",
+                  "typeAsString": "Project_ABP.Dto.TinhDto.TinhPagedAndSortedResultRequestDto, Project_ABP.Application.Contracts",
+                  "type": "Project_ABP.Dto.TinhDto.TinhPagedAndSortedResultRequestDto",
+                  "typeSimple": "Project_ABP.Dto.TinhDto.TinhPagedAndSortedResultRequestDto",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "request",
+                  "name": "Filter",
+                  "jsonName": null,
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "request"
+                },
+                {
+                  "nameOnMethod": "request",
+                  "name": "Sorting",
+                  "jsonName": null,
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "request"
+                },
+                {
+                  "nameOnMethod": "request",
+                  "name": "SkipCount",
+                  "jsonName": null,
+                  "type": "System.Int32",
+                  "typeSimple": "number",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "request"
+                },
+                {
+                  "nameOnMethod": "request",
+                  "name": "MaxResultCount",
+                  "jsonName": null,
+                  "type": "System.Int32",
+                  "typeSimple": "number",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "request"
+                }
+              ],
+              "returnValue": {
+                "type": "Volo.Abp.Application.Dtos.PagedResultDto<Project_ABP.Dto.TinhDto.TinhDto>",
+                "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<Project_ABP.Dto.TinhDto.TinhDto>"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<Project_ABP.Dto.TinhDto.TinhDto,Project_ABP.Dto.TinhDto.TinhDto,System.Guid,Project_ABP.Dto.TinhDto.TinhPagedAndSortedResultRequestDto>"
             },
             "CreateAsyncByInput": {
               "uniqueName": "CreateAsyncByInput",
@@ -2252,9 +2421,9 @@
               "parametersOnMethod": [
                 {
                   "name": "input",
-                  "typeAsString": "Project_ABP.Dto.CreateOrUpdateTinhDto, Project_ABP.Application.Contracts",
-                  "type": "Project_ABP.Dto.CreateOrUpdateTinhDto",
-                  "typeSimple": "Project_ABP.Dto.CreateOrUpdateTinhDto",
+                  "typeAsString": "Project_ABP.Dto.TinhDto.CreateOrUpdateTinhDto, Project_ABP.Application.Contracts",
+                  "type": "Project_ABP.Dto.TinhDto.CreateOrUpdateTinhDto",
+                  "typeSimple": "Project_ABP.Dto.TinhDto.CreateOrUpdateTinhDto",
                   "isOptional": false,
                   "defaultValue": null
                 }
@@ -2264,8 +2433,8 @@
                   "nameOnMethod": "input",
                   "name": "input",
                   "jsonName": null,
-                  "type": "Project_ABP.Dto.CreateOrUpdateTinhDto",
-                  "typeSimple": "Project_ABP.Dto.CreateOrUpdateTinhDto",
+                  "type": "Project_ABP.Dto.TinhDto.CreateOrUpdateTinhDto",
+                  "typeSimple": "Project_ABP.Dto.TinhDto.CreateOrUpdateTinhDto",
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
@@ -2274,11 +2443,11 @@
                 }
               ],
               "returnValue": {
-                "type": "Project_ABP.Dto.TinhDto",
-                "typeSimple": "Project_ABP.Dto.TinhDto"
+                "type": "Project_ABP.Dto.TinhDto.TinhDto",
+                "typeSimple": "Project_ABP.Dto.TinhDto.TinhDto"
               },
               "allowAnonymous": null,
-              "implementFrom": "Volo.Abp.Application.Services.ICreateAppService<Project_ABP.Dto.TinhDto,Project_ABP.Dto.CreateOrUpdateTinhDto>"
+              "implementFrom": "Volo.Abp.Application.Services.ICreateAppService<Project_ABP.Dto.TinhDto.TinhDto,Project_ABP.Dto.TinhDto.CreateOrUpdateTinhDto>"
             },
             "UpdateAsyncByIdAndInput": {
               "uniqueName": "UpdateAsyncByIdAndInput",
@@ -2297,9 +2466,9 @@
                 },
                 {
                   "name": "input",
-                  "typeAsString": "Project_ABP.Dto.CreateOrUpdateTinhDto, Project_ABP.Application.Contracts",
-                  "type": "Project_ABP.Dto.CreateOrUpdateTinhDto",
-                  "typeSimple": "Project_ABP.Dto.CreateOrUpdateTinhDto",
+                  "typeAsString": "Project_ABP.Dto.TinhDto.CreateOrUpdateTinhDto, Project_ABP.Application.Contracts",
+                  "type": "Project_ABP.Dto.TinhDto.CreateOrUpdateTinhDto",
+                  "typeSimple": "Project_ABP.Dto.TinhDto.CreateOrUpdateTinhDto",
                   "isOptional": false,
                   "defaultValue": null
                 }
@@ -2321,8 +2490,8 @@
                   "nameOnMethod": "input",
                   "name": "input",
                   "jsonName": null,
-                  "type": "Project_ABP.Dto.CreateOrUpdateTinhDto",
-                  "typeSimple": "Project_ABP.Dto.CreateOrUpdateTinhDto",
+                  "type": "Project_ABP.Dto.TinhDto.CreateOrUpdateTinhDto",
+                  "typeSimple": "Project_ABP.Dto.TinhDto.CreateOrUpdateTinhDto",
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
@@ -2331,11 +2500,11 @@
                 }
               ],
               "returnValue": {
-                "type": "Project_ABP.Dto.TinhDto",
-                "typeSimple": "Project_ABP.Dto.TinhDto"
+                "type": "Project_ABP.Dto.TinhDto.TinhDto",
+                "typeSimple": "Project_ABP.Dto.TinhDto.TinhDto"
               },
               "allowAnonymous": null,
-              "implementFrom": "Volo.Abp.Application.Services.IUpdateAppService<Project_ABP.Dto.TinhDto,System.Guid,Project_ABP.Dto.CreateOrUpdateTinhDto>"
+              "implementFrom": "Volo.Abp.Application.Services.IUpdateAppService<Project_ABP.Dto.TinhDto.TinhDto,System.Guid,Project_ABP.Dto.TinhDto.CreateOrUpdateTinhDto>"
             },
             "DeleteAsyncById": {
               "uniqueName": "DeleteAsyncById",
@@ -2405,72 +2574,11 @@
                 }
               ],
               "returnValue": {
-                "type": "Project_ABP.Dto.TinhDto",
-                "typeSimple": "Project_ABP.Dto.TinhDto"
+                "type": "Project_ABP.Dto.TinhDto.TinhDto",
+                "typeSimple": "Project_ABP.Dto.TinhDto.TinhDto"
               },
               "allowAnonymous": null,
-              "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<Project_ABP.Dto.TinhDto,Project_ABP.Dto.TinhDto,System.Guid,Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto>"
-            },
-            "GetListAsyncByInput": {
-              "uniqueName": "GetListAsyncByInput",
-              "name": "GetListAsync",
-              "httpMethod": "GET",
-              "url": "api/app/tinh",
-              "supportedVersions": [],
-              "parametersOnMethod": [
-                {
-                  "name": "input",
-                  "typeAsString": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto, Volo.Abp.Ddd.Application.Contracts",
-                  "type": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto",
-                  "typeSimple": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto",
-                  "isOptional": false,
-                  "defaultValue": null
-                }
-              ],
-              "parameters": [
-                {
-                  "nameOnMethod": "input",
-                  "name": "Sorting",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "ModelBinding",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "SkipCount",
-                  "jsonName": null,
-                  "type": "System.Int32",
-                  "typeSimple": "number",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "ModelBinding",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "MaxResultCount",
-                  "jsonName": null,
-                  "type": "System.Int32",
-                  "typeSimple": "number",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "ModelBinding",
-                  "descriptorName": "input"
-                }
-              ],
-              "returnValue": {
-                "type": "Volo.Abp.Application.Dtos.PagedResultDto<Project_ABP.Dto.TinhDto>",
-                "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<Project_ABP.Dto.TinhDto>"
-              },
-              "allowAnonymous": null,
-              "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<Project_ABP.Dto.TinhDto,Project_ABP.Dto.TinhDto,System.Guid,Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto>"
+              "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<Project_ABP.Dto.TinhDto.TinhDto,Project_ABP.Dto.TinhDto.TinhDto,System.Guid,Project_ABP.Dto.TinhDto.TinhPagedAndSortedResultRequestDto>"
             }
           }
         },
@@ -2507,8 +2615,8 @@
                     }
                   ],
                   "returnValue": {
-                    "type": "System.Collections.Generic.List<Project_ABP.Dto.XaDto>",
-                    "typeSimple": "[Project_ABP.Dto.XaDto]"
+                    "type": "System.Collections.Generic.List<Project_ABP.Dto.XaDtos.XaDto>",
+                    "typeSimple": "[Project_ABP.Dto.XaDtos.XaDto]"
                   }
                 },
                 {
@@ -2524,8 +2632,8 @@
                     }
                   ],
                   "returnValue": {
-                    "type": "Project_ABP.Dto.XaDto",
-                    "typeSimple": "Project_ABP.Dto.XaDto"
+                    "type": "Project_ABP.Dto.XaDtos.XaDto",
+                    "typeSimple": "Project_ABP.Dto.XaDtos.XaDto"
                   }
                 },
                 {
@@ -2533,16 +2641,16 @@
                   "parametersOnMethod": [
                     {
                       "name": "input",
-                      "typeAsString": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto, Volo.Abp.Ddd.Application.Contracts",
-                      "type": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto",
-                      "typeSimple": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto",
+                      "typeAsString": "Project_ABP.Dto.XaDtos.XaPagedAndSortedResultRequestDto, Project_ABP.Application.Contracts",
+                      "type": "Project_ABP.Dto.XaDtos.XaPagedAndSortedResultRequestDto",
+                      "typeSimple": "Project_ABP.Dto.XaDtos.XaPagedAndSortedResultRequestDto",
                       "isOptional": false,
                       "defaultValue": null
                     }
                   ],
                   "returnValue": {
-                    "type": "Volo.Abp.Application.Dtos.PagedResultDto<Project_ABP.Dto.XaDto>",
-                    "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<Project_ABP.Dto.XaDto>"
+                    "type": "Volo.Abp.Application.Dtos.PagedResultDto<Project_ABP.Dto.XaDtos.XaDto>",
+                    "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<Project_ABP.Dto.XaDtos.XaDto>"
                   }
                 },
                 {
@@ -2550,16 +2658,16 @@
                   "parametersOnMethod": [
                     {
                       "name": "input",
-                      "typeAsString": "Project_ABP.Dto.CreateOrUpdateXaDto, Project_ABP.Application.Contracts",
-                      "type": "Project_ABP.Dto.CreateOrUpdateXaDto",
-                      "typeSimple": "Project_ABP.Dto.CreateOrUpdateXaDto",
+                      "typeAsString": "Project_ABP.Dto.XaDtos.CreateOrUpdateXaDto, Project_ABP.Application.Contracts",
+                      "type": "Project_ABP.Dto.XaDtos.CreateOrUpdateXaDto",
+                      "typeSimple": "Project_ABP.Dto.XaDtos.CreateOrUpdateXaDto",
                       "isOptional": false,
                       "defaultValue": null
                     }
                   ],
                   "returnValue": {
-                    "type": "Project_ABP.Dto.XaDto",
-                    "typeSimple": "Project_ABP.Dto.XaDto"
+                    "type": "Project_ABP.Dto.XaDtos.XaDto",
+                    "typeSimple": "Project_ABP.Dto.XaDtos.XaDto"
                   }
                 },
                 {
@@ -2575,16 +2683,16 @@
                     },
                     {
                       "name": "input",
-                      "typeAsString": "Project_ABP.Dto.CreateOrUpdateXaDto, Project_ABP.Application.Contracts",
-                      "type": "Project_ABP.Dto.CreateOrUpdateXaDto",
-                      "typeSimple": "Project_ABP.Dto.CreateOrUpdateXaDto",
+                      "typeAsString": "Project_ABP.Dto.XaDtos.CreateOrUpdateXaDto, Project_ABP.Application.Contracts",
+                      "type": "Project_ABP.Dto.XaDtos.CreateOrUpdateXaDto",
+                      "typeSimple": "Project_ABP.Dto.XaDtos.CreateOrUpdateXaDto",
                       "isOptional": false,
                       "defaultValue": null
                     }
                   ],
                   "returnValue": {
-                    "type": "Project_ABP.Dto.XaDto",
-                    "typeSimple": "Project_ABP.Dto.XaDto"
+                    "type": "Project_ABP.Dto.XaDtos.XaDto",
+                    "typeSimple": "Project_ABP.Dto.XaDtos.XaDto"
                   }
                 },
                 {
@@ -2659,11 +2767,108 @@
                 }
               ],
               "returnValue": {
-                "type": "System.Collections.Generic.List<Project_ABP.Dto.XaDto>",
-                "typeSimple": "[Project_ABP.Dto.XaDto]"
+                "type": "System.Collections.Generic.List<Project_ABP.Dto.XaDtos.XaDto>",
+                "typeSimple": "[Project_ABP.Dto.XaDtos.XaDto]"
               },
               "allowAnonymous": null,
               "implementFrom": "Project_ABP.IServices.IXaService"
+            },
+            "GetListAsyncByRequest": {
+              "uniqueName": "GetListAsyncByRequest",
+              "name": "GetListAsync",
+              "httpMethod": "GET",
+              "url": "api/app/xa",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "request",
+                  "typeAsString": "Project_ABP.Dto.XaDtos.XaPagedAndSortedResultRequestDto, Project_ABP.Application.Contracts",
+                  "type": "Project_ABP.Dto.XaDtos.XaPagedAndSortedResultRequestDto",
+                  "typeSimple": "Project_ABP.Dto.XaDtos.XaPagedAndSortedResultRequestDto",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "request",
+                  "name": "MaTinh",
+                  "jsonName": null,
+                  "type": "System.Int32?",
+                  "typeSimple": "number?",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "request"
+                },
+                {
+                  "nameOnMethod": "request",
+                  "name": "MaHuyen",
+                  "jsonName": null,
+                  "type": "System.Int32?",
+                  "typeSimple": "number?",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "request"
+                },
+                {
+                  "nameOnMethod": "request",
+                  "name": "Filter",
+                  "jsonName": null,
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "request"
+                },
+                {
+                  "nameOnMethod": "request",
+                  "name": "Sorting",
+                  "jsonName": null,
+                  "type": "System.String",
+                  "typeSimple": "string",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "request"
+                },
+                {
+                  "nameOnMethod": "request",
+                  "name": "SkipCount",
+                  "jsonName": null,
+                  "type": "System.Int32",
+                  "typeSimple": "number",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "request"
+                },
+                {
+                  "nameOnMethod": "request",
+                  "name": "MaxResultCount",
+                  "jsonName": null,
+                  "type": "System.Int32",
+                  "typeSimple": "number",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "ModelBinding",
+                  "descriptorName": "request"
+                }
+              ],
+              "returnValue": {
+                "type": "Volo.Abp.Application.Dtos.PagedResultDto<Project_ABP.Dto.XaDtos.XaDto>",
+                "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<Project_ABP.Dto.XaDtos.XaDto>"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<Project_ABP.Dto.XaDtos.XaDto,Project_ABP.Dto.XaDtos.XaDto,System.Guid,Project_ABP.Dto.XaDtos.XaPagedAndSortedResultRequestDto>"
             },
             "CreateAsyncByInput": {
               "uniqueName": "CreateAsyncByInput",
@@ -2674,9 +2879,9 @@
               "parametersOnMethod": [
                 {
                   "name": "input",
-                  "typeAsString": "Project_ABP.Dto.CreateOrUpdateXaDto, Project_ABP.Application.Contracts",
-                  "type": "Project_ABP.Dto.CreateOrUpdateXaDto",
-                  "typeSimple": "Project_ABP.Dto.CreateOrUpdateXaDto",
+                  "typeAsString": "Project_ABP.Dto.XaDtos.CreateOrUpdateXaDto, Project_ABP.Application.Contracts",
+                  "type": "Project_ABP.Dto.XaDtos.CreateOrUpdateXaDto",
+                  "typeSimple": "Project_ABP.Dto.XaDtos.CreateOrUpdateXaDto",
                   "isOptional": false,
                   "defaultValue": null
                 }
@@ -2686,8 +2891,8 @@
                   "nameOnMethod": "input",
                   "name": "input",
                   "jsonName": null,
-                  "type": "Project_ABP.Dto.CreateOrUpdateXaDto",
-                  "typeSimple": "Project_ABP.Dto.CreateOrUpdateXaDto",
+                  "type": "Project_ABP.Dto.XaDtos.CreateOrUpdateXaDto",
+                  "typeSimple": "Project_ABP.Dto.XaDtos.CreateOrUpdateXaDto",
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
@@ -2696,11 +2901,11 @@
                 }
               ],
               "returnValue": {
-                "type": "Project_ABP.Dto.XaDto",
-                "typeSimple": "Project_ABP.Dto.XaDto"
+                "type": "Project_ABP.Dto.XaDtos.XaDto",
+                "typeSimple": "Project_ABP.Dto.XaDtos.XaDto"
               },
               "allowAnonymous": null,
-              "implementFrom": "Volo.Abp.Application.Services.ICreateAppService<Project_ABP.Dto.XaDto,Project_ABP.Dto.CreateOrUpdateXaDto>"
+              "implementFrom": "Volo.Abp.Application.Services.ICreateAppService<Project_ABP.Dto.XaDtos.XaDto,Project_ABP.Dto.XaDtos.CreateOrUpdateXaDto>"
             },
             "UpdateAsyncByIdAndInput": {
               "uniqueName": "UpdateAsyncByIdAndInput",
@@ -2719,9 +2924,9 @@
                 },
                 {
                   "name": "input",
-                  "typeAsString": "Project_ABP.Dto.CreateOrUpdateXaDto, Project_ABP.Application.Contracts",
-                  "type": "Project_ABP.Dto.CreateOrUpdateXaDto",
-                  "typeSimple": "Project_ABP.Dto.CreateOrUpdateXaDto",
+                  "typeAsString": "Project_ABP.Dto.XaDtos.CreateOrUpdateXaDto, Project_ABP.Application.Contracts",
+                  "type": "Project_ABP.Dto.XaDtos.CreateOrUpdateXaDto",
+                  "typeSimple": "Project_ABP.Dto.XaDtos.CreateOrUpdateXaDto",
                   "isOptional": false,
                   "defaultValue": null
                 }
@@ -2743,8 +2948,8 @@
                   "nameOnMethod": "input",
                   "name": "input",
                   "jsonName": null,
-                  "type": "Project_ABP.Dto.CreateOrUpdateXaDto",
-                  "typeSimple": "Project_ABP.Dto.CreateOrUpdateXaDto",
+                  "type": "Project_ABP.Dto.XaDtos.CreateOrUpdateXaDto",
+                  "typeSimple": "Project_ABP.Dto.XaDtos.CreateOrUpdateXaDto",
                   "isOptional": false,
                   "defaultValue": null,
                   "constraintTypes": null,
@@ -2753,11 +2958,11 @@
                 }
               ],
               "returnValue": {
-                "type": "Project_ABP.Dto.XaDto",
-                "typeSimple": "Project_ABP.Dto.XaDto"
+                "type": "Project_ABP.Dto.XaDtos.XaDto",
+                "typeSimple": "Project_ABP.Dto.XaDtos.XaDto"
               },
               "allowAnonymous": null,
-              "implementFrom": "Volo.Abp.Application.Services.IUpdateAppService<Project_ABP.Dto.XaDto,System.Guid,Project_ABP.Dto.CreateOrUpdateXaDto>"
+              "implementFrom": "Volo.Abp.Application.Services.IUpdateAppService<Project_ABP.Dto.XaDtos.XaDto,System.Guid,Project_ABP.Dto.XaDtos.CreateOrUpdateXaDto>"
             },
             "DeleteAsyncById": {
               "uniqueName": "DeleteAsyncById",
@@ -2827,72 +3032,11 @@
                 }
               ],
               "returnValue": {
-                "type": "Project_ABP.Dto.XaDto",
-                "typeSimple": "Project_ABP.Dto.XaDto"
+                "type": "Project_ABP.Dto.XaDtos.XaDto",
+                "typeSimple": "Project_ABP.Dto.XaDtos.XaDto"
               },
               "allowAnonymous": null,
-              "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<Project_ABP.Dto.XaDto,Project_ABP.Dto.XaDto,System.Guid,Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto>"
-            },
-            "GetListAsyncByInput": {
-              "uniqueName": "GetListAsyncByInput",
-              "name": "GetListAsync",
-              "httpMethod": "GET",
-              "url": "api/app/xa",
-              "supportedVersions": [],
-              "parametersOnMethod": [
-                {
-                  "name": "input",
-                  "typeAsString": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto, Volo.Abp.Ddd.Application.Contracts",
-                  "type": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto",
-                  "typeSimple": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto",
-                  "isOptional": false,
-                  "defaultValue": null
-                }
-              ],
-              "parameters": [
-                {
-                  "nameOnMethod": "input",
-                  "name": "Sorting",
-                  "jsonName": null,
-                  "type": "System.String",
-                  "typeSimple": "string",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "ModelBinding",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "SkipCount",
-                  "jsonName": null,
-                  "type": "System.Int32",
-                  "typeSimple": "number",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "ModelBinding",
-                  "descriptorName": "input"
-                },
-                {
-                  "nameOnMethod": "input",
-                  "name": "MaxResultCount",
-                  "jsonName": null,
-                  "type": "System.Int32",
-                  "typeSimple": "number",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": null,
-                  "bindingSourceId": "ModelBinding",
-                  "descriptorName": "input"
-                }
-              ],
-              "returnValue": {
-                "type": "Volo.Abp.Application.Dtos.PagedResultDto<Project_ABP.Dto.XaDto>",
-                "typeSimple": "Volo.Abp.Application.Dtos.PagedResultDto<Project_ABP.Dto.XaDto>"
-              },
-              "allowAnonymous": null,
-              "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<Project_ABP.Dto.XaDto,Project_ABP.Dto.XaDto,System.Guid,Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto>"
+              "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<Project_ABP.Dto.XaDtos.XaDto,Project_ABP.Dto.XaDtos.XaDto,System.Guid,Project_ABP.Dto.XaDtos.XaPagedAndSortedResultRequestDto>"
             }
           }
         }
@@ -5541,7 +5685,7 @@
     }
   },
   "types": {
-    "Project_ABP.Dto.BenhNhanDto": {
+    "Project_ABP.Dto.BenhNhanDtos.BenhNhanDto": {
       "baseType": "Volo.Abp.Application.Dtos.FullAuditedEntityDto<System.Int32>",
       "isEnum": false,
       "enumNames": null,
@@ -5634,7 +5778,40 @@
         }
       ]
     },
-    "Project_ABP.Dto.CreateOrUpdateBenhNhanDto": {
+    "Project_ABP.Dto.BenhNhanDtos.BenhNhanPagedAndSortedResultRequestDto": {
+      "baseType": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto",
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "HospitalId",
+          "jsonName": null,
+          "type": "System.Int32?",
+          "typeSimple": "number?",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Filter",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        }
+      ]
+    },
+    "Project_ABP.Dto.BenhNhanDtos.CreateOrUpdateBenhNhanDto": {
       "baseType": null,
       "isEnum": false,
       "enumNames": null,
@@ -5727,7 +5904,7 @@
         }
       ]
     },
-    "Project_ABP.Dto.CreateOrUpdateHospitalDto": {
+    "Project_ABP.Dto.HospitalDtos.CreateOrUpdateHospitalDto": {
       "baseType": null,
       "isEnum": false,
       "enumNames": null,
@@ -5808,178 +5985,7 @@
         }
       ]
     },
-    "Project_ABP.Dto.CreateOrUpdateHuyenDto": {
-      "baseType": null,
-      "isEnum": false,
-      "enumNames": null,
-      "enumValues": null,
-      "genericArguments": null,
-      "properties": [
-        {
-          "name": "MaHuyen",
-          "jsonName": null,
-          "type": "System.Int32",
-          "typeSimple": "number",
-          "isRequired": true,
-          "minLength": null,
-          "maxLength": null,
-          "minimum": null,
-          "maximum": null,
-          "regex": null
-        },
-        {
-          "name": "TenHuyen",
-          "jsonName": null,
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": true,
-          "minLength": null,
-          "maxLength": null,
-          "minimum": null,
-          "maximum": null,
-          "regex": null
-        },
-        {
-          "name": "Cap",
-          "jsonName": null,
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": true,
-          "minLength": null,
-          "maxLength": null,
-          "minimum": null,
-          "maximum": null,
-          "regex": null
-        },
-        {
-          "name": "MaTinh",
-          "jsonName": null,
-          "type": "System.Int32",
-          "typeSimple": "number",
-          "isRequired": true,
-          "minLength": null,
-          "maxLength": null,
-          "minimum": null,
-          "maximum": null,
-          "regex": null
-        }
-      ]
-    },
-    "Project_ABP.Dto.CreateOrUpdateTinhDto": {
-      "baseType": null,
-      "isEnum": false,
-      "enumNames": null,
-      "enumValues": null,
-      "genericArguments": null,
-      "properties": [
-        {
-          "name": "MaTinh",
-          "jsonName": null,
-          "type": "System.Int32",
-          "typeSimple": "number",
-          "isRequired": true,
-          "minLength": null,
-          "maxLength": null,
-          "minimum": null,
-          "maximum": null,
-          "regex": null
-        },
-        {
-          "name": "TenTinh",
-          "jsonName": null,
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": true,
-          "minLength": null,
-          "maxLength": null,
-          "minimum": null,
-          "maximum": null,
-          "regex": null
-        },
-        {
-          "name": "Cap",
-          "jsonName": null,
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": true,
-          "minLength": null,
-          "maxLength": null,
-          "minimum": null,
-          "maximum": null,
-          "regex": null
-        }
-      ]
-    },
-    "Project_ABP.Dto.CreateOrUpdateXaDto": {
-      "baseType": null,
-      "isEnum": false,
-      "enumNames": null,
-      "enumValues": null,
-      "genericArguments": null,
-      "properties": [
-        {
-          "name": "MaXa",
-          "jsonName": null,
-          "type": "System.Int32",
-          "typeSimple": "number",
-          "isRequired": true,
-          "minLength": null,
-          "maxLength": null,
-          "minimum": null,
-          "maximum": null,
-          "regex": null
-        },
-        {
-          "name": "TenXa",
-          "jsonName": null,
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": true,
-          "minLength": null,
-          "maxLength": null,
-          "minimum": null,
-          "maximum": null,
-          "regex": null
-        },
-        {
-          "name": "Cap",
-          "jsonName": null,
-          "type": "System.String",
-          "typeSimple": "string",
-          "isRequired": true,
-          "minLength": null,
-          "maxLength": null,
-          "minimum": null,
-          "maximum": null,
-          "regex": null
-        },
-        {
-          "name": "MaTinh",
-          "jsonName": null,
-          "type": "System.Int32",
-          "typeSimple": "number",
-          "isRequired": true,
-          "minLength": null,
-          "maxLength": null,
-          "minimum": null,
-          "maximum": null,
-          "regex": null
-        },
-        {
-          "name": "MaHuyen",
-          "jsonName": null,
-          "type": "System.Int32",
-          "typeSimple": "number",
-          "isRequired": true,
-          "minLength": null,
-          "maxLength": null,
-          "minimum": null,
-          "maximum": null,
-          "regex": null
-        }
-      ]
-    },
-    "Project_ABP.Dto.HospitalDto": {
+    "Project_ABP.Dto.HospitalDtos.HospitalDto": {
       "baseType": "Volo.Abp.Application.Dtos.FullAuditedEntityDto<System.Int32>",
       "isEnum": false,
       "enumNames": null,
@@ -6060,7 +6066,121 @@
         }
       ]
     },
-    "Project_ABP.Dto.HuyenDto": {
+    "Project_ABP.Dto.HospitalDtos.HospitalPagedAndSortedResultRequestDto": {
+      "baseType": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto",
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "MaTinh",
+          "jsonName": null,
+          "type": "System.Int32?",
+          "typeSimple": "number?",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "MaHuyen",
+          "jsonName": null,
+          "type": "System.Int32?",
+          "typeSimple": "number?",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "MaXa",
+          "jsonName": null,
+          "type": "System.Int32?",
+          "typeSimple": "number?",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Filter",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        }
+      ]
+    },
+    "Project_ABP.Dto.HuyenDtos.CreateOrUpdateHuyenDto": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "MaHuyen",
+          "jsonName": null,
+          "type": "System.Int32",
+          "typeSimple": "number",
+          "isRequired": true,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "TenHuyen",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": true,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Cap",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": true,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "MaTinh",
+          "jsonName": null,
+          "type": "System.Int32",
+          "typeSimple": "number",
+          "isRequired": true,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        }
+      ]
+    },
+    "Project_ABP.Dto.HuyenDtos.HuyenDto": {
       "baseType": "Volo.Abp.Application.Dtos.FullAuditedEntityDto<System.Guid>",
       "isEnum": false,
       "enumNames": null,
@@ -6117,7 +6237,85 @@
         }
       ]
     },
-    "Project_ABP.Dto.TinhDto": {
+    "Project_ABP.Dto.HuyenDtos.HuyenPagedAndSortedResultRequestDto": {
+      "baseType": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto",
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "MaTinh",
+          "jsonName": null,
+          "type": "System.Int32?",
+          "typeSimple": "number?",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Filter",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        }
+      ]
+    },
+    "Project_ABP.Dto.TinhDto.CreateOrUpdateTinhDto": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "MaTinh",
+          "jsonName": null,
+          "type": "System.Int32",
+          "typeSimple": "number",
+          "isRequired": true,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "TenTinh",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": true,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Cap",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": true,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        }
+      ]
+    },
+    "Project_ABP.Dto.TinhDto.TinhDto": {
       "baseType": "Volo.Abp.Application.Dtos.FullAuditedEntityDto<System.Guid>",
       "isEnum": false,
       "enumNames": null,
@@ -6162,7 +6360,97 @@
         }
       ]
     },
-    "Project_ABP.Dto.XaDto": {
+    "Project_ABP.Dto.TinhDto.TinhPagedAndSortedResultRequestDto": {
+      "baseType": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto",
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "Filter",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        }
+      ]
+    },
+    "Project_ABP.Dto.XaDtos.CreateOrUpdateXaDto": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "MaXa",
+          "jsonName": null,
+          "type": "System.Int32",
+          "typeSimple": "number",
+          "isRequired": true,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "TenXa",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": true,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Cap",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": true,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "MaTinh",
+          "jsonName": null,
+          "type": "System.Int32",
+          "typeSimple": "number",
+          "isRequired": true,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "MaHuyen",
+          "jsonName": null,
+          "type": "System.Int32",
+          "typeSimple": "number",
+          "isRequired": true,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        }
+      ]
+    },
+    "Project_ABP.Dto.XaDtos.XaDto": {
       "baseType": "Volo.Abp.Application.Dtos.FullAuditedEntityDto<System.Guid>",
       "isEnum": false,
       "enumNames": null,
@@ -6222,6 +6510,51 @@
           "jsonName": null,
           "type": "System.Int32",
           "typeSimple": "number",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        }
+      ]
+    },
+    "Project_ABP.Dto.XaDtos.XaPagedAndSortedResultRequestDto": {
+      "baseType": "Volo.Abp.Application.Dtos.PagedAndSortedResultRequestDto",
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "MaTinh",
+          "jsonName": null,
+          "type": "System.Int32?",
+          "typeSimple": "number?",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "MaHuyen",
+          "jsonName": null,
+          "type": "System.Int32?",
+          "typeSimple": "number?",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Filter",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
           "isRequired": false,
           "minLength": null,
           "maxLength": null,

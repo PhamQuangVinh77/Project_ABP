@@ -1,7 +1,7 @@
 import { RestService, Rest } from '@abp/ng.core';
-import type { PagedAndSortedResultRequestDto, PagedResultDto } from '@abp/ng.core';
+import type { PagedResultDto } from '@abp/ng.core';
 import { Injectable } from '@angular/core';
-import type { CreateOrUpdateHuyenDto, HuyenDto } from '../dto/models';
+import type { CreateOrUpdateHuyenDto, HuyenDto, HuyenPagedAndSortedResultRequestDto } from '../dto/huyen-dtos/models';
 
 @Injectable({
   providedIn: 'root',
@@ -44,11 +44,11 @@ export class HuyenService {
     { apiName: this.apiName,...config });
   
 
-  getList = (input: PagedAndSortedResultRequestDto, config?: Partial<Rest.Config>) =>
+  getList = (request: HuyenPagedAndSortedResultRequestDto, config?: Partial<Rest.Config>) =>
     this.restService.request<any, PagedResultDto<HuyenDto>>({
       method: 'GET',
       url: '/api/app/huyen',
-      params: { sorting: input.sorting, skipCount: input.skipCount, maxResultCount: input.maxResultCount },
+      params: { maTinh: request.maTinh, filter: request.filter, sorting: request.sorting, skipCount: request.skipCount, maxResultCount: request.maxResultCount },
     },
     { apiName: this.apiName,...config });
   

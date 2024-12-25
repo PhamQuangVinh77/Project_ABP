@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
-using Project_ABP.Dto;
+using Project_ABP.Dto.XaDtos;
 using Project_ABP.Entities;
+using Project_ABP.Filter;
 using Project_ABP.IRepositories;
 using Project_ABP.IServices;
 using Volo.Abp.Application.Dtos;
@@ -12,7 +13,7 @@ using Volo.Abp.Domain.Repositories;
 
 namespace Project_ABP.Services
 {
-    public class XaService : CrudAppService<Xa, XaDto, Guid, PagedAndSortedResultRequestDto, CreateOrUpdateXaDto, CreateOrUpdateXaDto>, IXaService
+    public class XaService : CrudAppService<Xa, XaDto, Guid, XaPagedAndSortedResultRequestDto, CreateOrUpdateXaDto, CreateOrUpdateXaDto>, IXaService
     {
         private readonly IXaRepository _xaRepository;
         private ILogger<XaService> _logger;
@@ -29,7 +30,24 @@ namespace Project_ABP.Services
                 var responses = await _xaRepository.GetAllXas(maTinh, maHuyen);
                 return ObjectMapper.Map<List<Xa>, List<XaDto>>(responses);
             }
-            catch (Exception ex) 
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw;
+            }
+        }
+
+        public override async Task<PagedResultDto<XaDto>> GetListAsync(XaPagedAndSortedResultRequestDto request)
+        {
+            try
+            {
+                var filter = ObjectMapper.Map<XaPagedAndSortedResultRequestDto, XaFilter>(request);
+                var sorting = string.IsNullOrEmpty(request.Sorting) ? "maXa ASC" : request.Sorting;
+                var response = await _xaRepository.GetListAsync(request.SkipCount, request.MaxResultCount, sorting, filter);
+                var totalCount = await _xaRepository.GetTotalCountAsync(filter);
+                return new PagedResultDto<XaDto>(totalCount, ObjectMapper.Map<List<Xa>, List<XaDto>>(response));
+            }
+            catch (Exception ex)
             {
                 _logger.LogError(ex.Message);
                 throw;

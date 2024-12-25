@@ -1,18 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using Volo.Abp.Application.Dtos;
 
-namespace Project_ABP.Dto
+namespace Project_ABP.Dto.XaDtos
 {
-    public class CreateOrUpdateXaDto
+    public class XaDto : FullAuditedEntityDto<Guid>
     {
-        [Required]
         public int MaXa { get; set; }
-        [Required]
         public string TenXa { get; set; }
-        [Required]
         public string Cap { get; set; }
-        [Required]
         public int MaTinh { get; set; }
-        [Required]
         public int MaHuyen { get; set; }
     }
 }

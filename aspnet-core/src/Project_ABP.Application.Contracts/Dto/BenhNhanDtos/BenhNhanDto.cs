@@ -1,6 +1,6 @@
 ﻿using Volo.Abp.Application.Dtos;
 
-namespace Project_ABP.Dto
+namespace Project_ABP.Dto.BenhNhanDtos
 {
     public class BenhNhanDto : FullAuditedEntityDto<int>
     {

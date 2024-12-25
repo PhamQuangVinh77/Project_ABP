@@ -1,7 +1,7 @@
 ﻿using System;
 using Volo.Abp.Application.Dtos;
 
-namespace Project_ABP.Dto
+namespace Project_ABP.Dto.TinhDto
 {
     public class TinhDto : FullAuditedEntityDto<Guid>
     {

@@ -1,13 +1,18 @@
-﻿using Volo.Abp.Application.Dtos;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace Project_ABP.Dto
+namespace Project_ABP.Dto.HospitalDtos
 {
-    public class HospitalDto : FullAuditedEntityDto<int>
+    public class CreateOrUpdateHospitalDto
     {
+        [Required]
         public string Ma { get; set; }
+        [Required]
         public string Ten { get; set; }
+        [Required]
         public int MaTinh { get; set; }
+        [Required]
         public int MaHuyen { get; set; }
+        [Required]
         public int MaXa { get; set; }
         public string DiaChi { get; set; }
     }

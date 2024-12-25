@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
-using Project_ABP.Dto;
+using Project_ABP.Dto.TinhDto;
 using Project_ABP.Entities;
+using Project_ABP.Filter;
 using Project_ABP.IRepositories;
 using Project_ABP.IServices;
 using Volo.Abp.Application.Dtos;
@@ -12,7 +13,7 @@ using Volo.Abp.Domain.Repositories;
 
 namespace Project_ABP.Services
 {
-    public class TinhService : CrudAppService<Tinh, TinhDto, Guid, PagedAndSortedResultRequestDto, CreateOrUpdateTinhDto, CreateOrUpdateTinhDto>, ITinhService
+    public class TinhService : CrudAppService<Tinh, TinhDto, Guid, TinhPagedAndSortedResultRequestDto, CreateOrUpdateTinhDto, CreateOrUpdateTinhDto>, ITinhService
     {
         private readonly ITinhRepository _tinhRepository;
         private ILogger<TinhService> _logger;
@@ -20,8 +21,8 @@ namespace Project_ABP.Services
         {
             _tinhRepository = tinhRepository;
             _logger = logger;
-        }        
-        
+        }
+
         public async Task<List<TinhDto>> GetAllTinhs()
         {
             try
@@ -30,6 +31,22 @@ namespace Project_ABP.Services
                 return ObjectMapper.Map<List<Tinh>, List<TinhDto>>(responses);
             }
             catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw;
+            }
+        }
+
+        public override async Task<PagedResultDto<TinhDto>> GetListAsync(TinhPagedAndSortedResultRequestDto request)
+        {
+            try
+            {
+                var filter = ObjectMapper.Map<TinhPagedAndSortedResultRequestDto, TinhFilter>(request);
+                var sorting = string.IsNullOrEmpty(request.Sorting) ? "maTinh ASC" : request.Sorting;
+                var response = await _tinhRepository.GetListAsync(request.SkipCount, request.MaxResultCount, sorting, filter);
+                var totalCount = await _tinhRepository.GetTotalCountAsync(filter);
+                return new PagedResultDto<TinhDto>(totalCount, ObjectMapper.Map<List<Tinh>, List<TinhDto>>(response));
+            }catch(Exception ex)
             {
                 _logger.LogError(ex.Message);
                 throw;

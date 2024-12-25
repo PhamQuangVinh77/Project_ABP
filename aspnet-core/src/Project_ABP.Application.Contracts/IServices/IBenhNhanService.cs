@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Project_ABP.Dto;
-using Volo.Abp.Application.Dtos;
+using Project_ABP.Dto.BenhNhanDtos;
 using Volo.Abp.Application.Services;
 
 namespace Project_ABP.IServices
 {
-    public interface IBenhNhanService : ICrudAppService<BenhNhanDto, int, PagedAndSortedResultRequestDto, CreateOrUpdateBenhNhanDto, CreateOrUpdateBenhNhanDto>
+    public interface IBenhNhanService : ICrudAppService<BenhNhanDto, int, BenhNhanPagedAndSortedResultRequestDto, CreateOrUpdateBenhNhanDto, CreateOrUpdateBenhNhanDto>
     {
-        Task<List<BenhNhanDto>> GetAllBenhNhan(int hospitalId);
+        Task<List<BenhNhanDto>> GetAllBenhNhans(int hospitalId);
     }
 }

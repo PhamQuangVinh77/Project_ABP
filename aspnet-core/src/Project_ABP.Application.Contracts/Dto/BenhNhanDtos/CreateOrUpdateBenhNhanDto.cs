@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Project_ABP.Dto
+namespace Project_ABP.Dto.BenhNhanDtos
 {
     public class CreateOrUpdateBenhNhanDto
     {

@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
-using Project_ABP.Dto;
+using Project_ABP.Dto.HospitalDtos;
+using Project_ABP.Dto.TinhDto;
 using Project_ABP.Entities;
+using Project_ABP.Filter;
 using Project_ABP.IRepositories;
 using Project_ABP.IServices;
 using Volo.Abp.Application.Dtos;
@@ -12,7 +14,7 @@ using Volo.Abp.Domain.Repositories;
 
 namespace Project_ABP.Services
 {
-    public class HospitalService : CrudAppService<Hospital, HospitalDto, int, PagedAndSortedResultRequestDto, CreateOrUpdateHospitalDto, CreateOrUpdateHospitalDto>, IHospitalService
+    public class HospitalService : CrudAppService<Hospital, HospitalDto, int, HospitalPagedAndSortedResultRequestDto, CreateOrUpdateHospitalDto, CreateOrUpdateHospitalDto>, IHospitalService
     {
         private readonly IHospitalRepository _hospitalRepository;
         private ILogger<HospitalService> _logger;
@@ -28,6 +30,23 @@ namespace Project_ABP.Services
             {
                 var responses = await _hospitalRepository.GetAllHospitals(maTinh, maHuyen, maXa);
                 return ObjectMapper.Map<List<Hospital>, List<HospitalDto>>(responses);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw;
+            }
+        }
+
+        public override async Task<PagedResultDto<HospitalDto>> GetListAsync(HospitalPagedAndSortedResultRequestDto request)
+        {
+            try
+            {
+                var filter = ObjectMapper.Map<HospitalPagedAndSortedResultRequestDto, HospitalFilter>(request);
+                var sorting = string.IsNullOrEmpty(request.Sorting) ? "ma ASC" : request.Sorting;
+                var response = await _hospitalRepository.GetListAsync(request.SkipCount, request.MaxResultCount, sorting, filter);
+                var totalCount = await _hospitalRepository.GetTotalCountAsync(filter);
+                return new PagedResultDto<HospitalDto>(totalCount, ObjectMapper.Map<List<Hospital>, List<HospitalDto>>(response));
             }
             catch (Exception ex)
             {

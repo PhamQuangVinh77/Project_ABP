@@ -35,10 +35,10 @@ export class BenhNhanService {
     { apiName: this.apiName,...config });
   
 
-  getAllBenhNhansByHospitalId = (hospitalId: number, config?: Partial<Rest.Config>) =>
+  getAllBenhNhans = (config?: Partial<Rest.Config>) =>
     this.restService.request<any, BenhNhanDto[]>({
       method: 'GET',
-      url: `/api/app/benh-nhan/benh-nhans/${hospitalId}`,
+      url: '/api/app/benh-nhan/benh-nhans',
     },
     { apiName: this.apiName,...config });
   

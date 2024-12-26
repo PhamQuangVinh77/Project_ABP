@@ -23,8 +23,9 @@ namespace Project_ABP.Repositories
         public async Task<List<Hospital>> GetAllHospitals(int? maTinh, int? maHuyen, int? maXa)
         {
             var dbConnection = await GetDbConnectionAsync();
-            return (await dbConnection.QueryAsync<Hospital>("SELECT * FROM hospitals WHERE IsDeleted = 0 AND MaTinh = @maTinh AND MaHuyen = @maHuyen AND MaXa = @maXa",
-                    new { maTinh, maHuyen, maXa }, transaction: DbTransaction)).ToList();
+            var query = "SELECT * FROM hospitals WHERE IsDeleted = 0 AND MaTinh = @maTinh AND MaHuyen = @maHuyen AND MaXa = @maXa";
+            if (maTinh <= 0 || maHuyen <= 0 || maXa <= 0) query = "SELECT * FROM hospitals WHERE IsDeleted = 0";
+            return (await dbConnection.QueryAsync<Hospital>(query, new { maTinh, maHuyen, maXa }, transaction: DbTransaction)).ToList();
         }
 
         public async Task<List<Hospital>> GetListAsync(int skipCount, int maxResultCount, string sorting = "", HospitalFilter filter = null)

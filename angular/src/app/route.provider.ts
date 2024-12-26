@@ -40,6 +40,20 @@ function configureRoutes(routesService: RoutesService) {
         parentName: '::Menu:Management',
         layout: eLayoutType.application,
       },
+      {
+        path: '/manage-hospital',
+        name: '::Menu:Management-Hospital',
+        iconClass: 'fa fa-hospital-o',
+        order: 3,
+        layout: eLayoutType.application,
+      },
+      {
+        path: '/manage-benhNhan',
+        name: '::Menu:QLBN',
+        iconClass: 'fa fa-wheelchair',
+        order: 4,
+        layout: eLayoutType.application,
+      },
     ]);
   };
 }

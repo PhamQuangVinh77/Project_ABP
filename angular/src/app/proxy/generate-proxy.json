@@ -887,16 +887,7 @@
               "methods": [
                 {
                   "name": "GetAllBenhNhans",
-                  "parametersOnMethod": [
-                    {
-                      "name": "hospitalId",
-                      "typeAsString": "System.Int32, System.Private.CoreLib",
-                      "type": "System.Int32",
-                      "typeSimple": "number",
-                      "isOptional": false,
-                      "defaultValue": null
-                    }
-                  ],
+                  "parametersOnMethod": [],
                   "returnValue": {
                     "type": "System.Collections.Generic.List<Project_ABP.Dto.BenhNhanDtos.BenhNhanDto>",
                     "typeSimple": "[Project_ABP.Dto.BenhNhanDtos.BenhNhanDto]"
@@ -999,36 +990,14 @@
             }
           ],
           "actions": {
-            "GetAllBenhNhansByHospitalId": {
-              "uniqueName": "GetAllBenhNhansByHospitalId",
+            "GetAllBenhNhans": {
+              "uniqueName": "GetAllBenhNhans",
               "name": "GetAllBenhNhans",
               "httpMethod": "GET",
-              "url": "api/app/benh-nhan/benh-nhans/{hospitalId}",
+              "url": "api/app/benh-nhan/benh-nhans",
               "supportedVersions": [],
-              "parametersOnMethod": [
-                {
-                  "name": "hospitalId",
-                  "typeAsString": "System.Int32, System.Private.CoreLib",
-                  "type": "System.Int32",
-                  "typeSimple": "number",
-                  "isOptional": false,
-                  "defaultValue": null
-                }
-              ],
-              "parameters": [
-                {
-                  "nameOnMethod": "hospitalId",
-                  "name": "hospitalId",
-                  "jsonName": null,
-                  "type": "System.Int32",
-                  "typeSimple": "number",
-                  "isOptional": false,
-                  "defaultValue": null,
-                  "constraintTypes": [],
-                  "bindingSourceId": "Path",
-                  "descriptorName": ""
-                }
-              ],
+              "parametersOnMethod": [],
+              "parameters": [],
               "returnValue": {
                 "type": "System.Collections.Generic.List<Project_ABP.Dto.BenhNhanDtos.BenhNhanDto>",
                 "typeSimple": "[Project_ABP.Dto.BenhNhanDtos.BenhNhanDto]"

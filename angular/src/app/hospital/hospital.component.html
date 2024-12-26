@@ -1,12 +1,12 @@
-<h2 style="text-align: center; font-weight: bold;">{{ '::Menu:QuanLyXa' | abpLocalization }}</h2>
+<h2 style="text-align: center; font-weight: bold;">{{ '::Menu:QuanLyBV' | abpLocalization }}</h2>
 <div nz-row>
   <div nz-col nzSpan="4">
     <button nz-button nzType="primary">
       <div nz-icon nzType="plus-square" nzTheme="outline"></div>
-      {{ '::Add-xa' | abpLocalization }}
+      {{ '::Add-bv' | abpLocalization }}
     </button>
   </div>
-  <div nz-col nzSpan="8"></div>
+  <div nz-col nzSpan="4"></div>
   <div nz-col nzSpan="4">
     <nz-select nzPlaceHolder="Chọn tỉnh" [(ngModel)]="maTinh" (ngModelChange)="onTinhChange($event)">
         @for (p of listTinh; track p) {
@@ -22,6 +22,13 @@
       </nz-select>
   </div>
   <div nz-col nzSpan="4">
+    <nz-select nzPlaceHolder="Chọn xã" [(ngModel)]="maXa" (ngModelChange)="onXaChange($event)">
+        @for (p of listXa; track p) {
+            <nz-option [nzValue]="p.maXa" [nzLabel]="p.tenXa"></nz-option>
+          }
+      </nz-select>
+  </div>
+  <div nz-col nzSpan="4">
     <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
       <input type="text" nz-input placeholder="Searching..." [(ngModel)]="filter" (keyup.enter)="onSearch()" />
     </nz-input-group>
@@ -32,20 +39,20 @@
     </ng-template>
   </div>
 </div>
-<nz-table [nzData]="xa.items" [nzShowPagination]="false">
+<nz-table [nzData]="hospital.items" [nzShowPagination]="false">
   <thead>
     <tr>
-      <th style="text-align: center;">{{ '::Menu:MaXa' | abpLocalization }}</th>
-      <th style="text-align: center;">{{ '::Menu:TenXa' | abpLocalization }}</th>
-      <th style="text-align: center;">{{ '::Menu:Cap' | abpLocalization }}</th>
+      <th style="text-align: center;">{{ '::Menu:MaBV' | abpLocalization }}</th>
+      <th style="text-align: center;">{{ '::Menu:TenBV' | abpLocalization }}</th>
+      <th style="text-align: center;">{{ '::Menu:DiaChi' | abpLocalization }}</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let data of xa.items">
-      <td>{{data.maXa}}</td>
-      <td>{{data.tenXa}}</td>
-      <td>{{data.cap}}</td>
+    <tr *ngFor="let data of hospital.items">
+      <td>{{data.ma}}</td>
+      <td>{{data.ten}}</td>
+      <td>{{data.diaChi}}</td>
       <td>
         <a>
           <span nz-icon nzType="setting" nzTheme="outline"></span>
@@ -58,4 +65,5 @@
     </tr>
   </tbody>
 </nz-table>
-<nz-pagination [nzPageIndex]="currentPage" [nzPageSize]="maxResultCount" [nzTotal]="xa.totalCount" (nzPageIndexChange)="onPageChange($event)"></nz-pagination>
+<nz-pagination [nzPageIndex]="currentPage" [nzPageSize]="maxResultCount" [nzTotal]="hospital.totalCount" (nzPageIndexChange)="onPageChange($event)"></nz-pagination>
+

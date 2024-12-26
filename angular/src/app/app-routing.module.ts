@@ -27,6 +27,7 @@ const routes: Routes = [
   },
   { path: 'manage-tinh', loadChildren: () => import('./tinh/tinh.module').then(m => m.TinhModule) },
   { path: 'manage-huyen', loadChildren: () => import('./huyen/huyen.module').then(m => m.HuyenModule) },
+  { path: 'manage-xa', loadChildren: () => import('./xa/xa.module').then(m => m.XaModule) },
 ];
 
 @NgModule({

@@ -34,6 +34,12 @@ function configureRoutes(routesService: RoutesService) {
         parentName: '::Menu:Management',
         layout: eLayoutType.application,
       },
+      {
+        path: '/manage-xa',
+        name: '::Menu:Xa',
+        parentName: '::Menu:Management',
+        layout: eLayoutType.application,
+      },
     ]);
   };
 }

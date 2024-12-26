@@ -23,7 +23,9 @@ namespace Project_ABP.Repositories
         public async Task<List<Xa>> GetAllXas(int? maTinh, int? maHuyen)
         {
             var dbConnection = await GetDbConnectionAsync();
-            return (await dbConnection.QueryAsync<Xa>("SELECT * FROM appxa WHERE IsDeleted = 0 AND MaTinh = @maTinh AND MaHuyen = @maHuyen", new { maTinh, maHuyen },
+            var query = "SELECT * FROM appxa WHERE IsDeleted = 0 AND MaTinh = @maTinh AND MaHuyen = @maHuyen";
+            if (maTinh <= 0 || maHuyen <= 0) query = "SELECT * FROM appxa WHERE IsDeleted = 0";
+            return (await dbConnection.QueryAsync<Xa>(query, new { maTinh, maHuyen },
                     transaction: DbTransaction)).ToList();
         }
 

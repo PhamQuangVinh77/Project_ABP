@@ -15,6 +15,7 @@ export class HuyenComponent implements OnInit {
   skipCount: number = 0;
   maxResultCount: number = 10;
   filter: string = "";
+  maTinh: number = 0;
   currentPage: number = 1;
   constructor(public readonly list: ListService, private huyenService: HuyenService, private tinhService: TinhService) { 
   }
@@ -24,7 +25,7 @@ export class HuyenComponent implements OnInit {
       query.skipCount = this.skipCount;
       query.maxResultCount = this.maxResultCount;
       query.filter = this.filter;
-      query.maTinh = 34;
+      query.maTinh = this.maTinh;
       return this.huyenService.getList(query);
     };
     this.list.hookToQuery(tinhStreamCreator).subscribe((response) => {
@@ -50,6 +51,12 @@ export class HuyenComponent implements OnInit {
   }
 
   onSearch() {
+    this.currentPage = 1;
+    this.skipCount = 0;
+    this.ngOnInit();
+  }
+
+  onTinhChange(tinh: number){
     this.currentPage = 1;
     this.skipCount = 0;
     this.ngOnInit();

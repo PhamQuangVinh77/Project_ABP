@@ -1,16 +1,23 @@
-<h2 style="text-align: center; font-weight: bold;">{{ '::Menu:QuanLyHuyen' | abpLocalization }}</h2>
+<h2 style="text-align: center; font-weight: bold;">{{ '::Menu:QuanLyXa' | abpLocalization }}</h2>
 <div nz-row>
   <div nz-col nzSpan="4">
     <button nz-button nzType="primary">
       <div nz-icon nzType="plus-square" nzTheme="outline"></div>
-      Thêm huyện mới
+      Thêm xã mới
     </button>
   </div>
-  <div nz-col nzSpan="12"></div>
+  <div nz-col nzSpan="8"></div>
   <div nz-col nzSpan="4">
     <nz-select nzPlaceHolder="Chọn tỉnh" [(ngModel)]="maTinh" (ngModelChange)="onTinhChange($event)">
         @for (p of listTinh; track p) {
             <nz-option [nzValue]="p.maTinh" [nzLabel]="p.tenTinh"></nz-option>
+          }
+      </nz-select>
+  </div>
+  <div nz-col nzSpan="4">
+    <nz-select nzPlaceHolder="Chọn huyện" [(ngModel)]="maHuyen" (ngModelChange)="onHuyenChange($event)">
+        @for (p of listHuyen; track p) {
+            <nz-option [nzValue]="p.maHuyen" [nzLabel]="p.tenHuyen"></nz-option>
           }
       </nz-select>
   </div>
@@ -25,19 +32,19 @@
     </ng-template>
   </div>
 </div>
-<nz-table [nzData]="huyen.items" [nzShowPagination]="false">
+<nz-table [nzData]="xa.items" [nzShowPagination]="false">
   <thead>
     <tr>
-      <th style="text-align: center;">{{ '::Menu:MaHuyen' | abpLocalization }}</th>
-      <th style="text-align: center;">{{ '::Menu:TenHuyen' | abpLocalization }}</th>
+      <th style="text-align: center;">{{ '::Menu:MaXa' | abpLocalization }}</th>
+      <th style="text-align: center;">{{ '::Menu:TenXa' | abpLocalization }}</th>
       <th style="text-align: center;">{{ '::Menu:Cap' | abpLocalization }}</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let data of huyen.items">
-      <td>{{data.maHuyen}}</td>
-      <td>{{data.tenHuyen}}</td>
+    <tr *ngFor="let data of xa.items">
+      <td>{{data.maXa}}</td>
+      <td>{{data.tenXa}}</td>
       <td>{{data.cap}}</td>
       <td>
         <a>
@@ -51,4 +58,4 @@
     </tr>
   </tbody>
 </nz-table>
-<nz-pagination [nzPageIndex]="currentPage" [nzPageSize]="maxResultCount" [nzTotal]="huyen.totalCount" (nzPageIndexChange)="onPageChange($event)"></nz-pagination>
+<nz-pagination [nzPageIndex]="currentPage" [nzPageSize]="maxResultCount" [nzTotal]="xa.totalCount" (nzPageIndexChange)="onPageChange($event)"></nz-pagination>

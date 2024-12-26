@@ -23,7 +23,9 @@ namespace Project_ABP.Repositories
         public async Task<List<Huyen>> GetAllHuyens(int? maTinh)
         {
             var dbConnection = await GetDbConnectionAsync();
-            return (await dbConnection.QueryAsync<Huyen>("SELECT * FROM apphuyen WHERE IsDeleted = 0 AND MaTinh = @maTinh", new { maTinh },
+            var query = "SELECT * FROM apphuyen WHERE IsDeleted = 0 AND MaTinh = @maTinh";
+            if (maTinh <= 0) query = "SELECT * FROM apphuyen WHERE IsDeleted = 0";
+            return (await dbConnection.QueryAsync<Huyen>(query, new { maTinh },
                     transaction: DbTransaction)).ToList();
         }
 

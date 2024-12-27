@@ -7,6 +7,7 @@ using Project_ABP.Entities;
 using Project_ABP.Filter;
 using Project_ABP.IRepositories;
 using Project_ABP.IServices;
+using Project_ABP.Permissions;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Domain.Repositories;
@@ -19,6 +20,12 @@ namespace Project_ABP.Services
         private ILogger<TinhService> _logger;
         public TinhService(IRepository<Tinh, Guid> repository, ITinhRepository tinhRepository, ILogger<TinhService> logger) : base(repository)
         {
+            GetPolicyName = Project_ABPPermissions.TinhPermissions.Default;
+            GetListPolicyName = Project_ABPPermissions.TinhPermissions.Default;
+            CreatePolicyName = Project_ABPPermissions.TinhPermissions.Create;
+            UpdatePolicyName = Project_ABPPermissions.TinhPermissions.Edit;
+            DeletePolicyName = Project_ABPPermissions.TinhPermissions.Delete;
+
             _tinhRepository = tinhRepository;
             _logger = logger;
         }

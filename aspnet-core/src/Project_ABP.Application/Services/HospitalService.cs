@@ -8,6 +8,7 @@ using Project_ABP.Entities;
 using Project_ABP.Filter;
 using Project_ABP.IRepositories;
 using Project_ABP.IServices;
+using Project_ABP.Permissions;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Domain.Repositories;
@@ -20,6 +21,10 @@ namespace Project_ABP.Services
         private ILogger<HospitalService> _logger;
         public HospitalService(IRepository<Hospital, int> repository, IHospitalRepository hospitalRepository, ILogger<HospitalService> logger) : base(repository)
         {
+            CreatePolicyName = Project_ABPPermissions.HospitalPermissions.Create;
+            UpdatePolicyName = Project_ABPPermissions.HospitalPermissions.Edit;
+            DeletePolicyName = Project_ABPPermissions.HospitalPermissions.Delete;
+
             _hospitalRepository = hospitalRepository;
             _logger = logger;
         }

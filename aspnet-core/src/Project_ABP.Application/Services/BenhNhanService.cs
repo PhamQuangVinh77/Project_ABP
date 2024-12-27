@@ -1,18 +1,20 @@
-﻿using System;
-using System.CodeDom.Compiler;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
+using MimeKit;
 using Project_ABP.Dto.BenhNhanDtos;
 using Project_ABP.Entities;
 using Project_ABP.Filter;
 using Project_ABP.IRepositories;
 using Project_ABP.IServices;
-using Volo.Abp;
+using Project_ABP.Permissions;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Domain.Repositories;
+using Volo.Abp.Identity;
 
 namespace Project_ABP.Services
 {
@@ -20,11 +22,20 @@ namespace Project_ABP.Services
     {
         private readonly IBenhNhanRepository _benhNhanRepository;
         private readonly IUserHospitalRepository _userHospitalRepository;
+        private readonly IIdentityUserAppService _identityUserAppService;
+        private readonly IRepository<Hospital, int> _hospitalRepository;
         private ILogger<BenhNhanService> _logger;
-        public BenhNhanService(IRepository<BenhNhan, int> repository, IBenhNhanRepository benhNhanRepository, IUserHospitalRepository userHospitalRepository, ILogger<BenhNhanService> logger) : base(repository)
+        public BenhNhanService(IRepository<BenhNhan, int> repository, IRepository<Hospital, int> hospitalRepository, IIdentityUserAppService identityUserAppService,
+            IBenhNhanRepository benhNhanRepository, IUserHospitalRepository userHospitalRepository, ILogger<BenhNhanService> logger) : base(repository)
         {
+            CreatePolicyName = Project_ABPPermissions.BenhNhanPermissions.Create;
+            UpdatePolicyName = Project_ABPPermissions.BenhNhanPermissions.Edit;
+            DeletePolicyName = Project_ABPPermissions.BenhNhanPermissions.Delete;
+
             _benhNhanRepository = benhNhanRepository;
             _userHospitalRepository = userHospitalRepository;
+            _hospitalRepository = hospitalRepository;
+            _identityUserAppService = identityUserAppService;
             _logger = logger;
         }
 
@@ -41,6 +52,11 @@ namespace Project_ABP.Services
                 _logger.LogError(ex.Message);
                 throw;
             }
+        }
+
+        public async Task<string> GetHospitalNameByCurrentUser()
+        {
+            return await _userHospitalRepository.GetHospitalNameByCurrentUser();
         }
 
         public override async Task<PagedResultDto<BenhNhanDto>> GetListAsync(BenhNhanPagedAndSortedResultRequestDto request)
@@ -67,8 +83,11 @@ namespace Project_ABP.Services
             {
                 input.Ma = GeneratedCode(6);
                 input.HospitalId = await GetHospitalIdByCurrentUser();
-                // Gọi phương thức tạo mặc định (base)
                 var benhNhan = await base.CreateAsync(input);
+                var hospital = await _hospitalRepository.GetAsync(input.HospitalId);
+                var listUser = await _identityUserAppService.GetListAsync(new GetIdentityUsersInput());
+                var adminEmail = listUser.Items.ToList().FirstOrDefault(x => x.UserName == "admin").Email;
+                SendMail(input.Ma, input.Ten, hospital.Ten, adminEmail);
                 return benhNhan;
             }
             catch (Exception ex)
@@ -90,6 +109,32 @@ namespace Project_ABP.Services
             return new string(Enumerable.Repeat(chars, length)
                                         .Select(s => s[random.Next(s.Length)])
                                         .ToArray());
+        }
+
+        private async Task SendMail(string maBN, string tenBN, string tenBV, string adminEmail)
+        {
+            var email = new MimeMessage();
+            email.Sender = new MailboxAddress(tenBV, "quangvinh770808@gmail.com");
+            email.From.Add(new MailboxAddress(tenBV, "quangvinh770808@gmail.com"));
+            email.To.Add(new MailboxAddress(adminEmail, adminEmail));
+            email.Subject = "Thông báo từ " + tenBV;
+            var builder = new BodyBuilder();
+            builder.HtmlBody = $"Mã số {maBN}: Bệnh nhân {tenBN} vừa nhập viện!";
+            email.Body = builder.ToMessageBody();
+
+            using var smtp = new MailKit.Net.Smtp.SmtpClient();
+            try
+            {
+                await smtp.ConnectAsync("smtp.gmail.com", 587, MailKit.Security.SecureSocketOptions.StartTls);
+                await smtp.AuthenticateAsync("quangvinh770808@gmail.com", "ixnlzhmqsnoyborm");
+                await smtp.SendAsync(email);
+                smtp.Disconnect(true);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                smtp.Disconnect(true);
+            }
         }
     }
 }

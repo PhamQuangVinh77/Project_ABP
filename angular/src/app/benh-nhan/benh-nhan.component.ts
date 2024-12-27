@@ -2,7 +2,7 @@ import { ListService, PagedResultDto } from '@abp/ng.core';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BenhNhanDto } from '@proxy/dto/benh-nhan-dtos';
-import { BenhNhanService, HuyenService, TinhService, XaService } from '@proxy/services';
+import { BenhNhanService, HospitalService, HuyenService, TinhService, XaService } from '@proxy/services';
 import { ConfirmationService, Confirmation } from '@abp/ng.theme.shared';
 
 @Component({
@@ -25,6 +25,8 @@ export class BenhNhanComponent implements OnInit {
   maTinh: number;
   maHuyen: number;
   maXa: number;
+  changeForEdit: boolean = true;
+  tenBenhVien: string;
 
   isModalOpen = false;
   form: FormGroup;
@@ -33,6 +35,7 @@ export class BenhNhanComponent implements OnInit {
     private xaService: XaService, private tinhService: TinhService, private huyenService: HuyenService
   ) { }
   ngOnInit(): void {
+    this.getTenBenhVien();
     const tinhStreamCreator = (query) => {
       query.skipCount = this.skipCount;
       query.maxResultCount = this.maxResultCount;
@@ -41,6 +44,17 @@ export class BenhNhanComponent implements OnInit {
     };
     this.list.hookToQuery(tinhStreamCreator).subscribe((response) => {
       this.benhNhan = response;
+    });
+  }
+
+  getTenBenhVien(): void{
+    this.bnService.getHospitalNameByCurrentUser().subscribe({
+      next: (response: any) => {
+        this.tenBenhVien = response;
+      },
+      error: (error) => {
+        console.error('Error fetching data:', error);
+      }
     });
   }
 
@@ -90,7 +104,7 @@ export class BenhNhanComponent implements OnInit {
   }
 
   onTinhChange() {
-    if (this.maTinh == null) return;
+    if (!this.changeForEdit || this.maTinh == null) return;
     this.getHuyensForSelect(this.maTinh);
     this.listXa = [];
     this.maHuyen = null;
@@ -98,9 +112,14 @@ export class BenhNhanComponent implements OnInit {
   }
 
   onHuyenChange() {
+    if (!this.changeForEdit){
+      this.changeForEdit = true;
+      return;
+    }
     if (this.maTinh == null || this.maHuyen == null) return;
     this.getXasForSelect(this.maTinh, this.maHuyen);
     this.maXa = null;
+
   }
 
   createNewBenhNhan() {
@@ -112,13 +131,13 @@ export class BenhNhanComponent implements OnInit {
     this.isModalOpen = true;
   }
 
-  // ERROR
   editBenhNhan(id: number) {
     this.bnService.get(id).subscribe((benhNhan) => {
       this.maTinh = benhNhan.maTinh;
       this.maHuyen = benhNhan.maHuyen;
       this.maXa = benhNhan.maXa;
       this.selectedBenhNhan = benhNhan;
+      this.changeForEdit = false;
       this.buildForm();
       this.isModalOpen = true;
     });
@@ -126,7 +145,10 @@ export class BenhNhanComponent implements OnInit {
 
   buildForm() {
     this.getTinhsForSelect();
-    if (this.maTinh != null) this.getHuyensForSelect(this.maTinh);
+    if (!this.changeForEdit){
+      this.getHuyensForSelect(this.maTinh);
+      this.getXasForSelect(this.maTinh, this.maHuyen);
+    }
     this.form = this.fb.group({
       ten: [this.selectedBenhNhan.ten || '', Validators.required],
       diaChi: [this.selectedBenhNhan.diaChi || '', Validators.required],
@@ -134,6 +156,7 @@ export class BenhNhanComponent implements OnInit {
       huyen: [this.maHuyen || null, Validators.required],
       xa: [this.maXa || null, Validators.required],
     });
+    console.log(this.form);
   }
 
   save() {

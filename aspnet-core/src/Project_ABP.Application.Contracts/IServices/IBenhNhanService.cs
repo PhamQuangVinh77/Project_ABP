@@ -8,5 +8,6 @@ namespace Project_ABP.IServices
     public interface IBenhNhanService : ICrudAppService<BenhNhanDto, int, BenhNhanPagedAndSortedResultRequestDto, CreateOrUpdateBenhNhanDto, CreateOrUpdateBenhNhanDto>
     {
         Task<List<BenhNhanDto>> GetAllBenhNhans();
+        Task<string> GetHospitalNameByCurrentUser();
     }
 }

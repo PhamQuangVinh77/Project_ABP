@@ -1,7 +1,7 @@
-<h2 style="text-align: center; font-weight: bold;">{{ '::Menu:QuanLyBN' | abpLocalization }}</h2>
+<h2 style="text-align: center; font-weight: bold;">{{ '::Menu:QuanLyBN' | abpLocalization }} - {{tenBenhVien}}</h2>
 <div nz-row>
     <div nz-col nzSpan="4">
-        <button nz-button nzType="primary" (click)="createNewBenhNhan()">
+        <button  *abpPermission="'BenhNhan.Create'" nz-button nzType="primary" (click)="createNewBenhNhan()">
             <div nz-icon nzType="plus-square" nzTheme="outline"></div>
             {{ '::Add-bn' | abpLocalization }}
         </button>
@@ -39,11 +39,11 @@
             <td>{{data.maHuyen}}</td>
             <td>{{data.maXa}}</td>
             <td>
-                <a (click)="editBenhNhan(data.id)">
+                <a *abpPermission="'BenhNhan.Edit'" (click)="editBenhNhan(data.id)">
                     <span nz-icon nzType="setting" nzTheme="outline"></span>
                 </a>
                 <nz-divider nzType="vertical"></nz-divider>
-                <a (click)="deleteBenhNhan(data.id)">
+                <a *abpPermission="'BenhNhan.Delete'" (click)="deleteBenhNhan(data.id)">
                     <span nz-icon nzType="delete" nzTheme="outline"></span>
                 </a>
             </td>

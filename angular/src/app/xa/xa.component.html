@@ -1,7 +1,7 @@
 <h2 style="text-align: center; font-weight: bold;">{{ '::Menu:QuanLyXa' | abpLocalization }}</h2>
 <div nz-row>
   <div nz-col nzSpan="4">
-    <button nz-button nzType="primary">
+    <button *abpPermission="'Management.Xas.Create'" nz-button nzType="primary">
       <div nz-icon nzType="plus-square" nzTheme="outline"></div>
       {{ '::Add-xa' | abpLocalization }}
     </button>
@@ -47,11 +47,11 @@
       <td>{{data.tenXa}}</td>
       <td>{{data.cap}}</td>
       <td>
-        <a>
+        <a *abpPermission="'Management.Xas.Edit'">
           <span nz-icon nzType="setting" nzTheme="outline"></span>
         </a>
         <nz-divider nzType="vertical"></nz-divider>
-        <a>
+        <a *abpPermission="'Management.Xas.Delete'">
           <span nz-icon nzType="delete" nzTheme="outline"></span>
         </a>
       </td>

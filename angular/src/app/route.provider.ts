@@ -21,24 +21,28 @@ function configureRoutes(routesService: RoutesService) {
         iconClass: 'fa fa-pencil-square',
         order: 2,
         layout: eLayoutType.application,
+        requiredPolicy: 'Management.Tinhs',
       },
       {
         path: '/manage-tinh',
         name: '::Menu:Tinh',
         parentName: '::Menu:Management',
         layout: eLayoutType.application,
+        requiredPolicy: 'Management.Tinhs',
       },
       {
         path: '/manage-huyen',
         name: '::Menu:Huyen',
         parentName: '::Menu:Management',
         layout: eLayoutType.application,
+        requiredPolicy: 'Management.Huyens',
       },
       {
         path: '/manage-xa',
         name: '::Menu:Xa',
         parentName: '::Menu:Management',
         layout: eLayoutType.application,
+        requiredPolicy: 'Management.Xas',
       },
       {
         path: '/manage-hospital',

@@ -7,6 +7,7 @@ using Project_ABP.Entities;
 using Project_ABP.Filter;
 using Project_ABP.IRepositories;
 using Project_ABP.IServices;
+using Project_ABP.Permissions;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Domain.Repositories;
@@ -19,6 +20,12 @@ namespace Project_ABP.Services
         private ILogger<XaService> _logger;
         public XaService(IRepository<Xa, Guid> repository, IXaRepository xaRepository, ILogger<XaService> logger) : base(repository)
         {
+            GetPolicyName = Project_ABPPermissions.XaPermissions.Default;
+            GetListPolicyName = Project_ABPPermissions.XaPermissions.Default;
+            CreatePolicyName = Project_ABPPermissions.XaPermissions.Create;
+            UpdatePolicyName = Project_ABPPermissions.XaPermissions.Edit;
+            DeletePolicyName = Project_ABPPermissions.XaPermissions.Delete;
+
             _xaRepository = xaRepository;
             _logger = logger;
         }

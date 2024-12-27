@@ -25,5 +25,13 @@ namespace Project_ABP.Repositories
             return (await dbConnection.QueryFirstOrDefaultAsync<UserHospital>("SELECT * FROM userhospitals WHERE UserId = @userId", new { userId },
                     transaction: DbTransaction)).HospitalId;
         }
+
+        public async Task<string> GetHospitalNameByCurrentUser()
+        {
+            var hospitalId = await GetHospitalIdByCurrentUser();
+            var dbConnection = await GetDbConnectionAsync();
+            return (await dbConnection.QueryFirstOrDefaultAsync<Hospital>("SELECT * FROM hospitals WHERE Id = @hospitalId", new { hospitalId },
+                    transaction: DbTransaction)).Ten;
+        }
     }
 }

@@ -43,6 +43,15 @@ export class BenhNhanService {
     { apiName: this.apiName,...config });
   
 
+  getHospitalNameByCurrentUser = (config?: Partial<Rest.Config>) =>
+    this.restService.request<any, string>({
+      method: 'GET',
+      responseType: 'text',
+      url: '/api/app/benh-nhan/hospital-name-by-current-user',
+    },
+    { apiName: this.apiName,...config });
+  
+
   getList = (request: BenhNhanPagedAndSortedResultRequestDto, config?: Partial<Rest.Config>) =>
     this.restService.request<any, PagedResultDto<BenhNhanDto>>({
       method: 'GET',

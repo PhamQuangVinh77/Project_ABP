@@ -7,6 +7,7 @@ using Project_ABP.Entities;
 using Project_ABP.Filter;
 using Project_ABP.IRepositories;
 using Project_ABP.IServices;
+using Project_ABP.Permissions;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Domain.Repositories;
@@ -19,6 +20,12 @@ namespace Project_ABP.Services
         private ILogger<HuyenService> _logger;
         public HuyenService(IRepository<Huyen, Guid> repository, IHuyenRepository huyenRepository, ILogger<HuyenService> logger) : base(repository)
         {
+            GetPolicyName = Project_ABPPermissions.HuyenPermissions.Default;
+            GetListPolicyName = Project_ABPPermissions.HuyenPermissions.Default;
+            CreatePolicyName = Project_ABPPermissions.HuyenPermissions.Create;
+            UpdatePolicyName = Project_ABPPermissions.HuyenPermissions.Edit;
+            DeletePolicyName = Project_ABPPermissions.HuyenPermissions.Delete;
+
             _huyenRepository = huyenRepository;
             _logger = logger;
         }

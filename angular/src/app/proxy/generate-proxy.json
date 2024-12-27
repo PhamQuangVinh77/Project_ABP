@@ -894,6 +894,14 @@
                   }
                 },
                 {
+                  "name": "GetHospitalNameByCurrentUser",
+                  "parametersOnMethod": [],
+                  "returnValue": {
+                    "type": "System.String",
+                    "typeSimple": "string"
+                  }
+                },
+                {
                   "name": "GetAsync",
                   "parametersOnMethod": [
                     {
@@ -1001,6 +1009,21 @@
               "returnValue": {
                 "type": "System.Collections.Generic.List<Project_ABP.Dto.BenhNhanDtos.BenhNhanDto>",
                 "typeSimple": "[Project_ABP.Dto.BenhNhanDtos.BenhNhanDto]"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "Project_ABP.IServices.IBenhNhanService"
+            },
+            "GetHospitalNameByCurrentUser": {
+              "uniqueName": "GetHospitalNameByCurrentUser",
+              "name": "GetHospitalNameByCurrentUser",
+              "httpMethod": "GET",
+              "url": "api/app/benh-nhan/hospital-name-by-current-user",
+              "supportedVersions": [],
+              "parametersOnMethod": [],
+              "parameters": [],
+              "returnValue": {
+                "type": "System.String",
+                "typeSimple": "string"
               },
               "allowAnonymous": null,
               "implementFrom": "Project_ABP.IServices.IBenhNhanService"

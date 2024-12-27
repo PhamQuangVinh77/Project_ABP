@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.Extensions.Logging;
 using Project_ABP.Dto.ExcelDtos;
 using Project_ABP.Dto.HuyenDtos;
+using Project_ABP.Dto.XaDtos;
 using Project_ABP.Entities;
 using Project_ABP.Filter;
 using Project_ABP.IRepositories;
@@ -81,6 +83,47 @@ namespace Project_ABP.Services
                 _logger.LogError(ex.Message);
             }
 
+        }
+
+        public override async Task<HuyenDto> CreateAsync(CreateOrUpdateHuyenDto input)
+        {
+            try
+            {
+                if (input.MaHuyen <= 0) throw new Exception(message: "Mã huyện không được nhỏ hơn 1!");
+                var listHuyen = await _huyenRepository.GetAllHuyens(input.MaTinh);
+                var listMaHuyen = listHuyen.Select(x => x.MaHuyen).ToList();
+                if (listMaHuyen.Contains(input.MaHuyen)) throw new Exception(message: "Mã huyện đã tồn tại!");
+                var huyen = await base.CreateAsync(input);
+                return huyen;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw;
+            }
+        }
+
+        public override async Task<HuyenDto> UpdateAsync(Guid id, CreateOrUpdateHuyenDto input)
+        {
+            try
+            {
+                if (input.MaHuyen <= 0) throw new Exception(message: "Mã huyện không được nhỏ hơn 1!");
+                var huyenUpdate = await GetAsync(id);
+                var maOfHuyenUpdate = huyenUpdate.MaHuyen;
+                if (input.MaHuyen != maOfHuyenUpdate)
+                {
+                    var listHuyen = await _huyenRepository.GetAllHuyens(input.MaTinh);
+                    var listMaHuyen = listHuyen.Select(x => x.MaHuyen).ToList();
+                    if (listMaHuyen.Contains(input.MaHuyen)) throw new Exception(message: "Mã huyện đã tồn tại!");
+                }
+                var updatedHuyenDto = await base.UpdateAsync(id, input);
+                return updatedHuyenDto;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw;
+            }
         }
     }
 }

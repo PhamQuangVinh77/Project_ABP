@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.Extensions.Logging;
@@ -81,6 +82,47 @@ namespace Project_ABP.Services
                 _logger.LogError(ex.Message);
             }
 
+        }
+
+        public override async Task<XaDto> CreateAsync(CreateOrUpdateXaDto input)
+        {
+            try
+            {
+                if (input.MaXa <= 0) throw new Exception(message: "Mã xã không được nhỏ hơn 1!");
+                var listXa = await _xaRepository.GetAllXas(input.MaTinh, input.MaHuyen);
+                var listMaXa = listXa.Select(x => x.MaXa).ToList();
+                if (listMaXa.Contains(input.MaXa)) throw new Exception(message: "Mã xã đã tồn tại!");
+                var xa = await base.CreateAsync(input);
+                return xa;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw;
+            }
+        }
+
+        public override async Task<XaDto> UpdateAsync(Guid id, CreateOrUpdateXaDto input)
+        {
+            try
+            {
+                if (input.MaXa <= 0) throw new Exception(message: "Mã xã không được nhỏ hơn 1!");
+                var xaUpdate = await GetAsync(id);
+                var maOfXaUpdate = xaUpdate.MaXa;
+                if (input.MaXa != maOfXaUpdate)
+                {
+                    var listXa = await _xaRepository.GetAllXas(input.MaTinh, input.MaHuyen);
+                    var listMaXa = listXa.Select(x => x.MaXa).ToList();
+                    if (listMaXa.Contains(input.MaXa)) throw new Exception(message: "Mã xã đã tồn tại!");
+                }
+                var updatedXaDto = await base.UpdateAsync(id, input);
+                return updatedXaDto;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw;
+            }
         }
     }
 }

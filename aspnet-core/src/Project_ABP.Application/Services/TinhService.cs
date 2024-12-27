@@ -12,7 +12,6 @@ using Project_ABP.Filter;
 using Project_ABP.IRepositories;
 using Project_ABP.IServices;
 using Project_ABP.Permissions;
-using Volo.Abp;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Domain.Repositories;
@@ -93,7 +92,7 @@ namespace Project_ABP.Services
                 if (input.MaTinh <= 0) throw new Exception(message: "Mã tỉnh không được nhỏ hơn 1!");
                 var tinhUpdate = await GetAsync(id);
                 var maOfTinhUpdate = tinhUpdate.MaTinh;
-                if(input.MaTinh != maOfTinhUpdate)
+                if (input.MaTinh != maOfTinhUpdate)
                 {
                     var listTinh = await _tinhRepository.GetAllTinhs();
                     var listMaTinh = listTinh.Select(x => x.MaTinh).ToList();

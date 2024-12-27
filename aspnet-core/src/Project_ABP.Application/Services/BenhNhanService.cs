@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using MimeKit;
 using Project_ABP.Dto.BenhNhanDtos;
@@ -7,10 +10,6 @@ using Project_ABP.Filter;
 using Project_ABP.IRepositories;
 using Project_ABP.IServices;
 using Project_ABP.Permissions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Domain.Repositories;
@@ -25,6 +24,10 @@ namespace Project_ABP.Services
         private readonly IIdentityUserAppService _identityUserAppService;
         private readonly IRepository<Hospital, int> _hospitalRepository;
         private ILogger<BenhNhanService> _logger;
+
+        private const string EMAIL_SENDER = "quangvinh770808@gmail.com";
+        private const string HOST = "smtp.gmail.com";
+        private const string PASSWORD = "ixnlzhmqsnoyborm";
         public BenhNhanService(IRepository<BenhNhan, int> repository, IRepository<Hospital, int> hospitalRepository, IIdentityUserAppService identityUserAppService,
             IBenhNhanRepository benhNhanRepository, IUserHospitalRepository userHospitalRepository, ILogger<BenhNhanService> logger) : base(repository)
         {
@@ -114,8 +117,8 @@ namespace Project_ABP.Services
         private async Task SendMail(string maBN, string tenBN, string tenBV, string adminEmail)
         {
             var email = new MimeMessage();
-            email.Sender = new MailboxAddress(tenBV, "quangvinh770808@gmail.com");
-            email.From.Add(new MailboxAddress(tenBV, "quangvinh770808@gmail.com"));
+            email.Sender = new MailboxAddress(tenBV, EMAIL_SENDER);
+            email.From.Add(new MailboxAddress(tenBV, EMAIL_SENDER));
             email.To.Add(new MailboxAddress(adminEmail, adminEmail));
             email.Subject = "Thông báo từ " + tenBV;
             var builder = new BodyBuilder();
@@ -125,8 +128,8 @@ namespace Project_ABP.Services
             using var smtp = new MailKit.Net.Smtp.SmtpClient();
             try
             {
-                await smtp.ConnectAsync("smtp.gmail.com", 587, MailKit.Security.SecureSocketOptions.StartTls);
-                await smtp.AuthenticateAsync("quangvinh770808@gmail.com", "ixnlzhmqsnoyborm");
+                await smtp.ConnectAsync(HOST, 587, MailKit.Security.SecureSocketOptions.StartTls);
+                await smtp.AuthenticateAsync(EMAIL_SENDER, PASSWORD);
                 await smtp.SendAsync(email);
                 smtp.Disconnect(true);
             }

@@ -2,7 +2,7 @@ import { ListService, PagedResultDto } from '@abp/ng.core';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BenhNhanDto } from '@proxy/dto/benh-nhan-dtos';
-import { BenhNhanService, HospitalService, HuyenService, TinhService, XaService } from '@proxy/services';
+import { BenhNhanService, HuyenService, TinhService, XaService } from '@proxy/services';
 import { ConfirmationService, Confirmation } from '@abp/ng.theme.shared';
 
 @Component({
@@ -30,6 +30,7 @@ export class BenhNhanComponent implements OnInit {
 
   isModalOpen = false;
   form: FormGroup;
+
 
   constructor(public readonly list: ListService, private bnService: BenhNhanService, private fb: FormBuilder, private confirmation: ConfirmationService,
     private xaService: XaService, private tinhService: TinhService, private huyenService: HuyenService
@@ -156,7 +157,6 @@ export class BenhNhanComponent implements OnInit {
       huyen: [this.maHuyen || null, Validators.required],
       xa: [this.maXa || null, Validators.required],
     });
-    console.log(this.form);
   }
 
   save() {

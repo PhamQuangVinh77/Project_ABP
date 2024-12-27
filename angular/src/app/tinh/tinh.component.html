@@ -1,12 +1,18 @@
 <h2 style="text-align: center; font-weight: bold;">{{ '::Menu:QuanLyTinh' | abpLocalization }}</h2>
 <div nz-row>
   <div nz-col nzSpan="4">
-    <button *abpPermission="'Management.Tinhs.Create'" nz-button nzType="primary">
+    <button *abpPermission="'Management.Tinhs.Create'" nz-button nzType="primary" (click)="createNewTinh()">
       <div nz-icon nzType="plus-square" nzTheme="outline"></div>
       {{ '::Add-tinh' | abpLocalization }}
     </button>
   </div>
-  <div nz-col nzSpan="16"></div>
+  <div nz-col nzSpan="4">
+    <button nz-button nzType="primary" nzShape="round" (click)="importExcel()">
+      <div nz-icon nzType="download"></div>
+      Import Excel
+    </button>
+  </div>
+  <div nz-col nzSpan="12"></div>
   <div nz-col nzSpan="4">
     <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
       <input type="text" nz-input placeholder="Searching..." [(ngModel)]="filter" (keyup.enter)="onSearch()" />
@@ -33,15 +39,49 @@
       <td>{{data.tenTinh}}</td>
       <td>{{data.cap}}</td>
       <td>
-        <a *abpPermission="'Management.Tinhs.Edit'">
+        <a *abpPermission="'Management.Tinhs.Edit'" (click)="editTinh(data.id)">
           <span nz-icon nzType="setting" nzTheme="outline"></span>
         </a>
         <nz-divider nzType="vertical"></nz-divider>
-        <a *abpPermission="'Management.Tinhs.Delete'">
+        <a *abpPermission="'Management.Tinhs.Delete'" (click)="deleteTinh(data.id)">
           <span nz-icon nzType="delete" nzTheme="outline"></span>
         </a>
       </td>
     </tr>
   </tbody>
 </nz-table>
-<nz-pagination [nzPageIndex]="currentPage" [nzPageSize]="maxResultCount" [nzTotal]="tinh.totalCount" (nzPageIndexChange)="onPageChange($event)"></nz-pagination>
+<nz-pagination [nzPageIndex]="currentPage" [nzPageSize]="maxResultCount" [nzTotal]="tinh.totalCount"
+  (nzPageIndexChange)="onPageChange($event)"></nz-pagination>
+
+<abp-modal [(visible)]="isModalOpen">
+  <ng-template #abpHeader>
+    <h3>{{ (selectedTinh.id ? '::Update-tinh' : '::Add-tinh') | abpLocalization }}</h3>
+  </ng-template>
+
+  <ng-template #abpBody>
+    <form [formGroup]="form" (ngSubmit)="save()">
+      <div class="mt-2">
+        <label for="maTinh">{{ '::Menu:MaTinh' | abpLocalization }}</label><span> * </span>
+        <input type="number" id="maTinh" class="form-control" formControlName="maTinh" autofocus />
+      </div>
+      <div class="mt-2">
+        <label for="tenTinh">{{ '::Menu:TenTinh' | abpLocalization }}</label><span> * </span>
+        <input type="text" id="tenTinh" class="form-control" formControlName="tenTinh" />
+      </div>
+      <div class="mt-2">
+        <label for="cap">{{ '::Menu:Cap' | abpLocalization }}</label><span> * </span>
+        <input type="text" id="cap" class="form-control" formControlName="cap" />
+      </div>
+    </form>
+  </ng-template>
+
+  <ng-template #abpFooter>
+    <button type="button" class="btn btn-secondary" abpClose>
+      {{ '::Close' | abpLocalization }}
+    </button>
+    <button class="btn btn-primary" (click)="save()" [disabled]="form.invalid">
+      <i class="fa fa-check mr-1"></i>
+      {{ '::Save' | abpLocalization }}
+    </button>
+  </ng-template>
+</abp-modal>

@@ -9,5 +9,6 @@ namespace Project_ABP.IServices
     public interface ITinhService : ICrudAppService<TinhDto, Guid, TinhPagedAndSortedResultRequestDto, CreateOrUpdateTinhDto, CreateOrUpdateTinhDto>
     {
         Task<List<TinhDto>> GetAllTinhs();
+        Task ImportExcel(List<TinhDto> listTinh);
     }
 }

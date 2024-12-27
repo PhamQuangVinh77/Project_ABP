@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Project_ABP.Dto.BenhNhanDtos;
+using Project_ABP.Dto.ExcelDtos;
 using Project_ABP.Dto.HospitalDtos;
 using Project_ABP.Dto.HuyenDtos;
 using Project_ABP.Dto.TinhDto;
@@ -39,5 +40,15 @@ public class Project_ABPApplicationAutoMapperProfile : Profile
         CreateMap<XaPagedAndSortedResultRequestDto, XaFilter>();
         CreateMap<HospitalPagedAndSortedResultRequestDto, HospitalFilter>();
         CreateMap<BenhNhanPagedAndSortedResultRequestDto, BenhNhanFilter>();
+
+        //AutoMapper for import Excel
+        CreateMap<TinhDto, ExcelDto>().ForMember(destination => destination.Ma, options => options.MapFrom(source => source.MaTinh))
+                                      .ForMember(destination => destination.Ten, options => options.MapFrom(source => source.TenTinh));
+
+        CreateMap<HuyenDto, ExcelDto>().ForMember(destination => destination.Ma, options => options.MapFrom(source => source.MaHuyen))
+                                      .ForMember(destination => destination.Ten, options => options.MapFrom(source => source.TenHuyen));
+
+        CreateMap<XaDto, ExcelDto>().ForMember(destination => destination.Ma, options => options.MapFrom(source => source.MaXa))
+                                      .ForMember(destination => destination.Ten, options => options.MapFrom(source => source.TenXa));
     }
 }

@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.Extensions.Logging;
+using Project_ABP.Dto.ExcelDtos;
 using Project_ABP.Dto.XaDtos;
 using Project_ABP.Entities;
 using Project_ABP.Filter;
@@ -16,9 +19,10 @@ namespace Project_ABP.Services
 {
     public class XaService : CrudAppService<Xa, XaDto, Guid, XaPagedAndSortedResultRequestDto, CreateOrUpdateXaDto, CreateOrUpdateXaDto>, IXaService
     {
+        private readonly IMapper _mapper;
         private readonly IXaRepository _xaRepository;
         private ILogger<XaService> _logger;
-        public XaService(IRepository<Xa, Guid> repository, IXaRepository xaRepository, ILogger<XaService> logger) : base(repository)
+        public XaService(IMapper mapper, IRepository<Xa, Guid> repository, IXaRepository xaRepository, ILogger<XaService> logger) : base(repository)
         {
             GetPolicyName = Project_ABPPermissions.XaPermissions.Default;
             GetListPolicyName = Project_ABPPermissions.XaPermissions.Default;
@@ -26,6 +30,7 @@ namespace Project_ABP.Services
             UpdatePolicyName = Project_ABPPermissions.XaPermissions.Edit;
             DeletePolicyName = Project_ABPPermissions.XaPermissions.Delete;
 
+            _mapper = mapper;
             _xaRepository = xaRepository;
             _logger = logger;
         }
@@ -59,6 +64,23 @@ namespace Project_ABP.Services
                 _logger.LogError(ex.Message);
                 throw;
             }
+        }
+
+        public async Task ImportExcel(List<XaDto> listXa)
+        {
+            try
+            {
+                var file = new FileInfo(@"C:\Users\Admin\Documents\Projects\ABP_Framework\excel\danh-sach-xa.xlsx");
+                var listDataExcel = _mapper.Map<List<ExcelDto>>(listXa);
+                var sheetName = "danh-sach-xa";
+                var title = "Danh sách xã";
+                await ExcelService.CreateExcelFile(file, listDataExcel, sheetName, title);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+            }
+
         }
     }
 }

@@ -22,6 +22,7 @@ namespace Project_ABP.Repositories
 
         public async Task<List<BenhNhan>> GetAllBenhNhans(int? hospitalId)
         {
+            if (String.IsNullOrEmpty(hospitalId.ToString())) return new List<BenhNhan>();
             var dbConnection = await GetDbConnectionAsync();
             return (await dbConnection.QueryAsync<BenhNhan>("SELECT * FROM benhnhans WHERE IsDeleted = 0 AND HospitalId = @hospitalId", new { hospitalId },
                     transaction: DbTransaction)).ToList();

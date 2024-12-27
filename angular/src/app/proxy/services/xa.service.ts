@@ -53,6 +53,15 @@ export class XaService {
     { apiName: this.apiName,...config });
   
 
+  importExcelByListXa = (listXa: XaDto[], config?: Partial<Rest.Config>) =>
+    this.restService.request<any, void>({
+      method: 'POST',
+      url: '/api/app/xa/import-excel',
+      body: listXa,
+    },
+    { apiName: this.apiName,...config });
+  
+
   update = (id: string, input: CreateOrUpdateXaDto, config?: Partial<Rest.Config>) =>
     this.restService.request<any, XaDto>({
       method: 'PUT',

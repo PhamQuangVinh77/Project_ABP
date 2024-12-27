@@ -1811,6 +1811,23 @@
                   }
                 },
                 {
+                  "name": "ImportExcel",
+                  "parametersOnMethod": [
+                    {
+                      "name": "listHuyen",
+                      "typeAsString": "System.Collections.Generic.List`1[[Project_ABP.Dto.HuyenDtos.HuyenDto, Project_ABP.Application.Contracts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib",
+                      "type": "System.Collections.Generic.List<Project_ABP.Dto.HuyenDtos.HuyenDto>",
+                      "typeSimple": "[Project_ABP.Dto.HuyenDtos.HuyenDto]",
+                      "isOptional": false,
+                      "defaultValue": null
+                    }
+                  ],
+                  "returnValue": {
+                    "type": "System.Void",
+                    "typeSimple": "System.Void"
+                  }
+                },
+                {
                   "name": "GetAsync",
                   "parametersOnMethod": [
                     {
@@ -2029,6 +2046,43 @@
               "allowAnonymous": null,
               "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<Project_ABP.Dto.HuyenDtos.HuyenDto,Project_ABP.Dto.HuyenDtos.HuyenDto,System.Guid,Project_ABP.Dto.HuyenDtos.HuyenPagedAndSortedResultRequestDto>"
             },
+            "ImportExcelByListHuyen": {
+              "uniqueName": "ImportExcelByListHuyen",
+              "name": "ImportExcel",
+              "httpMethod": "POST",
+              "url": "api/app/huyen/import-excel",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "listHuyen",
+                  "typeAsString": "System.Collections.Generic.List`1[[Project_ABP.Dto.HuyenDtos.HuyenDto, Project_ABP.Application.Contracts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib",
+                  "type": "System.Collections.Generic.List<Project_ABP.Dto.HuyenDtos.HuyenDto>",
+                  "typeSimple": "[Project_ABP.Dto.HuyenDtos.HuyenDto]",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "listHuyen",
+                  "name": "listHuyen",
+                  "jsonName": null,
+                  "type": "System.Collections.Generic.List<Project_ABP.Dto.HuyenDtos.HuyenDto>",
+                  "typeSimple": "[Project_ABP.Dto.HuyenDtos.HuyenDto]",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "Body",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "System.Void",
+                "typeSimple": "System.Void"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "Project_ABP.IServices.IHuyenService"
+            },
             "CreateAsyncByInput": {
               "uniqueName": "CreateAsyncByInput",
               "name": "CreateAsync",
@@ -2217,6 +2271,23 @@
                   "returnValue": {
                     "type": "System.Collections.Generic.List<Project_ABP.Dto.TinhDto.TinhDto>",
                     "typeSimple": "[Project_ABP.Dto.TinhDto.TinhDto]"
+                  }
+                },
+                {
+                  "name": "ImportExcel",
+                  "parametersOnMethod": [
+                    {
+                      "name": "listTinh",
+                      "typeAsString": "System.Collections.Generic.List`1[[Project_ABP.Dto.TinhDto.TinhDto, Project_ABP.Application.Contracts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib",
+                      "type": "System.Collections.Generic.List<Project_ABP.Dto.TinhDto.TinhDto>",
+                      "typeSimple": "[Project_ABP.Dto.TinhDto.TinhDto]",
+                      "isOptional": false,
+                      "defaultValue": null
+                    }
+                  ],
+                  "returnValue": {
+                    "type": "System.Void",
+                    "typeSimple": "System.Void"
                   }
                 },
                 {
@@ -2498,6 +2569,43 @@
               "allowAnonymous": null,
               "implementFrom": "Volo.Abp.Application.Services.IUpdateAppService<Project_ABP.Dto.TinhDto.TinhDto,System.Guid,Project_ABP.Dto.TinhDto.CreateOrUpdateTinhDto>"
             },
+            "ImportExcelByListTinh": {
+              "uniqueName": "ImportExcelByListTinh",
+              "name": "ImportExcel",
+              "httpMethod": "POST",
+              "url": "api/app/tinh/import-excel",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "listTinh",
+                  "typeAsString": "System.Collections.Generic.List`1[[Project_ABP.Dto.TinhDto.TinhDto, Project_ABP.Application.Contracts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib",
+                  "type": "System.Collections.Generic.List<Project_ABP.Dto.TinhDto.TinhDto>",
+                  "typeSimple": "[Project_ABP.Dto.TinhDto.TinhDto]",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "listTinh",
+                  "name": "listTinh",
+                  "jsonName": null,
+                  "type": "System.Collections.Generic.List<Project_ABP.Dto.TinhDto.TinhDto>",
+                  "typeSimple": "[Project_ABP.Dto.TinhDto.TinhDto]",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "Body",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "System.Void",
+                "typeSimple": "System.Void"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "Project_ABP.IServices.ITinhService"
+            },
             "DeleteAsyncById": {
               "uniqueName": "DeleteAsyncById",
               "name": "DeleteAsync",
@@ -2609,6 +2717,23 @@
                   "returnValue": {
                     "type": "System.Collections.Generic.List<Project_ABP.Dto.XaDtos.XaDto>",
                     "typeSimple": "[Project_ABP.Dto.XaDtos.XaDto]"
+                  }
+                },
+                {
+                  "name": "ImportExcel",
+                  "parametersOnMethod": [
+                    {
+                      "name": "listXa",
+                      "typeAsString": "System.Collections.Generic.List`1[[Project_ABP.Dto.XaDtos.XaDto, Project_ABP.Application.Contracts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib",
+                      "type": "System.Collections.Generic.List<Project_ABP.Dto.XaDtos.XaDto>",
+                      "typeSimple": "[Project_ABP.Dto.XaDtos.XaDto]",
+                      "isOptional": false,
+                      "defaultValue": null
+                    }
+                  ],
+                  "returnValue": {
+                    "type": "System.Void",
+                    "typeSimple": "System.Void"
                   }
                 },
                 {
@@ -2861,6 +2986,43 @@
               },
               "allowAnonymous": null,
               "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<Project_ABP.Dto.XaDtos.XaDto,Project_ABP.Dto.XaDtos.XaDto,System.Guid,Project_ABP.Dto.XaDtos.XaPagedAndSortedResultRequestDto>"
+            },
+            "ImportExcelByListXa": {
+              "uniqueName": "ImportExcelByListXa",
+              "name": "ImportExcel",
+              "httpMethod": "POST",
+              "url": "api/app/xa/import-excel",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "listXa",
+                  "typeAsString": "System.Collections.Generic.List`1[[Project_ABP.Dto.XaDtos.XaDto, Project_ABP.Application.Contracts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib",
+                  "type": "System.Collections.Generic.List<Project_ABP.Dto.XaDtos.XaDto>",
+                  "typeSimple": "[Project_ABP.Dto.XaDtos.XaDto]",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "listXa",
+                  "name": "listXa",
+                  "jsonName": null,
+                  "type": "System.Collections.Generic.List<Project_ABP.Dto.XaDtos.XaDto>",
+                  "typeSimple": "[Project_ABP.Dto.XaDtos.XaDto]",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "Body",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "System.Void",
+                "typeSimple": "System.Void"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "Project_ABP.IServices.IXaService"
             },
             "CreateAsyncByInput": {
               "uniqueName": "CreateAsyncByInput",

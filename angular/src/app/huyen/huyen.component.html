@@ -1,18 +1,24 @@
 <h2 style="text-align: center; font-weight: bold;">{{ '::Menu:QuanLyHuyen' | abpLocalization }}</h2>
 <div nz-row>
   <div nz-col nzSpan="4">
-    <button *abpPermission="'Management.Huyens.Create'" nz-button nzType="primary">
+    <button *abpPermission="'Management.Huyens.Create'" nz-button nzType="primary" (click)="createNewHuyen()">
       <div nz-icon nzType="plus-square" nzTheme="outline"></div>
       {{ '::Add-huyen' | abpLocalization }}
     </button>
   </div>
-  <div nz-col nzSpan="12"></div>
+  <div nz-col nzSpan="4">
+    <button nz-button nzType="primary" nzShape="round" (click)="importExcel()">
+      <div nz-icon nzType="download"></div>
+      Import Excel
+    </button>
+  </div>
+  <div nz-col nzSpan="8"></div>
   <div nz-col nzSpan="4">
     <nz-select nzPlaceHolder="Chọn tỉnh" [(ngModel)]="maTinh" (ngModelChange)="onTinhChange($event)">
-        @for (p of listTinh; track p) {
-            <nz-option [nzValue]="p.maTinh" [nzLabel]="p.tenTinh"></nz-option>
-          }
-      </nz-select>
+      @for (p of listTinh; track p) {
+      <nz-option [nzValue]="p.maTinh" [nzLabel]="p.tenTinh"></nz-option>
+      }
+    </nz-select>
   </div>
   <div nz-col nzSpan="4">
     <nz-input-group nzSearch [nzAddOnAfter]="suffixIconButton">
@@ -40,15 +46,56 @@
       <td>{{data.tenHuyen}}</td>
       <td>{{data.cap}}</td>
       <td>
-        <a *abpPermission="'Management.Huyens.Edit'">
+        <a *abpPermission="'Management.Huyens.Edit'" (click)="editHuyen(data.id)">
           <span nz-icon nzType="setting" nzTheme="outline"></span>
         </a>
         <nz-divider nzType="vertical"></nz-divider>
-        <a *abpPermission="'Management.Huyens.Delete'">
+        <a *abpPermission="'Management.Huyens.Delete'" (click)="deleteHuyen(data.id)">
           <span nz-icon nzType="delete" nzTheme="outline"></span>
         </a>
       </td>
     </tr>
   </tbody>
 </nz-table>
-<nz-pagination [nzPageIndex]="currentPage" [nzPageSize]="maxResultCount" [nzTotal]="huyen.totalCount" (nzPageIndexChange)="onPageChange($event)"></nz-pagination>
+<nz-pagination [nzPageIndex]="currentPage" [nzPageSize]="maxResultCount" [nzTotal]="huyen.totalCount"
+  (nzPageIndexChange)="onPageChange($event)"></nz-pagination>
+
+<abp-modal [(visible)]="isModalOpen">
+  <ng-template #abpHeader>
+    <h3>{{ (selectedHuyen.id ? '::Update-huyen' : '::Add-huyen') | abpLocalization }}</h3>
+  </ng-template>
+
+  <ng-template #abpBody>
+    <form [formGroup]="form" (ngSubmit)="save()">
+      <div class="mt-2">
+        <label for="maHuyen">{{ '::Menu:MaHuyen' | abpLocalization }}</label><span> * </span>
+        <input type="number" id="maHuyen" class="form-control" formControlName="maHuyen" autofocus />
+      </div>
+      <div class="mt-2">
+        <label for="tenHuyen">{{ '::Menu:TenHuyen' | abpLocalization }}</label><span> * </span>
+        <input type="text" id="tenHuyen" class="form-control" formControlName="tenHuyen" />
+      </div>
+      <div class="mt-2">
+        <label for="cap">{{ '::Menu:Cap' | abpLocalization }}</label><span> * </span>
+        <input type="text" id="cap" class="form-control" formControlName="cap" />
+      </div>
+      <div class="mt-2">
+        <label for="maTinh">{{ '::Menu:Tinh' | abpLocalization }}</label><span> * </span>
+        <select class="form-control" id="maTinh" formControlName="maTinh" [(ngModel)]="maTinhInForm">
+            <option [ngValue]="null">--Chọn tỉnh--</option>
+            <option [ngValue]="tinh.maTinh" *ngFor="let tinh of listTinh"> {{tinh.tenTinh}}</option>
+        </select>
+    </div>
+    </form>
+  </ng-template>
+
+  <ng-template #abpFooter>
+    <button type="button" class="btn btn-secondary" abpClose>
+      {{ '::Close' | abpLocalization }}
+    </button>
+    <button class="btn btn-primary" (click)="save()" [disabled]="form.invalid">
+      <i class="fa fa-check mr-1"></i>
+      {{ '::Save' | abpLocalization }}
+    </button>
+  </ng-template>
+</abp-modal>

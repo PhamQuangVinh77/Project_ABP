@@ -53,6 +53,15 @@ export class HuyenService {
     { apiName: this.apiName,...config });
   
 
+  importExcelByListHuyen = (listHuyen: HuyenDto[], config?: Partial<Rest.Config>) =>
+    this.restService.request<any, void>({
+      method: 'POST',
+      url: '/api/app/huyen/import-excel',
+      body: listHuyen,
+    },
+    { apiName: this.apiName,...config });
+  
+
   update = (id: string, input: CreateOrUpdateHuyenDto, config?: Partial<Rest.Config>) =>
     this.restService.request<any, HuyenDto>({
       method: 'PUT',

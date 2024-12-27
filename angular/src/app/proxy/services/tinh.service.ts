@@ -52,6 +52,15 @@ export class TinhService {
     { apiName: this.apiName,...config });
   
 
+  importExcelByListTinh = (listTinh: TinhDto[], config?: Partial<Rest.Config>) =>
+    this.restService.request<any, void>({
+      method: 'POST',
+      url: '/api/app/tinh/import-excel',
+      body: listTinh,
+    },
+    { apiName: this.apiName,...config });
+  
+
   update = (id: string, input: CreateOrUpdateTinhDto, config?: Partial<Rest.Config>) =>
     this.restService.request<any, TinhDto>({
       method: 'PUT',

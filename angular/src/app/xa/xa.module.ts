@@ -11,6 +11,7 @@ import { NzPaginationModule } from 'ng-zorro-antd/pagination';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzDividerModule } from 'ng-zorro-antd/divider';
 import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzFormModule } from 'ng-zorro-antd/form';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
     NzPaginationModule,
     NzGridModule,
     NzDividerModule,
-    NzSelectModule
+    NzSelectModule,
+    NzFormModule
   ]
 })
 export class XaModule { }

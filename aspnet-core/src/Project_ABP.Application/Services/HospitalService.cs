@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Project_ABP.Dto.HospitalDtos;
-using Project_ABP.Dto.TinhDto;
 using Project_ABP.Entities;
 using Project_ABP.Filter;
 using Project_ABP.IRepositories;

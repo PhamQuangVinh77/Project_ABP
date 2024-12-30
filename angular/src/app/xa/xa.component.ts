@@ -20,8 +20,8 @@ export class XaComponent implements OnInit {
   maTinh: number = 0;
   maHuyen: number = 0;
   listHuyenInForm: any;
-  maTinhInForm: number=0;
-  maHuyenInForm: number=0;
+  maTinhInForm: number = 0;
+  maHuyenInForm: number = 0;
   skipCount: number = 0;
   maxResultCount: number = 10;
   filter: string = "";
@@ -105,9 +105,10 @@ export class XaComponent implements OnInit {
     this.ngOnInit();
   }
 
-  onTinhChangeInForm(){
+  onTinhChangeInForm() {
+    if(this.maTinhInForm == null) return;
     this.getHuyensForSelectInForm(this.maTinhInForm);
-    if(this.changeForEdit) {
+    if (this.changeForEdit) {
       this.changeForEdit = false;
       return;
     }
@@ -128,6 +129,7 @@ export class XaComponent implements OnInit {
 
   createNewXa() {
     this.maTinhInForm = null;
+    this.maHuyenInForm = null;
     this.selectedXa = {} as XaDto;
     this.buildForm();
     this.isModalOpen = true;
@@ -157,44 +159,44 @@ export class XaComponent implements OnInit {
   }
 
   save() {
-      if (this.form.invalid) {
-        return;
-      }
-      if (this.selectedXa.id) {
-        let request = {
-          maXa: this.form.value.maXa,
-          tenXa: this.form.value.tenXa,
-          cap: this.form.value.cap,
-          maTinh: this.form.value.maTinh,
-          maHuyen: this.form.value.maHuyen,
-        };
-        this.xaService.update(this.selectedXa.id, request).subscribe(() => {
-          this.isModalOpen = false;
-          this.form.reset();
-          this.list.get();
-        });
-      }
-      else {
-        let request = {
-          maXa: this.form.value.maXa,
-          tenXa: this.form.value.tenXa,
-          cap: this.form.value.cap,
-          maTinh: this.form.value.maTinh,
-          maHuyen: this.form.value.maHuyen,
-        };
-        this.xaService.create(request).subscribe(() => {
-          this.isModalOpen = false;
-          this.form.reset();
-          this.list.get();
-        });
-      }
+    if (this.form.invalid) {
+      return;
     }
-  
-    deleteXa(id: string) {
-      this.confirmation.warn('::AreYouSureToDelete', '::AreYouSure').subscribe((status) => {
-        if (status === Confirmation.Status.confirm) {
-          this.xaService.delete(id).subscribe(() => this.list.get());
-        }
+    if (this.selectedXa.id) {
+      let request = {
+        maXa: this.form.value.maXa,
+        tenXa: this.form.value.tenXa,
+        cap: this.form.value.cap,
+        maTinh: this.form.value.maTinh,
+        maHuyen: this.form.value.maHuyen,
+      };
+      this.xaService.update(this.selectedXa.id, request).subscribe(() => {
+        this.isModalOpen = false;
+        this.form.reset();
+        this.list.get();
       });
     }
+    else {
+      let request = {
+        maXa: this.form.value.maXa,
+        tenXa: this.form.value.tenXa,
+        cap: this.form.value.cap,
+        maTinh: this.form.value.maTinh,
+        maHuyen: this.form.value.maHuyen,
+      };
+      this.xaService.create(request).subscribe(() => {
+        this.isModalOpen = false;
+        this.form.reset();
+        this.list.get();
+      });
+    }
+  }
+
+  deleteXa(id: string) {
+    this.confirmation.warn('::AreYouSureToDelete', '::AreYouSure').subscribe((status) => {
+      if (status === Confirmation.Status.confirm) {
+        this.xaService.delete(id).subscribe(() => this.list.get());
+      }
+    });
+  }
 }

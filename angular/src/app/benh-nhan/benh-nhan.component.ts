@@ -25,7 +25,7 @@ export class BenhNhanComponent implements OnInit {
   maTinh: number;
   maHuyen: number;
   maXa: number;
-  changeForEdit: boolean = true;
+  changeForEdit: boolean = false;
   tenBenhVien: string;
 
   isModalOpen = false;
@@ -105,20 +105,21 @@ export class BenhNhanComponent implements OnInit {
   }
 
   onTinhChange() {
-    if (!this.changeForEdit || this.maTinh == null) return;
+    if (this.maTinh == null) return;
     this.getHuyensForSelect(this.maTinh);
+    if (this.changeForEdit) return;
     this.listXa = [];
     this.maHuyen = null;
     this.maXa = null;
   }
 
   onHuyenChange() {
-    if (!this.changeForEdit){
-      this.changeForEdit = true;
-      return;
-    }
     if (this.maTinh == null || this.maHuyen == null) return;
     this.getXasForSelect(this.maTinh, this.maHuyen);
+    if (this.changeForEdit){
+      this.changeForEdit = false;
+      return;
+    }
     this.maXa = null;
 
   }
@@ -138,7 +139,7 @@ export class BenhNhanComponent implements OnInit {
       this.maHuyen = benhNhan.maHuyen;
       this.maXa = benhNhan.maXa;
       this.selectedBenhNhan = benhNhan;
-      this.changeForEdit = false;
+      this.changeForEdit = true;
       this.buildForm();
       this.isModalOpen = true;
     });
@@ -146,10 +147,6 @@ export class BenhNhanComponent implements OnInit {
 
   buildForm() {
     this.getTinhsForSelect();
-    if (!this.changeForEdit){
-      this.getHuyensForSelect(this.maTinh);
-      this.getXasForSelect(this.maTinh, this.maHuyen);
-    }
     this.form = this.fb.group({
       ten: [this.selectedBenhNhan.ten || '', Validators.required],
       diaChi: [this.selectedBenhNhan.diaChi || '', Validators.required],

@@ -41,7 +41,7 @@ namespace Project_ABP.Services
             try
             {
                 var responses = await _tinhRepository.GetAllTinhs();
-                return ObjectMapper.Map<List<Tinh>, List<TinhDto>>(responses);
+                return _mapper.Map<List<Tinh>, List<TinhDto>>(responses);
             }
             catch (Exception ex)
             {
@@ -54,11 +54,11 @@ namespace Project_ABP.Services
         {
             try
             {
-                var filter = ObjectMapper.Map<TinhPagedAndSortedResultRequestDto, TinhFilter>(request);
+                var filter = _mapper.Map<TinhPagedAndSortedResultRequestDto, TinhFilter>(request);
                 var sorting = string.IsNullOrEmpty(request.Sorting) ? "maTinh ASC" : request.Sorting;
                 var response = await _tinhRepository.GetListAsync(request.SkipCount, request.MaxResultCount, sorting, filter);
                 var totalCount = await _tinhRepository.GetTotalCountAsync(filter);
-                return new PagedResultDto<TinhDto>(totalCount, ObjectMapper.Map<List<Tinh>, List<TinhDto>>(response));
+                return new PagedResultDto<TinhDto>(totalCount, _mapper.Map<List<Tinh>, List<TinhDto>>(response));
             }
             catch (Exception ex)
             {

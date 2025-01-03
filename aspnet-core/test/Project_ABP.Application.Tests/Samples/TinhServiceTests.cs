@@ -86,7 +86,7 @@ namespace Project_ABP.Samples
         [Fact]
         public async Task CreateAsync_InputValidation_ShouldThrowException()
         {
-            var inputMaTinhIsZero = new CreateOrUpdateTinhDto()
+            var inputMaTinhIsSmallerThan1 = new CreateOrUpdateTinhDto()
             {
                 MaTinh = 0,
                 TenTinh = "Tỉnh với Mã Zero",
@@ -105,8 +105,8 @@ namespace Project_ABP.Samples
             };
             _tinhRepository.Setup(x => x.GetAllTinhs()).ReturnsAsync(listTinh);
 
-            var checkMaZero = await Assert.ThrowsAsync<Exception>(() => _tinhService.CreateAsync(inputMaTinhIsZero));
-            Assert.Equal("Mã tỉnh không được nhỏ hơn 1!", checkMaZero.Message);
+            var checkMaIsSmallerThan1 = await Assert.ThrowsAsync<Exception>(() => _tinhService.CreateAsync(inputMaTinhIsSmallerThan1));
+            Assert.Equal("Mã tỉnh không được nhỏ hơn 1!", checkMaIsSmallerThan1.Message);
 
             var checkMaExist = await Assert.ThrowsAsync<Exception>(() => _tinhService.CreateAsync(inputMaTinhIsExist));
             Assert.Equal("Mã tỉnh đã tồn tại!", checkMaExist.Message);
@@ -117,7 +117,7 @@ namespace Project_ABP.Samples
         public async Task UpdateAsync_InputValidation_ShouldThrowException()
         {
             var id = Guid.NewGuid();
-            var inputMaTinhIsZero = new CreateOrUpdateTinhDto()
+            var inputMaTinhIsSmallerThan1 = new CreateOrUpdateTinhDto()
             {
                 MaTinh = 0,
                 TenTinh = "Tỉnh với Mã Zero",
@@ -138,8 +138,8 @@ namespace Project_ABP.Samples
             _tinhRepository.Setup(x => x.GetAllTinhs()).ReturnsAsync(listTinh);
             _tinhRepository.Setup(x => x.GetTinhById(It.IsAny<Guid>())).ReturnsAsync(listTinh[1]);
 
-            var checkMaZero = await Assert.ThrowsAsync<Exception>(() => _tinhService.UpdateAsync(id, inputMaTinhIsZero));
-            Assert.Equal("Mã tỉnh không được nhỏ hơn 1!", checkMaZero.Message);
+            var checkMaIsSmallerThan1 = await Assert.ThrowsAsync<Exception>(() => _tinhService.UpdateAsync(id, inputMaTinhIsSmallerThan1));
+            Assert.Equal("Mã tỉnh không được nhỏ hơn 1!", checkMaIsSmallerThan1.Message);
 
             var checkMaExist = await Assert.ThrowsAsync<Exception>(() => _tinhService.UpdateAsync(id, inputMaTinhIsExist));
             Assert.Equal("Mã tỉnh đã tồn tại!", checkMaExist.Message);

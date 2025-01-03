@@ -2,6 +2,7 @@ import { RestService, Rest } from '@abp/ng.core';
 import type { PagedResultDto } from '@abp/ng.core';
 import { Injectable } from '@angular/core';
 import type { CreateOrUpdateTinhDto, TinhDto, TinhPagedAndSortedResultRequestDto } from '../dto/tinh-dto/models';
+import type { IFormFile } from '../microsoft/asp-net-core/http/models';
 
 @Injectable({
   providedIn: 'root',
@@ -23,6 +24,15 @@ export class TinhService {
     this.restService.request<any, void>({
       method: 'DELETE',
       url: `/api/app/tinh/${id}`,
+    },
+    { apiName: this.apiName,...config });
+  
+
+  exportExcelByListTinh = (listTinh: TinhDto[], config?: Partial<Rest.Config>) =>
+    this.restService.request<any, void>({
+      method: 'POST',
+      url: '/api/app/tinh/export-excel',
+      body: listTinh,
     },
     { apiName: this.apiName,...config });
   
@@ -52,11 +62,11 @@ export class TinhService {
     { apiName: this.apiName,...config });
   
 
-  importExcelByListTinh = (listTinh: TinhDto[], config?: Partial<Rest.Config>) =>
+  importExcelByFileUpload = (fileUpload: IFormFile, config?: Partial<Rest.Config>) =>
     this.restService.request<any, void>({
       method: 'POST',
       url: '/api/app/tinh/import-excel',
-      body: listTinh,
+      body: fileUpload,
     },
     { apiName: this.apiName,...config });
   

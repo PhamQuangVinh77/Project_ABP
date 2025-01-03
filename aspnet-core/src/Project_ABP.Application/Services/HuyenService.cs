@@ -68,11 +68,13 @@ namespace Project_ABP.Services
             }
         }
 
-        public async Task ImportExcel(List<HuyenDto> listHuyen)
+        public async Task ExportExcel(List<HuyenDto> listHuyen)
         {
             try
             {
-                var file = new FileInfo(@"C:\Users\Admin\Documents\Projects\ABP_Framework\excel\danh-sach-huyen.xlsx");
+                var path = $"{Directory.GetCurrentDirectory()}\\wwwroot\\export-excels";
+                if (!Directory.Exists(path)) Directory.CreateDirectory(path);
+                var file = new FileInfo($"{path}\\danh-sach-huyen.xlsx");
                 var listDataExcel = _mapper.Map<List<ExcelDto>>(listHuyen);
                 var sheetName = "danh-sach-huyen";
                 var title = "Danh sách huyện";

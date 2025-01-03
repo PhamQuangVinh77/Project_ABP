@@ -27,6 +27,15 @@ export class XaService {
     { apiName: this.apiName,...config });
   
 
+  exportExcelByListXa = (listXa: XaDto[], config?: Partial<Rest.Config>) =>
+    this.restService.request<any, void>({
+      method: 'POST',
+      url: '/api/app/xa/export-excel',
+      body: listXa,
+    },
+    { apiName: this.apiName,...config });
+  
+
   get = (id: string, config?: Partial<Rest.Config>) =>
     this.restService.request<any, XaDto>({
       method: 'GET',
@@ -49,15 +58,6 @@ export class XaService {
       method: 'GET',
       url: '/api/app/xa',
       params: { maTinh: request.maTinh, maHuyen: request.maHuyen, filter: request.filter, sorting: request.sorting, skipCount: request.skipCount, maxResultCount: request.maxResultCount },
-    },
-    { apiName: this.apiName,...config });
-  
-
-  importExcelByListXa = (listXa: XaDto[], config?: Partial<Rest.Config>) =>
-    this.restService.request<any, void>({
-      method: 'POST',
-      url: '/api/app/xa/import-excel',
-      body: listXa,
     },
     { apiName: this.apiName,...config });
   

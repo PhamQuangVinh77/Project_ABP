@@ -3,7 +3,9 @@ import { Confirmation, ConfirmationService } from '@abp/ng.theme.shared';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TinhDto } from '@proxy/dto/tinh-dto';
+import { IFormFile } from '@proxy/microsoft/asp-net-core/http';
 import { TinhService } from '@proxy/services';
+import { NzMessageService } from 'ng-zorro-antd/message';
 
 @Component({
   selector: 'app-tinh',
@@ -22,7 +24,7 @@ export class TinhComponent implements OnInit {
   listAllTinhs: any[];
   isModalOpen = false;
   form: FormGroup;
-  constructor(public readonly list: ListService, private tinhService: TinhService, private fb: FormBuilder, private confirmation: ConfirmationService) { }
+  constructor(public readonly list: ListService, private tinhService: TinhService, private fb: FormBuilder, private confirmation: ConfirmationService, private messageService: NzMessageService) { }
   ngOnInit(): void {
     const tinhStreamCreator = (query) => {
       query.skipCount = this.skipCount;
@@ -47,16 +49,22 @@ export class TinhComponent implements OnInit {
     this.ngOnInit();
   }
 
-  importExcel() {
+  exportExcel() {
     this.tinhService.getAllTinhs().subscribe({
       next: (response: any) => {
         this.listAllTinhs = response;
-        this.tinhService.importExcelByListTinh(this.listAllTinhs).subscribe();
+        this.tinhService.exportExcelByListTinh(this.listAllTinhs).subscribe();
+        this.messageService.success(`Xuất file Excel thành công!`);
       },
       error: (error) => {
+        this.messageService.error(`Lỗi! Xuất file không thành công!`);
         console.error('Error fetching data:', error);
       }
     });
+  }
+
+  importExcel(uploadFile: IFormFile){    
+    this.tinhService.importExcelByFileUpload(uploadFile).subscribe();
   }
 
   createNewTinh() {

@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Project_ABP.Dto.ExcelDtos;
 using Project_ABP.Dto.TinhDto;
@@ -108,11 +109,13 @@ namespace Project_ABP.Services
             }
         }
 
-        public async Task ImportExcel(List<TinhDto> listTinh)
+        public async Task ExportExcel(List<TinhDto> listTinh)
         {
             try
             {
-                var file = new FileInfo(@"C:\Users\Admin\Documents\Projects\ABP_Framework\excel\danh-sach-tinh.xlsx");
+                var path = $"{Directory.GetCurrentDirectory()}\\wwwroot\\export-excels";
+                if (!Directory.Exists(path)) Directory.CreateDirectory(path);
+                var file = new FileInfo($"{path}\\danh-sach-tinh.xlsx");
                 var listDataExcel = _mapper.Map<List<ExcelDto>>(listTinh);
                 var sheetName = "danh-sach-tinh";
                 var title = "Danh sách tỉnh";
@@ -121,8 +124,27 @@ namespace Project_ABP.Services
             catch (Exception ex)
             {
                 _logger.LogError(ex.Message);
+                throw;
             }
+        }
 
+        public async Task ImportExcel(IFormFile fileUpload)
+        {
+            try
+            {
+                var filePath = await ExcelService.UploadFileExcel(fileUpload);
+                var listData = await ExcelService.ReadExcelFile(filePath);
+                foreach (var item in listData)
+                {
+                    var tinh = _mapper.Map<ExcelDto, CreateOrUpdateTinhDto>(item);
+                    await CreateAsync(tinh);
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+                throw;
+            }
         }
     }
 }

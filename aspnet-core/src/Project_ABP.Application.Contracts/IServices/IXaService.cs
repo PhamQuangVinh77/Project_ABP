@@ -9,6 +9,6 @@ namespace Project_ABP.IServices
     public interface IXaService : ICrudAppService<XaDto, Guid, XaPagedAndSortedResultRequestDto, CreateOrUpdateXaDto, CreateOrUpdateXaDto>
     {
         Task<List<XaDto>> GetAllXas(int maTinh, int maHuyen);
-        Task ImportExcel(List<XaDto> listXa);
+        Task ExportExcel(List<XaDto> listXa);
     }
 }

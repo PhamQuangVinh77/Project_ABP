@@ -119,7 +119,7 @@ export class XaComponent implements OnInit {
     this.xaService.getAllXasByMaTinhAndMaHuyen(this.maTinh, this.maHuyen).subscribe({
       next: (response: any) => {
         this.listAllXas = response;
-        this.xaService.importExcelByListXa(this.listAllXas).subscribe();
+        this.xaService.exportExcelByListXa(this.listAllXas).subscribe();
       },
       error: (error) => {
         console.error('Error fetching data:', error);

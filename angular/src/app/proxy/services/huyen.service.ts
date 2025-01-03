@@ -27,6 +27,15 @@ export class HuyenService {
     { apiName: this.apiName,...config });
   
 
+  exportExcelByListHuyen = (listHuyen: HuyenDto[], config?: Partial<Rest.Config>) =>
+    this.restService.request<any, void>({
+      method: 'POST',
+      url: '/api/app/huyen/export-excel',
+      body: listHuyen,
+    },
+    { apiName: this.apiName,...config });
+  
+
   get = (id: string, config?: Partial<Rest.Config>) =>
     this.restService.request<any, HuyenDto>({
       method: 'GET',
@@ -49,15 +58,6 @@ export class HuyenService {
       method: 'GET',
       url: '/api/app/huyen',
       params: { maTinh: request.maTinh, filter: request.filter, sorting: request.sorting, skipCount: request.skipCount, maxResultCount: request.maxResultCount },
-    },
-    { apiName: this.apiName,...config });
-  
-
-  importExcelByListHuyen = (listHuyen: HuyenDto[], config?: Partial<Rest.Config>) =>
-    this.restService.request<any, void>({
-      method: 'POST',
-      url: '/api/app/huyen/import-excel',
-      body: listHuyen,
     },
     { apiName: this.apiName,...config });
   

@@ -76,7 +76,7 @@ export class HuyenComponent implements OnInit {
     this.huyenService.getAllHuyensByMaTinh(this.maTinh).subscribe({
       next: (response: any) => {
         this.listAllHuyens = response;
-        this.huyenService.importExcelByListHuyen(this.listAllHuyens).subscribe();
+        this.huyenService.exportExcelByListHuyen(this.listAllHuyens).subscribe();
       },
       error: (error) => {
         console.error('Error fetching data:', error);

@@ -41,7 +41,7 @@ public class Project_ABPApplicationAutoMapperProfile : Profile
         CreateMap<HospitalPagedAndSortedResultRequestDto, HospitalFilter>();
         CreateMap<BenhNhanPagedAndSortedResultRequestDto, BenhNhanFilter>();
 
-        //AutoMapper for import Excel
+        //AutoMapper for import, export Excel
         CreateMap<TinhDto, ExcelDto>().ForMember(destination => destination.Ma, options => options.MapFrom(source => source.MaTinh))
                                       .ForMember(destination => destination.Ten, options => options.MapFrom(source => source.TenTinh));
 
@@ -50,5 +50,7 @@ public class Project_ABPApplicationAutoMapperProfile : Profile
 
         CreateMap<XaDto, ExcelDto>().ForMember(destination => destination.Ma, options => options.MapFrom(source => source.MaXa))
                                       .ForMember(destination => destination.Ten, options => options.MapFrom(source => source.TenXa));
+        CreateMap<ExcelDto, CreateOrUpdateTinhDto>().ForMember(destination => destination.MaTinh, options => options.MapFrom(source => source.Ma))
+                                                    .ForMember(destination => destination.TenTinh, options => options.MapFrom(source => source.Ten));
     }
 }

@@ -1811,7 +1811,7 @@
                   }
                 },
                 {
-                  "name": "ImportExcel",
+                  "name": "ExportExcel",
                   "parametersOnMethod": [
                     {
                       "name": "listHuyen",
@@ -2046,11 +2046,11 @@
               "allowAnonymous": null,
               "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<Project_ABP.Dto.HuyenDtos.HuyenDto,Project_ABP.Dto.HuyenDtos.HuyenDto,System.Guid,Project_ABP.Dto.HuyenDtos.HuyenPagedAndSortedResultRequestDto>"
             },
-            "ImportExcelByListHuyen": {
-              "uniqueName": "ImportExcelByListHuyen",
-              "name": "ImportExcel",
+            "ExportExcelByListHuyen": {
+              "uniqueName": "ExportExcelByListHuyen",
+              "name": "ExportExcel",
               "httpMethod": "POST",
-              "url": "api/app/huyen/import-excel",
+              "url": "api/app/huyen/export-excel",
               "supportedVersions": [],
               "parametersOnMethod": [
                 {
@@ -2274,13 +2274,30 @@
                   }
                 },
                 {
-                  "name": "ImportExcel",
+                  "name": "ExportExcel",
                   "parametersOnMethod": [
                     {
                       "name": "listTinh",
                       "typeAsString": "System.Collections.Generic.List`1[[Project_ABP.Dto.TinhDto.TinhDto, Project_ABP.Application.Contracts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib",
                       "type": "System.Collections.Generic.List<Project_ABP.Dto.TinhDto.TinhDto>",
                       "typeSimple": "[Project_ABP.Dto.TinhDto.TinhDto]",
+                      "isOptional": false,
+                      "defaultValue": null
+                    }
+                  ],
+                  "returnValue": {
+                    "type": "System.Void",
+                    "typeSimple": "System.Void"
+                  }
+                },
+                {
+                  "name": "ImportExcel",
+                  "parametersOnMethod": [
+                    {
+                      "name": "fileUpload",
+                      "typeAsString": "Microsoft.AspNetCore.Http.IFormFile, Microsoft.AspNetCore.Http.Features",
+                      "type": "Microsoft.AspNetCore.Http.IFormFile",
+                      "typeSimple": "Microsoft.AspNetCore.Http.IFormFile",
                       "isOptional": false,
                       "defaultValue": null
                     }
@@ -2569,11 +2586,11 @@
               "allowAnonymous": null,
               "implementFrom": "Volo.Abp.Application.Services.IUpdateAppService<Project_ABP.Dto.TinhDto.TinhDto,System.Guid,Project_ABP.Dto.TinhDto.CreateOrUpdateTinhDto>"
             },
-            "ImportExcelByListTinh": {
-              "uniqueName": "ImportExcelByListTinh",
-              "name": "ImportExcel",
+            "ExportExcelByListTinh": {
+              "uniqueName": "ExportExcelByListTinh",
+              "name": "ExportExcel",
               "httpMethod": "POST",
-              "url": "api/app/tinh/import-excel",
+              "url": "api/app/tinh/export-excel",
               "supportedVersions": [],
               "parametersOnMethod": [
                 {
@@ -2596,6 +2613,43 @@
                   "defaultValue": null,
                   "constraintTypes": null,
                   "bindingSourceId": "Body",
+                  "descriptorName": ""
+                }
+              ],
+              "returnValue": {
+                "type": "System.Void",
+                "typeSimple": "System.Void"
+              },
+              "allowAnonymous": null,
+              "implementFrom": "Project_ABP.IServices.ITinhService"
+            },
+            "ImportExcelByFileUpload": {
+              "uniqueName": "ImportExcelByFileUpload",
+              "name": "ImportExcel",
+              "httpMethod": "POST",
+              "url": "api/app/tinh/import-excel",
+              "supportedVersions": [],
+              "parametersOnMethod": [
+                {
+                  "name": "fileUpload",
+                  "typeAsString": "Microsoft.AspNetCore.Http.IFormFile, Microsoft.AspNetCore.Http.Features",
+                  "type": "Microsoft.AspNetCore.Http.IFormFile",
+                  "typeSimple": "Microsoft.AspNetCore.Http.IFormFile",
+                  "isOptional": false,
+                  "defaultValue": null
+                }
+              ],
+              "parameters": [
+                {
+                  "nameOnMethod": "fileUpload",
+                  "name": "fileUpload",
+                  "jsonName": null,
+                  "type": "Microsoft.AspNetCore.Http.IFormFile",
+                  "typeSimple": "Microsoft.AspNetCore.Http.IFormFile",
+                  "isOptional": false,
+                  "defaultValue": null,
+                  "constraintTypes": null,
+                  "bindingSourceId": "FormFile",
                   "descriptorName": ""
                 }
               ],
@@ -2720,7 +2774,7 @@
                   }
                 },
                 {
-                  "name": "ImportExcel",
+                  "name": "ExportExcel",
                   "parametersOnMethod": [
                     {
                       "name": "listXa",
@@ -2987,11 +3041,11 @@
               "allowAnonymous": null,
               "implementFrom": "Volo.Abp.Application.Services.IReadOnlyAppService<Project_ABP.Dto.XaDtos.XaDto,Project_ABP.Dto.XaDtos.XaDto,System.Guid,Project_ABP.Dto.XaDtos.XaPagedAndSortedResultRequestDto>"
             },
-            "ImportExcelByListXa": {
-              "uniqueName": "ImportExcelByListXa",
-              "name": "ImportExcel",
+            "ExportExcelByListXa": {
+              "uniqueName": "ExportExcelByListXa",
+              "name": "ExportExcel",
               "httpMethod": "POST",
-              "url": "api/app/xa/import-excel",
+              "url": "api/app/xa/export-excel",
               "supportedVersions": [],
               "parametersOnMethod": [
                 {
@@ -5839,6 +5893,87 @@
     }
   },
   "types": {
+    "Microsoft.AspNetCore.Http.IFormFile": {
+      "baseType": null,
+      "isEnum": false,
+      "enumNames": null,
+      "enumValues": null,
+      "genericArguments": null,
+      "properties": [
+        {
+          "name": "ContentType",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "ContentDisposition",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Headers",
+          "jsonName": null,
+          "type": "{System.String:Microsoft.Extensions.Primitives.StringValues}",
+          "typeSimple": "{string:Microsoft.Extensions.Primitives.StringValues}",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Length",
+          "jsonName": null,
+          "type": "System.Int64",
+          "typeSimple": "number",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "Name",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        },
+        {
+          "name": "FileName",
+          "jsonName": null,
+          "type": "System.String",
+          "typeSimple": "string",
+          "isRequired": false,
+          "minLength": null,
+          "maxLength": null,
+          "minimum": null,
+          "maximum": null,
+          "regex": null
+        }
+      ]
+    },
     "Project_ABP.Dto.BenhNhanDtos.BenhNhanDto": {
       "baseType": "Volo.Abp.Application.Dtos.FullAuditedEntityDto<System.Int32>",
       "isEnum": false,

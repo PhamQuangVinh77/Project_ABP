@@ -27,7 +27,14 @@ namespace Project_ABP.Repositories
                     transaction: DbTransaction)).ToList();
         }
 
-        public async Task<List<Tinh>> GetListAsync(int skipCount, int maxResultCount, string sorting = "", TinhFilter filter = null)
+        public async Task<Tinh> GetTinhById(Guid id)
+        {
+            var dbConnection = await GetDbConnectionAsync();
+            return (await dbConnection.QueryFirstOrDefaultAsync<Tinh>("SELECT * FROM apptinh WHERE IsDeleted = 0 AND @Id = @id", new {id},
+                    transaction: DbTransaction));
+        }
+
+        public async Task<List<Tinh>> GetListAsync(int skipCount, int maxResultCount, string sorting, TinhFilter filter)
         {
             var listTinh = await GetAllTinhs().ConfigureAwait(false);
             var response = listTinh.AsQueryable()

@@ -90,7 +90,7 @@ namespace Project_ABP.Services
             try
             {
                 if (input.MaTinh <= 0) throw new Exception(message: "Mã tỉnh không được nhỏ hơn 1!");
-                var tinhUpdate = await GetAsync(id);
+                var tinhUpdate = await _tinhRepository.GetTinhById(id);
                 var maOfTinhUpdate = tinhUpdate.MaTinh;
                 if (input.MaTinh != maOfTinhUpdate)
                 {

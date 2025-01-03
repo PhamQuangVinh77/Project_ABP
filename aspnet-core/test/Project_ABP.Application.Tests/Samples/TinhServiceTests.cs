@@ -55,12 +55,10 @@ namespace Project_ABP.Samples
                 SkipCount = 0,
                 MaxResultCount = 3,
                 Sorting = "maTinh ASC",
-                Filter = string.Empty,
+                Filter = ""
             };
-            TinhFilter filter = new TinhFilter
-            {
-                Filter = string.Empty,
-            };
+            TinhFilter filter = _mapper.Map<TinhPagedAndSortedResultRequestDto, TinhFilter>(request);
+
             var listAllTinh = new List<Tinh>
             {
                 new Tinh { MaTinh = 15, TenTinh = "Hải Phòng", Cap = "Tỉnh"},
@@ -75,21 +73,29 @@ namespace Project_ABP.Samples
                 new Tinh { MaTinh = 17, TenTinh = "Thái Bình", Cap = "Tỉnh"},
                 new Tinh { MaTinh = 30, TenTinh = "Hà Nội", Cap = "Thành phố trung ương"},
             };
+            _tinhRepository.Setup(x => x.GetAllTinhs()).ReturnsAsync(listAllTinh);
             _tinhRepository.Setup(x => x.GetTotalCountAsync(filter)).ReturnsAsync(listAllTinh.Count);
             _tinhRepository.Setup(x => x.GetListAsync(request.SkipCount, request.MaxResultCount, request.Sorting, filter))
                 .ReturnsAsync(listPaggingTinh);
+
             var result = await _tinhService.GetListAsync(request);
             Assert.Equal(listAllTinh.Count, result.TotalCount);
             Assert.Equal(listPaggingTinh.Count, result.Items.Count);
         }
 
         [Fact]
-        public async Task CreateAsync_ValidInput_SuccessResult()
+        public async Task CreateAsync_InputValidation_ShouldThrowException()
         {
-            var input = new CreateOrUpdateTinhDto()
+            var inputMaTinhIsZero = new CreateOrUpdateTinhDto()
             {
-                MaTinh = 1,
-                TenTinh = "Tỉnh Test",
+                MaTinh = 0,
+                TenTinh = "Tỉnh với Mã Zero",
+                Cap = "Tỉnh"
+            };
+            var inputMaTinhIsExist = new CreateOrUpdateTinhDto()
+            {
+                MaTinh = 30,
+                TenTinh = "Tỉnh đã tồn tại",
                 Cap = "Tỉnh"
             };
             var listTinh = new List<Tinh>
@@ -99,14 +105,30 @@ namespace Project_ABP.Samples
             };
             _tinhRepository.Setup(x => x.GetAllTinhs()).ReturnsAsync(listTinh);
 
-            var result = await _tinhService.CreateAsync(input);
-            Assert.NotNull(result);
+            var checkMaZero = await Assert.ThrowsAsync<Exception>(() => _tinhService.CreateAsync(inputMaTinhIsZero));
+            Assert.Equal("Mã tỉnh không được nhỏ hơn 1!", checkMaZero.Message);
+
+            var checkMaExist = await Assert.ThrowsAsync<Exception>(() => _tinhService.CreateAsync(inputMaTinhIsExist));
+            Assert.Equal("Mã tỉnh đã tồn tại!", checkMaExist.Message);
+
         }
 
         [Fact]
-        public async Task UpdateAsync_ValidInput_SuccessResult()
+        public async Task UpdateAsync_InputValidation_ShouldThrowException()
         {
-            var id = Guid.Parse("00000000-0000-0000-0000-000000000000");
+            var id = Guid.NewGuid();
+            var inputMaTinhIsZero = new CreateOrUpdateTinhDto()
+            {
+                MaTinh = 0,
+                TenTinh = "Tỉnh với Mã Zero",
+                Cap = "Tỉnh"
+            };
+            var inputMaTinhIsExist = new CreateOrUpdateTinhDto()
+            {
+                MaTinh = 30,
+                TenTinh = "Tỉnh đã tồn tại",
+                Cap = "Tỉnh"
+            };
             var listTinh = new List<Tinh>
             {
                 new Tinh { MaTinh = 30, TenTinh = "Hà Nội", Cap = "Thành phố trung ương"},
@@ -114,14 +136,13 @@ namespace Project_ABP.Samples
             };
 
             _tinhRepository.Setup(x => x.GetAllTinhs()).ReturnsAsync(listTinh);
+            _tinhRepository.Setup(x => x.GetTinhById(id)).ReturnsAsync(listTinh[1]);
 
-            var result = await _tinhService.UpdateAsync(id, new CreateOrUpdateTinhDto()
-            {
-                MaTinh = 1,
-                TenTinh = "Tỉnh Test",
-                Cap = "Tỉnh"
-            });
-            Assert.NotNull(result);
+            var checkMaZero = await Assert.ThrowsAsync<Exception>(() => _tinhService.UpdateAsync(id, inputMaTinhIsZero));
+            Assert.Equal("Mã tỉnh không được nhỏ hơn 1!", checkMaZero.Message);
+
+            var checkMaExist = await Assert.ThrowsAsync<Exception>(() => _tinhService.UpdateAsync(id, inputMaTinhIsExist));
+            Assert.Equal("Mã tỉnh đã tồn tại!", checkMaExist.Message);
         }
     }
 }

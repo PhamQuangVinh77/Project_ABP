@@ -74,8 +74,8 @@ namespace Project_ABP.Samples
                 new Tinh { MaTinh = 30, TenTinh = "Hà Nội", Cap = "Thành phố trung ương"},
             };
             _tinhRepository.Setup(x => x.GetAllTinhs()).ReturnsAsync(listAllTinh);
-            _tinhRepository.Setup(x => x.GetTotalCountAsync(filter)).ReturnsAsync(listAllTinh.Count);
-            _tinhRepository.Setup(x => x.GetListAsync(request.SkipCount, request.MaxResultCount, request.Sorting, filter))
+            _tinhRepository.Setup(x => x.GetTotalCountAsync(It.IsAny<TinhFilter>())).ReturnsAsync(listAllTinh.Count);
+            _tinhRepository.Setup(x => x.GetListAsync(It.IsAny<int>(), It.IsAny<int>(), It.IsAny<string>(), It.IsAny<TinhFilter>()))
                 .ReturnsAsync(listPaggingTinh);
 
             var result = await _tinhService.GetListAsync(request);
@@ -136,7 +136,7 @@ namespace Project_ABP.Samples
             };
 
             _tinhRepository.Setup(x => x.GetAllTinhs()).ReturnsAsync(listTinh);
-            _tinhRepository.Setup(x => x.GetTinhById(id)).ReturnsAsync(listTinh[1]);
+            _tinhRepository.Setup(x => x.GetTinhById(It.IsAny<Guid>())).ReturnsAsync(listTinh[1]);
 
             var checkMaZero = await Assert.ThrowsAsync<Exception>(() => _tinhService.UpdateAsync(id, inputMaTinhIsZero));
             Assert.Equal("Mã tỉnh không được nhỏ hơn 1!", checkMaZero.Message);
